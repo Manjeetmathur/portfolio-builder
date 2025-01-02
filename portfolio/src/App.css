@@ -1,0 +1,86 @@
+.header-text {
+  font-weight: 900;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+.btn {
+  background-color: #97e7ff;
+  padding: 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.6);
+  margin: 2px;
+}
+.btn:hover {
+  /* box-shadow: none; */
+  box-shadow: 3px 6px 7px rgba(0, 0, 0, 0.8);
+  background-color: #ffff;
+}
+
+/* Keyframes to animate opacity */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0; /* Fully transparent */
+  }
+  50% {
+    opacity: 0.5; /* Fully opaque */
+  }
+  100% {
+    opacity: 1; /* Fully transparent */
+  }
+}
+
+/* Apply the animation */
+.fade {
+  animation: fadeInOut 2s ease-in-out;
+}
+
+/* Keyframes for sliding from left to right */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* Slide to the normal position */
+    opacity: 1;
+  }
+}
+
+/* Apply the animation */
+.slide-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+/* Keyframes for sliding from right to left */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* Slide to the normal position */
+    opacity: 1;
+  }
+}
+
+/* Apply the animation */
+.slide-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+/* Keyframes for sliding from top to bottom */
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-100%); /* Start off-screen at the top */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0); /* Slide to the normal position */
+    opacity: 1;
+  }
+}
+
+/* Apply the animation */
+.slide-top {
+  animation: slideInTop 1s ease-out forwards;
+}
