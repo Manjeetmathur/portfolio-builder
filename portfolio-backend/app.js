@@ -13,7 +13,7 @@ app.use(
     credentials: true,
   })
 );
-// app.use(express.urlencoded({extended:true,limit:"16kb"}))
+app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use("/f",express.static("./portfolio-backend/pic/"))
 import userRoutes from "./routes/userRoutes.js";
 import postRoutes from "./routes/postRoutes.js";
