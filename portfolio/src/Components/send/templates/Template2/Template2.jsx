@@ -275,7 +275,7 @@ const Template2 = () => {
                                                  </div>
 
                                                  {/* Contact Form */}
-                                                 <div className="border-4 p-6 text-white rounded-lg shadow-xl text-black">
+                                                 <div className="border-4 p-6 rounded-lg shadow-xl text-black">
                                                         <form className="space-y-6">
                                                                <div>
                                                                       <label htmlFor="name" className="block text-sm font-medium mb-2">

@@ -44,6 +44,7 @@ const router = createBrowserRouter([
                             path : "/template3/:id",
                             element : <Template3/>
                      },
+                     
                      {
                             path : "/resume",
                             element : <Resume/>

@@ -17,7 +17,7 @@ const ProfilePost = ({ post }) => {
   const [link, setPostLink] = useState('');
   const [desc, setpostDesc] = useState('');
   const id = post._id
-  console.log(post);
+  // console.log(post);
 
   return (
     <div className='border-y-2 my-3 py-2'>

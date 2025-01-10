@@ -72,3 +72,35 @@
 .point1 {
   animation: movePoint1 4s infinite linear;
 }
+
+/* Stylish Background with Gradient */
+.stylish-bg {
+  background: linear-gradient(45deg, #4caf50, #2196f3, #ffeb3b);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  /* height: 100vh; */
+  position: relative;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Parallax Scrolling Effect */
+.parallax-bg {
+  background-image: url('https://your-image-url.jpg');
+  height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  z-index: -1;
+}

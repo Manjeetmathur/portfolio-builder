@@ -15,6 +15,7 @@
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "html-react-parser": "^5.1.18",
+    "particles.js": "^2.0.0",
     "portfolio-backend": "file:..",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

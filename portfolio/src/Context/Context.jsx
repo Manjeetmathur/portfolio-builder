@@ -62,11 +62,11 @@ const ContextProvider = ({ children }) => {
                      const getUserDetails = async () => {
 
                             const endpoint = `${url}/user/all-info/id?id=${userData?.id}`;
-                            console.log(endpoint);
+                            // console.log(endpoint);
 
                             const data = await axios.get(endpoint);
                             const res = data.data;
-                            console.log("res", res);
+                            // console.log("res", res);
 
                             if (res.success) {
                                    dispatch(userDetails(res.user));

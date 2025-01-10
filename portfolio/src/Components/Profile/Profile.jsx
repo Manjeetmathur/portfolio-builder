@@ -44,7 +44,7 @@ const Profile = () => {
     updateTitle, updateDesc, updateResume, updateProfession,showPdf,
     updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog
   } = useContext(context)
-  console.log(name);
+  // console.log(name);
 
   
 

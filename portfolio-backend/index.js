@@ -7,12 +7,13 @@ dotenv.config({
        path : "./.env"
 })
 
-const __dirname = path.resolve()
+// const __dirname = path.resolve()
 
-app.use(express.static(path.join(__dirname,'/portfolio/dist')))
-app.get("*",(req,res) => {
-       res.sendFile(path.resolve(__dirname,'portfolio','dist','index.html'))
-})
+
+// app.use(express.static(path.join(__dirname,'/portfolio/dist')))
+// app.get("*",(req,res) => {
+//        res.sendFile(path.resolve(__dirname,'portfolio','dist','index.html'))
+// })
 
 connectDB()
 .then(() => {
