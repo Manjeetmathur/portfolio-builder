@@ -44,7 +44,7 @@ const ProfilePost = ({ post }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg md:w-1/2">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Edit Profile</h2>
+              <h2 className="text-xl font-bold">Edit Post</h2>
               <div className="flex gap-2">
                 {loading === 'delete' ? <LuLoaderPinwheel className="text-xl mt-1  hover:text-gray-400" /> :
                   <MdOutlineDeleteOutline className='text-2xl cursor-pointer'
@@ -77,7 +77,7 @@ const ProfilePost = ({ post }) => {
                   setpostTitle('')
 
                 }}>
-                  {loading === 'title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  {loading === 'title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                 </button>
               </div>
               <div className="mb-4 flex gap-3">
@@ -95,7 +95,7 @@ const ProfilePost = ({ post }) => {
                   setloading()
                   setpostDesc('')
                 }}>
-                  {loading === 'Description' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  {loading === 'Description' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
 
                 </button>
               </div>
@@ -114,7 +114,7 @@ const ProfilePost = ({ post }) => {
                   setloading()
                   setPostLink('')
                 }}>
-                  {loading === 'Link' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  {loading === 'Link' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   
                 </button>
               </div>
@@ -138,7 +138,7 @@ const ProfilePost = ({ post }) => {
                   setloading()
                   setPostImage('')
                 }}>
-                  {loading === 'PostImage' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  {loading === 'PostImage' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
 
                 </button>
               </div>

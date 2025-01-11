@@ -73,7 +73,7 @@ const Register = () => {
         />
         <h1 className="text-[3vw] my-1 md:text-xl lg:text-2xl">Password</h1>
         <input
-          type="text"
+          type="password"
           name=""
           id=""
           className=" h-[6vw] md:h-full outline-none border-2 border-white bg-transparent 

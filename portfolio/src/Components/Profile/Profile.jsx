@@ -254,7 +254,7 @@ const Profile = () => {
                       setName("")
                       setloading(null)
                     }}>
-                      {loading === 'name' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
+                      {loading === 'name' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin " /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
                   </div>
                   <div className="mb-4 flex gap-3">
                     {/* <label className="block text-gray-400">Email</label> */}
@@ -272,7 +272,7 @@ const Profile = () => {
                       setEmail('')
                     }}>
 
-                      {loading === 'email' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                      {loading === 'email' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                     </button>
                   </div>
                   <div className="mb-4 flex gap-3">
@@ -290,7 +290,7 @@ const Profile = () => {
                       setloading(null)
                       setPhoneNumber('')
                     }}>
-                      {loading === 'phone' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                      {loading === 'phone' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                     </button>
                   </div>
                   <div className="mb-4 flex gap-3" >
@@ -313,7 +313,7 @@ const Profile = () => {
                       setloading(null)
                       setProfile('')
                     }}>
-                      {loading === 'image' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                      {loading === 'image' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                     </button>
                   </div>
                 </div>
@@ -349,7 +349,7 @@ const Profile = () => {
                     setloading(null)
                     setTitle('')
                   }} >
-                    {loading === 'title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
                 </div>
                 <div className="mb-4 flex gap-3">
@@ -368,7 +368,7 @@ const Profile = () => {
                     setProfession('')
                     // window.location.reload()
                   }} >
-                    {loading === 'profession' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'profession' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
                 </div>
                 <div className="mb-4 flex gap-3">
@@ -386,7 +386,7 @@ const Profile = () => {
                     setloading(null)
                     setDesc('')
                   }} >
-                    {loading === 'desc' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'desc' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
 
                 </div>
@@ -408,7 +408,7 @@ const Profile = () => {
                     setloading(null)
                     setResume('')
                   }} >
-                    {loading === 'resume' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
+                    {loading === 'resume' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">LinkedIn </label> */}
@@ -425,7 +425,7 @@ const Profile = () => {
                     setloading(null)
                     setLinked('')
                   }} >
-                    {loading === 'linkedin' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'linkedin' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
                 </div>
                 <div className="mb-4 flex gap-3">
@@ -443,7 +443,7 @@ const Profile = () => {
                     setloading(null)
                     setGit('')
                   }} >
-                    {loading === 'Github' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />} </button>
+                    {loading === 'Github' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />} </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Project Description</label> */}
@@ -461,7 +461,7 @@ const Profile = () => {
                     setloading(null)
                     setInsta('')
                   }} >
-                    {loading === 'Instagram' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'Instagram' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
                 </div>
                 <div className="mb-4 flex gap-3">
@@ -479,7 +479,7 @@ const Profile = () => {
                     setloading('')
                     setFace('')
                   }} >
-                    {loading === 'Facebook' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    {loading === 'Facebook' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
                   </button>
                 </div>
 

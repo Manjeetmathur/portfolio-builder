@@ -128,9 +128,10 @@ const Template1 = () => {
         </div>
       </div>
 
+
       <div className="py-9 border-t-4 border-blue-500 bg-gradient-to-t bg-gray-100 rounded-2xl">
         {/* Projects Section */}
-        <section className="mb-12">
+        {userDetails?.posts?.length && <section className="mb-12">
           <h1
             className="text-3xl text-gray-800 font-bold font-mono flex justify-center mb-8"
             ref={postRef}
@@ -150,29 +151,32 @@ const Template1 = () => {
             ))}
           </div>
         </section>
-
-        {/* Blogs Section */}
-        <section>
-          <h1
-            className="text-3xl text-gray-800 font-bold font-mono flex justify-center mb-8 border-t-4 pt-3"
-            ref={blogRef}
-            data-aos="fade-up"
-          >
-            Blogs
-          </h1>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {userDetails?.blogs?.map((item) => (
-              <div
-                key={item._id}
-                className="border border-gray-300 rounded-lg shadow-md bg-white p-6 mx-4 hover:shadow-lg transition-shadow"
-                data-aos="fade-up"
-              >
-                <Temp1Blogs blog={item} />
-              </div>
-            ))}
-          </div>
-        </section>
+        }
+        {/* BlogsSection */}
+        {userDetails?.blogs?.length > 0 &&
+          <section>
+            <h1
+              className="text-3xl text-gray-800 font-bold font-mono flex justify-center mb-8 border-t-4 pt-3"
+              ref={blogRef}
+              data-aos="fade-up"
+            >
+              Blogs
+            </h1>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {userDetails?.blogs?.map((item) => (
+                <div
+                  key={item._id}
+                  className="border border-gray-300 rounded-lg shadow-md bg-white p-6 mx-4 hover:shadow-lg transition-shadow"
+                  data-aos="fade-up"
+                >
+                  <Temp1Blogs blog={item} />
+                </div>
+              ))}
+            </div>
+          </section>
+          }
       </div>
+
 
       <div className="border-t-4" ref={contactRef}>
         <div className="my-3 py-12">

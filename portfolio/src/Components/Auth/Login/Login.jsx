@@ -57,7 +57,7 @@ const Login = () => {
                 text-[4vw] md:text-[25px] w-[60vw] lg:w-[40vw] rounded-lg py-1 px-1 mb-4'
             value={email} onChange={(e) => setEmail(e.target.value)} required />
           <h1 className='text-[3vw] my-1 md:text-xl lg:text-2xl'>Password</h1>
-          <input type="text" name="password"
+          <input type="password" name="password"
             className=' h-[6vw] md:h-full outline-none border-2 border-white bg-transparent 
           shadow-md shadow-white
                 text-[4vw] md:text-[25px] w-[60vw] lg:w-[40vw] rounded-lg py-1 px-1 mb-4'

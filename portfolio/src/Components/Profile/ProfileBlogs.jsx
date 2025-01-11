@@ -32,7 +32,7 @@ const ProfileBlogs = ({ blog }) => {
                                           <div className="flex justify-between items-center mb-4">
                                                  <h2 className="text-xl font-bold">Edit Blog</h2>
                                                  <div className="flex gap-2">
-                                                        {loading === 'delete' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> :
+                                                        {loading === 'delete' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> :
                                                                <MdOutlineDeleteOutline className='text-2xl cursor-pointer'
                                                                       onClick={async() => {
                                                                              setloading('delete')
@@ -67,7 +67,7 @@ const ProfileBlogs = ({ blog }) => {
                                                                setloading()
                                                                setBlogTitle('')
                                                         }}>
-                                                               {loading === 'Title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                                                               {loading === 'Title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
 
                                                         </button>
                                                  </div>
@@ -88,7 +88,7 @@ const ProfileBlogs = ({ blog }) => {
                                                                setloading()
                                                                setBlogDesc('')
                                                         }}>
-                                                               {loading === 'Content' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                                                               {loading === 'Content' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400 animate-spin" /> : <TiTick className="text-2xl hover:text-gray-400" />}
 
                                                         </button>
                                                  </div>
