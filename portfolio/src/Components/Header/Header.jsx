@@ -73,13 +73,13 @@ const Header = () => {
           <span className="block h-[2px] bg-blue-400 scale-0 group-hover:scale-100 transition-transform duration-300"></span>
         </NavLink>
         {status ? (
-          <div
-            className="group hover:text-blue-400 cursor-pointer transition-colors duration-300"
+          <button
+            className="group hover:text-blue-400 cursor-pointer transition-colors duration-300 "
             onClick={userLogout}
           >
             Logout
             <span className="block h-[2px] bg-blue-400 scale-0 group-hover:scale-100 transition-transform duration-300"></span>
-          </div>
+          </button>
         ) : (
           <NavLink
             to={"/login"}

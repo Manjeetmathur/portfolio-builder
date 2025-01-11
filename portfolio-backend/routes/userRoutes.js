@@ -19,7 +19,7 @@ router.route("/upload-details").post(verifyJwt,
 router.route("/user-info").get(verifyJwt,getUserinfo);
 router.route("/all-info/:id").get(allInfo);
 router.route("/update-image").patch(verifyJwt,upload.single("profile"),updateImage)
-router.route("/update-resume").patch(verifyJwt,upload.single("resume"),updateResume)
+router.route("/update-resume").patch(verifyJwt,updateResume)
 router.route("/update-name").patch(verifyJwt,updateName)
 router.route("/update-email").patch(verifyJwt,updateEmail)
 router.route("/update-user-title").patch(verifyJwt,updateUserTitle)

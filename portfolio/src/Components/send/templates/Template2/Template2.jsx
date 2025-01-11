@@ -16,7 +16,9 @@ import toast from "react-hot-toast";
 import { url } from "../../../../backendUrl/Backendurl";
 import axios from "axios";
 import Temp2Blogs from "./Temp2Blogs";
-import Temp1Header from "../Template1/Temp1Header";
+import Temp1Header from "../Temp1Header";
+import aos from 'aos'
+import 'aos/dist/aos.css'
 const Template2 = () => {
        const [userDetails, setUser] = useState();
 
@@ -24,7 +26,6 @@ const Template2 = () => {
        const blogRef = useRef()
        const contactRef = useRef()
        const id = useParams();
-       console.log(id);
        const [MessageName,setMessageName] = useState("")
        const [MessageSubject,setMessageSubject] = useState("")
        const [MessageDesc,setMessageDesc] = useState("")
@@ -34,11 +35,9 @@ const Template2 = () => {
                      const getUserDetails = async () => {
 
                             const endpoint = `${url}/user/all-info/id?id=${id.id}`;
-                            console.log(endpoint);
 
                             const data = await axios.get(endpoint);
                             const res = data.data;
-                            console.log("res", res);
 
                             if (res.success) {
                                    setUser(res.user);
@@ -49,44 +48,22 @@ const Template2 = () => {
                      console.log(error);
               }
        }, []);
-       console.log(userDetails);
-
-       const link = window.location.href;
-
-       const Openlink = async () => {
-              await navigator.clipboard.writeText(link);
-              toast("link copied");
-              const shareData = {
-                     title: "sharing your portfolio",
-                     text: "share",
-                     url: link,
-              };
-              if (navigator.share) {
-                     navigator.share(shareData);
-              }
-       };
-       const showPdf = () => {
-              window.open(`${url}/f/${userDetails?.resume}`)
-       }
+       useEffect(()=>{
+              aos.init({
+                     duration:2000,
+                     once:false,
+                     easing:"ease-in"
+              })
+       },[])
+      
        return (
               <div className="">
                      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-gray-900 via-blue-900 to-blue-950 text-white" />
                      <div className="bg-gradient-to-r from-gray-900 to-blue-950 
                      p-1 pt-28 md:pb-20 md:flex justify-center items-center flex-row-reverse lg:p-36 relative">
-                            {/* Send Link */}
-                            {/* <a
-                                   to={`${link}`}
-                                   className="absolute top-16 right-9 text-white 
-                                   text-lg font-semibold bg-blue-600 hover:bg-blue-700 px-6 py-3 
-                                   rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl
-                                    transform hover:scale-105"
-                                   onClick={Openlink}
-                            >
-                                   Send
-                            </a> */}
-
+                            
                             {/* Profile Image */}
-                            <div className="flex justify-center items-center mb-6 md:mb-0">
+                            <div className="flex justify-center items-center mb-6 md:mb-0" data-aos='fade-up'>
                                    <img
                                           src={userDetails?.profile?.imageUrl}
                                           alt="Profile"
@@ -101,7 +78,7 @@ const Template2 = () => {
 
                             {/* Profile Details */}
                             <div className="flex flex-col justify-center items-center md:items-start
-                             md:w-[40%] text-center md:text-left">
+                             md:w-[40%] text-center md:text-left" data-aos='fade-up'>
                                    <h2 className="text-2xl text-white font-bold mt-4 lg:text-4xl md:text-3xl">
                                           Hii I'm {userDetails?.name}
 
@@ -112,7 +89,7 @@ const Template2 = () => {
                                    </h2>
 
                                    {/* Social Media Icons */}
-                                   <div className="flex flex-col items-center justify-center mt-6 md:mt-4">
+                                   <div className="flex flex-col items-center justify-center mt-6 md:mt-4" data-aos='zoom-in'>
                                           <div className="flex space-x-4 mb-6">
                                                  <a
                                                         href={userDetails?.linkedinlink}
@@ -159,30 +136,30 @@ const Template2 = () => {
                                           </div>
 
                                           {/* Resume Link */}
-                                          <div className="m-2 mb-10 ">
-                                                 <button
-                                                        onClick={() => showPdf(userDetails?.resume)}
+                                          <div className="m-2 mb-10 " data-aos='zoom-in'>
+                                                 <Link
+                                                        to={`${userDetails?.resume}`}
                                                         className="text-sm lg:text-xl border-2 bg-gradient-to-r 
                                                         from-teal-400 to-blue-500 text-white 
                                                         rounded-xl px-5 py-2 transform hover:scale-105
                                                          transition-all duration-300 shadow-lg hover:shadow-2xl"
                                                  >
                                                         See My Resume
-                                                 </button>
+                                                 </Link>
                                           </div>
                                    </div>
                             </div>
                      </div>
 
                      <div className="text-white w-full bg-gradient-to-r from-gray-800 via-gray-900
-                      to-black flex flex-col justify-center items-center py-16 border-y-2">
+                      to-black flex flex-col justify-center items-center py-16 border-y-2" > 
                             {/* About Me Section */}
                             <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
-                             bg-gradient-to-r from-teal-400 to-blue-500 mb-6">
+                             bg-gradient-to-r from-teal-400 to-blue-500 mb-6" data-aos='fade-up'>
                                    About Me
                             </h2>
                             <p className="text-md font-semibold text-center w-[90%] md:text-xl pb-6 
-                            text-gray-300 leading-relaxed">
+                            text-gray-300 leading-relaxed" data-aos='fade-up'>
                                    {userDetails?.description}
                             </p>
                      </div>
@@ -192,12 +169,12 @@ const Template2 = () => {
                             {/* Connect With Me Section */}
 
                             <p className="text-md font-semibold text-center w-[90%] md:text-xl pb-6
-                             text-gray-300">
+                             text-gray-300" data-aos='fade-up'>
                                    <span className="font-bold text-white">Phone Number:</span>
                                    {userDetails?.phonenumber}
                             </p>
                             <p className="text-md font-semibold text-center w-[90%] md:text-xl 
-                            pb-6 text-gray-300">
+                            pb-6 text-gray-300" data-aos='fade-up'>
                                    <span className="font-bold text-white">Email:</span>
                                    {userDetails?.email}
                             </p>
@@ -207,7 +184,7 @@ const Template2 = () => {
                             <h2 className="text-2xl font-semibold text-white pt-8">My Projects</h2>
                             <div className="">
                                    {userDetails?.posts?.map((item) => {
-                                          return <Temp2Posts post={item} key={item._id}></Temp2Posts>;
+                                          return <Temp2Posts post={item} key={item._id} ></Temp2Posts>;
                                    })}
                             </div>
                      </div>
@@ -216,14 +193,14 @@ const Template2 = () => {
                                    return <Temp2Blogs blog={item} key={item._id}></Temp2Blogs>;
                             })}
                      </div>
-                     <div className="border-t-4" >
+                     <div className="" >
                             <div className=" from-gray-800 via-gray-900
                       to-black bg-gradient-to-bl py-6 text-white" ref={contactRef}>
                                    <div className="max-w-6xl mx-auto px-6 ">
                                           <h2 className="text-3xl font-extrabold text-center text-transparent 
-                            bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 mb-6">
+                            bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 mb-6" data-aos='fade-up'>
                                                  Connect With Me
-                                          </h2> <div className="grid md:grid-cols-2 gap-10 ">
+                                          </h2> <div className="grid md:grid-cols-2 gap-10 " data-aos='fade-up'>
                                                  {/* Contact Info */}
                                                  <div className="space-y-6">
                                                         <h3 className="text-2xl font-semibold">Get in Touch</h3>
@@ -259,7 +236,7 @@ const Template2 = () => {
                                                                              <FaGithub />
                                                                       </a>
                                                                       <a
-                                                                             href={userDetails?.instalink}
+                                                                             href={userDetails?.instagramlink}
                                                                              className=" hover:text-pink-500"
                                                                       >
                                                                              <FaInstagram />
@@ -275,7 +252,7 @@ const Template2 = () => {
                                                  </div>
 
                                                  {/* Contact Form */}
-                                                 <div className="border-4 p-6 rounded-lg shadow-xl text-black">
+                                                 <div className="border-4 p-6 rounded-lg shadow-xl text-black ">
                                                         <form className="space-y-6">
                                                                <div>
                                                                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -290,7 +267,7 @@ const Template2 = () => {
                                                                              Value={MessageName}
                                                                              onChange={(e=>setMessageName(e.target.value))}
                                                                              placeholder="Your Name"
-                                                                             className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                             className="w-full p-3 border  border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                                       />
                                                                </div>
                                                                <div>
@@ -304,7 +281,7 @@ const Template2 = () => {
                                                                              default
                                                                              Value={MessageEmail}
                                                                              onChange={(e=>setMessageEmail(e.target.value))}
-                                                                             className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                             className="w-full p-3 border border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                                       />
                                                                </div>
                                                                <div>

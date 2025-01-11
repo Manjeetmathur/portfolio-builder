@@ -4,8 +4,8 @@ import { RiExternalLinkFill } from "react-icons/ri";
 
 const Temp1Posts = ({ post }) => {
   return (
-    <div className="p-4 max-w-xs w-full mx-auto bg-gradient-to-b  from-gray-100 to-green-200">
-      <div className="bg-gradient-to-b  from-gray-100 to-green-200 border-2 border-gray-200 rounded-lg shadow-lg overflow-hidden group transform transition-all hover:scale-105 hover:shadow-xl">
+    <div className="p-4 max-w-xs w-full mx-auto  ">
+      <div className="  rounded-lg overflow-hidden group transform transition-all hover:scale-105 hover:shadow-gray-700 hover:shadow-2xl">
         <div className="flex justify-between items-center p-4">
           <h1 className="text-xl font-semibold text-gray-800">{post.postTitle}</h1>
           {post?.link?.length > 5 && (
@@ -19,7 +19,7 @@ const Temp1Posts = ({ post }) => {
           <img
             src={`${post?.postImage?.imageUrl}`}
             alt={post.postTitle}
-            className="w-full h-[250px] object-cover transform transition-transform duration-300 group-hover:scale-110"
+            className="w-full h-[250px] object-cover rounded-xl transform transition-transform duration-300 group-hover:scale-110"
           />
         </Link>
 

@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { url } from "../../../../backendUrl/Backendurl";
 import axios from "axios";
 import Temp1Blogs from "./Temp1Blogs";
-import Temp1Header from "./Temp1Header";
+import Temp1Header from "../Temp1Header";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -24,7 +24,6 @@ const Template1 = () => {
   const blogRef = useRef();
   const contactRef = useRef();
   const id = useParams();
-  console.log(id);
 
   useEffect(() => {
     AOS.init({
@@ -34,14 +33,11 @@ const Template1 = () => {
     });
 
     const getUserDetails = async () => {
-      console.log("hii");
 
       const endpoint = `${url}/user/all-info/id?id=${id.id}`;
-      console.log(endpoint);
 
       const data = await axios.get(endpoint);
       const res = data.data;
-      console.log("res", res);
 
       if (res.success) {
         setUser(res.user);
@@ -56,7 +52,7 @@ const Template1 = () => {
 
   return (
     <div className="bg-gradient-to-r from-gray-100 to-blue-400">
-      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300"/>
+      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300" />
       <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36">
         {/* Profile Image Section */}
         <div className="relative z-10 flex justify-center items-center animate-bounce">
@@ -122,12 +118,11 @@ const Template1 = () => {
 
             {/* Resume Button */}
             <div className="mt-6" data-aos="fade-up">
-              <button
-                onClick={showPdf}
+              <Link to={`${userDetails?.resume}`}
                 className="text-sm lg:text-xl border-2 px-4 py-2 rounded-xl text-gray-700 font-semibold hover:bg-gray-100 hover:shadow-md"
               >
                 See My Resume
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -185,7 +180,7 @@ const Template1 = () => {
             <h2 className="text-4xl font-bold text-center mb-8" data-aos="fade-up">
               Contact Me
             </h2>
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid md:grid-cols-2 gap-10" data-aos="fade-up">
               {/* Contact Info */}
               <div className="space-y-6">
                 <h3 className="text-2xl font-semibold">Get in Touch</h3>
@@ -221,7 +216,7 @@ const Template1 = () => {
                       <FaGithub />
                     </a>
                     <a
-                      href={userDetails?.instalink}
+                      href={userDetails?.instagramlink}
                       className="hover:text-pink-500"
                     >
                       <FaInstagram />
@@ -236,73 +231,7 @@ const Template1 = () => {
                 </div>
               </div>
 
-              {/* Contact Form */}
-              <div className="border-4 p-6 rounded-lg shadow-xl">
-                <form className="space-y-6">
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="Your Name"
-                      className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      placeholder="Your Email"
-                      className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      placeholder="Subject"
-                      className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium mb-2"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows="4"
-                      placeholder="Your Message"
-                      className="w-full p-3 border border-gray-700 rounded bg-gray-00 text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full py-3 px-4 text-white bg-blue-500 hover:bg-blue-400 rounded"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </div>
+
             </div>
           </div>
         </div>

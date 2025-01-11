@@ -3,8 +3,13 @@ import { FaEdit } from 'react-icons/fa'
 import { GiCancel } from 'react-icons/gi'
 import { context } from "../../Context/Context"
 import { MdOutlineDeleteOutline } from 'react-icons/md'
+import { TiTick } from "react-icons/ti";
+import { LuLoaderPinwheel } from "react-icons/lu";
+
+
 const ProfileBlogs = ({ blog }) => {
        const [editSec, setEditSec] = useState(false)
+       const [loading, setloading] = useState(null)
        const [title, setBlogTitle] = useState("");
        const [desc, setBlogDesc] = useState("");
        const { updateBlogTitle, updateBlogContent, deleteBlog } = useContext(context)
@@ -17,7 +22,7 @@ const ProfileBlogs = ({ blog }) => {
                                    className="absolute top-2 right-4 text-2xl text-gray-300 hover:text-blue-400 cursor-pointer"
                                    onClick={() => setEditSec(true)}
                             >
-                                   <FaEdit className='p-1'/>
+                                   <FaEdit className='p-1' />
                             </div>
                      </div>
                      <p>{blog.content}</p>
@@ -27,7 +32,17 @@ const ProfileBlogs = ({ blog }) => {
                                           <div className="flex justify-between items-center mb-4">
                                                  <h2 className="text-xl font-bold">Edit Blog</h2>
                                                  <div className="flex gap-2">
-                                                        <MdOutlineDeleteOutline className='text-2xl cursor-pointer' onClick={() => deleteBlog(id)} />
+                                                        {loading === 'delete' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> :
+                                                               <MdOutlineDeleteOutline className='text-2xl cursor-pointer'
+                                                                      onClick={async() => {
+                                                                             setloading('delete')
+                                                                             await deleteBlog(id)
+                                                                             setloading()
+                                                                             window.location.reload()
+                                                                      }} />
+                                                                      }
+
+
                                                         <GiCancel
                                                                className="text-2xl text-gray-300 cursor-pointer"
                                                                onClick={() => setEditSec(false)}
@@ -46,15 +61,20 @@ const ProfileBlogs = ({ blog }) => {
                                                                       setBlogTitle(e.target.value)
                                                                }}
                                                         />
-                                                        <button onClick={() => {
-                                                               updateBlogTitle(title, id)
+                                                        <button onClick={async () => {
+                                                               setloading('Title')
+                                                               await updateBlogTitle(title, id)
+                                                               setloading()
                                                                setBlogTitle('')
-                                                        }}>update</button>
+                                                        }}>
+                                                               {loading === 'Title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+
+                                                        </button>
                                                  </div>
                                                  <div className="mb-4 flex gap-3">
                                                         {/* <label className="block text-gray-400">Email</label> */}
                                                         <input
-                                                               type="email"
+                                                               type="text"
                                                                className="block w-[50vw] px-1 border rounded-lg  bg-gray-700 text-gray-100"
                                                                placeholder="Blog Content . . ."
                                                                value={desc}
@@ -62,10 +82,15 @@ const ProfileBlogs = ({ blog }) => {
                                                                       setBlogDesc(e.target.value)
                                                                }}
                                                         />
-                                                        <button onClick={() => {
-                                                               updateBlogContent(desc, id)
+                                                        <button onClick={async () => {
+                                                               setloading('Content')
+                                                               await updateBlogContent(desc, id)
+                                                               setloading()
                                                                setBlogDesc('')
-                                                        }}>update</button>
+                                                        }}>
+                                                               {loading === 'Content' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+
+                                                        </button>
                                                  </div>
 
                                           </div>

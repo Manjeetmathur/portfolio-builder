@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom'
 const Footer = () => {
   return (
     <div className="from-gray-900 via-gray-950 to-gray-900 
@@ -19,10 +19,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Navigation</h3>
             <ul className="space-y-2">
-              <li><a href="#home" className="hover:text-gray-400 font-semibold">Home</a></li>
-              <li><a href="#about" className="hover:text-gray-400 font-semibold">About Us</a></li>
-              <li><a href="#services" className="hover:text-gray-400 font-semibold">Services</a></li>
-              <li><a href="#contact" className="hover:text-gray-400 font-semibold">Contact</a></li>
+              <li><Link to={"/"} className="hover:text-gray-400 font-semibold">Home</Link></li>
+              <li><Link to={"/profile"} className="hover:text-gray-400 font-semibold">profile</Link></li>
+              <li><Link to={"/send"} className="hover:text-gray-400 font-semibold">send</Link></li>
             </ul>
           </div>
           
@@ -40,12 +39,18 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="https://facebook.com" className="hover:text-gray-400">
-                <i className="fab fa-facebook-f"></i> Facebook
-              </a>
-              <a href="https://instagram.com" className="hover:text-gray-400">
+              <Link to={"https://www.linkedin.com/in/manjeet-kumar4/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"} className="hover:text-gray-400">
+                <i className="fab fa-facebook-f"></i> LinkedIn
+              </Link>
+              <Link to={"https://github.com/Manjeetmathur"} className="hover:text-gray-400">
+                <i className="fab fa-instagram"></i> GitHub
+              </Link>
+              <Link to={"https://www.instagram.com/mathur__manjeet/"} className="hover:text-gray-400">
                 <i className="fab fa-instagram"></i> Instagram
-              </a>
+              </Link>
+              <Link to={"https://www.facebook.com/people/Manjeet-M%C3%A4thur/pfbid02qRwQyDr2MeVJxU3eZ5sMgdtLBuwd3awzW9wUbKivKLfEU6dwW999xu7ckuLs4tALl/?name=xhp_nt_"} className="hover:text-gray-400">
+                <i className="fab fa-instagram"></i> facebook
+              </Link>
             </div>
           </div>
         </div>

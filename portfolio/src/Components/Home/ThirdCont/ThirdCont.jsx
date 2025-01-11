@@ -9,7 +9,7 @@ const ThirdCont = () => {
        const [title, setpostTitle] = useState('');
        const [link, setPostLink] = useState('');
        const [desc, setpostDesc] = useState('');
-       const {uploadPost} = useContext(context)
+       const { uploadPost } = useContext(context)
        useEffect(() => {
               // Initialize AOS animation
               AOS.init({
@@ -25,7 +25,7 @@ const ThirdCont = () => {
                      <div className=" text-white mx-auto w-full max-w-4xl px-6 md:px-12 lg:px-20">
 
                             {/* Project Image Section */}
-                            <div className="flex flex-col items-center gap-6 mb-8 " data-aos="slide-down"> 
+                            <div className="flex flex-col items-center gap-3 mb-8 " data-aos="slide-up">
                                    <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold">Project Image</h1>
                                    <input
                                           type="file"
@@ -34,7 +34,7 @@ const ThirdCont = () => {
                                           onChange={(e) => setPostImage(e.target.files?.[0])}
                                    />
                                    <button
-                                          className="h-[6vw] md:h-[10vh] lg:h-[8vh] text-[3vw] md:text-[20px] lg:text-[18px] 
+                                          className="h-[34px] md:h-[40px] lg:h-[8vh] text-[3vw] md:text-[20px] lg:text-[18px] 
                      cursor-pointer font-medium py-1 px-6 w-[72vw] md:w-[450px]  rounded-xl 
                      bg-gradient-to-r from-green-400 to-blue-500 hover:scale-105 transition-all shadow-lg"
                                           onClick={() => ref.current.click()}
@@ -44,54 +44,61 @@ const ThirdCont = () => {
                             </div>
 
                             {/* Project Title Section */}
-                            <div className="flex flex-col items-center gap-6 mb-8" data-aos="slide-down">
+                            <div className="flex flex-col items-center gap-3 mb-8" data-aos="slide-up">
                                    <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold">Project Title</h1>
                                    <input
                                           type="text"
                                           className="h-[6vw] md:h-[8vh] lg:h-[6vh] outline-none border-2 border-white bg-transparent text-[4vw] 
-                    md:text-[20px] lg:text-[18px] shadow-md shadow-white  w-[72vw] md:w-[450px]  rounded-lg py-3 px-4 mb-4 focus:ring-2 focus:ring-blue-500"
+                    md:text-[20px] lg:text-[18px] shadow-md shadow-white  w-[72vw] md:w-[450px]  rounded-lg py-4 px-2 mb-4 focus:ring-2 focus:ring-blue-500"
                                           onChange={(e) => setpostTitle(e.target.value)}
                                           value={title}
+                                          placeholder='Place your project title'
                                    />
                             </div>
-
-                            {/* Project Link Section */}
-                            <div className="flex flex-col items-center gap-6 mb-8" data-aos="slide-down" data-aos-delay = '100'>
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold">Project Link</h1>
-                                   <input
-                                          type="text"
-                                          className="h-[6vw] md:h-[8vh] lg:h-[6vh] outline-none border-2 border-white 
-                    bg-transparent text-[4vw] md:text-[20px] lg:text-[18px] shadow-md shadow-white  w-[72vw] md:w-[450px] 
-                    rounded-lg py-3 px-4 mb-4 focus:ring-2 focus:ring-blue-500"
-                                          onChange={(e) => setPostLink(e.target.value)}
-                                          value={link}
-                                   />
-                            </div>
-
                             {/* Project Description Section */}
-                            <div className="flex flex-col items-center gap-6 mb-8" data-aos="slide-down" >
+                            <div className="flex flex-col items-center gap-3 mb-8" data-aos="slide-up" >
                                    <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold">Project Description</h1>
                                    <textarea
                                           rows={3}
                                           className="h-[6vw] md:h-[10vh] lg:h-[8vh] outline-none border-2 border-white bg-transparent
                      text-[4vw] md:text-[20px] lg:text-[18px] shadow-md shadow-white  w-[72vw] md:w-[450px] 
-                      rounded-lg py-3 px-4 mb-4 focus:ring-2 focus:ring-blue-500"
+                      rounded-lg py-4 px-2 mb-4 focus:ring-2 focus:ring-blue-500"
                                           onChange={(e) => setpostDesc(e.target.value)}
                                           value={desc}
+                                          placeholder='Place your project description'
+
                                    />
                             </div>
 
+                            {/* Project Link Section */}
+                            <div className="flex flex-col items-center gap-3 mb-8" data-aos="slide-up" data-aos-delay='100'>
+                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold">Project Link</h1>
+                                   <input
+                                          type="text"
+                                          className="h-[6vw] md:h-[8vh] lg:h-[6vh] outline-none border-2 border-white 
+                    bg-transparent text-[4vw] md:text-[20px] lg:text-[18px] shadow-md shadow-white  w-[72vw] md:w-[450px] 
+                    rounded-lg py-4 px-2 mb-4 focus:ring-2 focus:ring-blue-500"
+                                          onChange={(e) => setPostLink(e.target.value)}
+                                          value={link}
+                                          placeholder='Place your project link'
+
+                                   />
+                            </div>
+
+
                             {/* Upload Button */}
-                            <div className="flex justify-center" data-aos="slide-down">
+                            <div className="flex justify-center" data-aos="slide-up">
                                    <button
                                           className="bg-gradient-to-r from-green-400 to-blue-500 hover:scale-105 transition-all
                      text-[3vw] md:text-[20px] lg:text-[18px] font-medium py-2 px-16 rounded-xl shadow-md shadow-white"
-                                          onClick={() =>{
-                                                 uploadPost(title,postImage,link,desc)
+                                          onClick={async () => {
+                                                 setLoading(true)
+                                                 await uploadPost(title, postImage, link, desc)
                                                  setpostDesc('')
                                                  setPostImage('')
                                                  setpostTitle('')
                                                  setPostLink('')
+                                                 setLoading(false)
                                           }}
                                    >
                                           {loading ? 'Uploading...' : 'Upload'}

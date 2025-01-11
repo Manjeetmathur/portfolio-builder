@@ -34,7 +34,7 @@ const ContextProvider = ({ children }) => {
                             toast.error(res.message)
                      }
               } catch (error) {
-
+                     toast.error(error.message)
               }
 
        }
@@ -101,11 +101,12 @@ const ContextProvider = ({ children }) => {
        };
        const updateResume = async (resume) => {
 
-              const formData = new FormData();
-              formData.append("resume", resume);
+              
               try {
-                     const data = await axios.patch(`${url}/user/update-resume`, formData, {
-                            headers: { "Content-Type": "multipart/form-data" },
+                     console.log(resume)
+                     const data = await axios.patch(`${url}/user/update-resume`, {resume}, {
+                            
+                            headers: { "Content-Type": "application/json" },
                             withCredentials: true,
                             withXSRFToken: true,
                      });

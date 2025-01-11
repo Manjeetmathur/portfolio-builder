@@ -8,8 +8,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(
   cors({
-    // origin: ["http://localhost:5173","https://portfolio-builder-manjeetmathurs-projects.vercel.app"],
-    origin: "https://portfolio-builder-manjeetmathurs-projects.vercel.app",
+    origin: ["http://localhost:5173","https://portfolio-builder-manjeetmathurs-projects.vercel.app"],
+    // origin: "https://portfolio-builder-manjeetmathurs-projects.vercel.app",
     credentials: true,
   })
 );

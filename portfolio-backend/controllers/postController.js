@@ -24,9 +24,11 @@ const uploadPost = async (req, res) => {
                      throw new Error("All Fields are required")
               }
 
-              const postfilePath = req.file?.path
+              const postfilePath = req?.file?.path
+              // console.log(postfilePath)
 
               const postUrl = await uploadOnCloudinary(postfilePath)
+              // console.log(postUrl)
 
               const post = await Posts.create({
                      postTitle: title,
@@ -36,10 +38,10 @@ const uploadPost = async (req, res) => {
                      owner: userId,
                      postDescription : desc
               })
-              if(user){
+              
                      user.posts.push(post._id)
                      await user.save()
-              }
+             
               return res.status(200).json({
                      post,
                      message: ("post uploaded successfully"),
@@ -139,18 +141,8 @@ const editPostImage = async (req, res) => {
 }
 const editPostTitle = async (req, res) => {
        const { postTitle, postId } = req.body
-       const userId = req._id
        try {
-              if (userId === null) {
-                     throw new Error("Invalid user access ")
-              }
-              const user = await User.findById(userId);
-              // console.log(user);
 
-              if (!user) {
-                     throw new Error("Invalid user access");
-
-              }
               if (!postId) {
                      throw new Error("Post not found");
 
@@ -158,6 +150,9 @@ const editPostTitle = async (req, res) => {
               const post =await Posts.findById(postId)
               if (!post) {
                      throw new Error("Post not found");
+              }
+              if(!postTitle){
+                     throw new Error("Title required")
               }
               await Posts.findByIdAndUpdate(
                      postId,
@@ -195,6 +190,9 @@ const editPostDesc = async (req, res) => {
               if (!postId) {
                      throw new Error("Post not found");
 
+              }
+              if(!desc){
+                     throw new Error("description required")
               }
               const post =await Posts.findById(postId)
               if (!post) {
@@ -241,6 +239,9 @@ const editPostLink = async (req, res) => {
               if (!post) {
                      throw new Error("Post not found");
               }
+              if(!link){
+                     throw new Error("Link required")
+              }
               await Posts.findByIdAndUpdate(
                      postId,
                      {
@@ -281,11 +282,15 @@ const deletePost = async (req, res) => {
                      throw new Error("Post not found");
 
               }
+              user.posts = user.posts.filter(item => item.id.toString() !== postId)
+              await user.save()
               const post =await Posts.findById(postId)
               if (!post) {
                      throw new Error("Post not found");
               }
               await Posts.findByIdAndDelete(postId)
+
+
 
               res.status(200).json({
                      message: "post deleted",

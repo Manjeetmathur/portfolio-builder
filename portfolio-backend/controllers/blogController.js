@@ -1,6 +1,7 @@
 
 import { User } from "../model/user.js"
 import { Blog } from "../model/blog.js"
+import { use } from "react"
 
 const createBlog = async (req, res) => {
        const { content, title } = req.body
@@ -25,15 +26,19 @@ const createBlog = async (req, res) => {
                      title,
                      content
               })
-              user.blogs.push(blog._id)
-              user.save()
-              return res.status(200).json({
+              if (user) {
+
+                     user.blogs.push(blog._id)
+                     user.save()
+
+              }
+              res.status(200).json({
                      message: "blog created successfully",
                      success: true,
                      blog
               })
        } catch (error) {
-              return res.json({
+              res.json({
                      message: error.message,
               })
        }
@@ -72,15 +77,19 @@ const editBlogTitle = async (req, res) => {
                      throw new Error("Post not found");
 
               }
-              const blog =await Blog.findById(blogId)
+
+              const blog = await Blog.findById(blogId)
               if (!blog) {
                      throw new Error("Post not found");
+              }
+              if(!blogTitle){
+                     throw new Error("Title required")
               }
               await Blog.findByIdAndUpdate(
                      blogId,
                      {
                             $set: {
-                                   title : blogTitle,
+                                   title: blogTitle,
                             }
                      }, { new: true }
               )
@@ -113,15 +122,18 @@ const editBlogContent = async (req, res) => {
                      throw new Error("Post not found");
 
               }
-              const blog =await Blog.findById(blogId)
+              const blog = await Blog.findById(blogId)
               if (!blog) {
                      throw new Error("Post not found");
+              }
+              if(!blogContent){
+                     throw new Error("Content required")
               }
               await Blog.findByIdAndUpdate(
                      blogId,
                      {
                             $set: {
-                                   content : blogContent,
+                                   content: blogContent,
                             }
                      }, { new: true }
               )
@@ -138,9 +150,9 @@ const editBlogContent = async (req, res) => {
        }
 }
 const deleteBlog = async (req, res) => {
-       const {  blogId } = req.body
+       const { blogId } = req.body
        console.log(blogId);
-       
+
        const userId = req._id
        try {
               if (userId === null) {
@@ -156,6 +168,8 @@ const deleteBlog = async (req, res) => {
                      throw new Error("Post not found");
 
               }
+              user.blogs = user.blogs.filter(item => item.toString() !== blogId)
+              await user.save()
               const blog = await Blog.findById(blogId)
               if (!blog) {
                      throw new Error("Post not found");
@@ -176,4 +190,4 @@ const deleteBlog = async (req, res) => {
 
 
 
-export { createBlog, getAllblogPostByUser,editBlogContent,editBlogTitle,deleteBlog }
+export { createBlog, getAllblogPostByUser, editBlogContent, editBlogTitle, deleteBlog }

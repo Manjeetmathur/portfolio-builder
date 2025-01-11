@@ -172,30 +172,18 @@ const uploadDetails = async (req, res) => {
 //update image
 const updateResume = async (req, res) => {
   const userId = req._id
+  const { resume } = req.body
 
   try {
     const user = await User.findById(userId)
 
     if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+      throw new Error("User not found . . .")
     }
-    // const resumefilePath = req.file?.path
 
-    // if (!resumefilePath) {
-    //   throw new Error("file missing")
-    // }
-    console.log(req.file);
-    
-    const resume = req.file.filename
-
-    if (!resume) {
-      throw new Error("file missing")
+    if (!resume.length) {
+      throw new Error("required")
     }
-    console.log(resume);
-    
     await User.findByIdAndUpdate(
       userId,
       {
@@ -220,11 +208,11 @@ const updateResume = async (req, res) => {
   }
 }
 const updateImage = async (req, res) => {
-  console.log("hi");
-  
+  // console.log("hi");
+
   const userId = req._id
-  console.log(userId);
-  
+  // console.log(userId);
+
   try {
     const user = await User.findById(userId)
 
@@ -267,7 +255,7 @@ const updateImage = async (req, res) => {
 
   } catch (error) {
     res.json({
-      message: "heelooo" + error.message,
+      message: error.message,
     })
   }
 }
@@ -277,12 +265,10 @@ const updateName = async (req, res) => {
   const userId = req._id
   try {
     const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    // console.log(user)
+    
+    if (!name) {
+      throw new Error("name required . . .",)
     }
     await User.findByIdAndUpdate(
       userId,
@@ -304,18 +290,14 @@ const updateName = async (req, res) => {
     })
   }
 }
-const updateEmail= async (req, res) => {
+const updateEmail = async (req, res) => {
   const { email } = req.body
   const userId = req._id
   try {
     const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
-    }
+if(!email){
+  throw new Error("email is required")
+}
     await User.findByIdAndUpdate(
       userId,
       {
@@ -339,16 +321,12 @@ const updateEmail= async (req, res) => {
 const updatePhoneNumber = async (req, res) => {
   const { phonenumber } = req.body
   console.log(phonenumber);
-  
+
   const userId = req._id
   try {
     const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!phonenumber){
+      throw new Error("Phone number is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -378,11 +356,8 @@ const updateProfession = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!profession){
+      throw new Error("profession is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -410,11 +385,8 @@ const updateUserName = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!userName){
+      throw new Error("username is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -443,16 +415,12 @@ const updateUserTitle = async (req, res) => {
   // console.log("userTitle : ",userTitle.trim());
 
   try {
-    const user = await User.findById(userId)
 
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!userTitle){
+      throw new Error("Title is required")
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       userId,
       {
         $set: {
@@ -460,7 +428,7 @@ const updateUserTitle = async (req, res) => {
         }
       }, { new: true }
     )
-    console.log("updatedUser", updatedUser);
+    // console.log("updatedUser", updatedUser);
 
 
     res.status(200).json({
@@ -480,11 +448,8 @@ const updateUserDesc = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!desc){
+      throw new Error("description is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -509,16 +474,12 @@ const updateUserDesc = async (req, res) => {
 const updatelinked = async (req, res) => {
   const { linkedinlink } = req.body
   // console.log(linkedinlink);
-  
+
   const userId = req._id
   try {
-    const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    
+    if(!linkedinlink){
+      throw new Error("link is required")
     }
 
     await User.findByIdAndUpdate(
@@ -545,13 +506,8 @@ const updategit = async (req, res) => {
   const { githublink } = req.body
   const userId = req._id
   try {
-    const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!githublink){
+      throw new Error("github is required")
     }
 
     await User.findByIdAndUpdate(
@@ -578,13 +534,8 @@ const updateinsta = async (req, res) => {
   const { instagramlink } = req.body
   const userId = req._id
   try {
-    const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!instagramlink){
+      throw new Error("link is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -610,13 +561,8 @@ const updateface = async (req, res) => {
   const { facebooklink } = req.body
   const userId = req._id
   try {
-    const user = await User.findById(userId)
-
-    if (!user) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+    if(!facebooklink){
+      throw new Error("link is required")
     }
     await User.findByIdAndUpdate(
       userId,
@@ -630,7 +576,6 @@ const updateface = async (req, res) => {
     res.status(200).json({
       message: "Updated Facebook successfully",
       success: true,
-      data: user
     })
 
   } catch (error) {
@@ -688,23 +633,23 @@ const allInfo = async (req, res) => {
         success: false,
       })
     }
-    let user =await User.findById(id)
+    let user = await User.findById(id)
     if (!user) {
       res.status(404).json({
         message: "user not found"
       })
     }
-     user = await User.findById(id).select('-password').populate('posts').populate({ path: 'blogs' })
+    user = await User.findById(id).select('-password').populate('posts').populate({ path: 'blogs' })
 
-     return res.status(200).json({
+    return res.status(200).json({
       message: "hurreh",
       success: true,
       user
     })
-  
+
   } catch (error) {
     res.json({
-      message : error.message
+      message: error.message
     })
   }
 

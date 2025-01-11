@@ -5,13 +5,10 @@ import Header from "../Header/Header";
 import p13 from "../../image/p13.png";
 import p14 from "../../image/p14.png";
 import p15 from "../../image/p15.png";
+import Footer from "../Footer/Footer";
 
 const FrontInterface = () => {
        const {userData} = useSelector(st => st.auth)
-       // const dispatch = useDispatch()
-
-       //get userDetails
-     
 
        return (
            <div className="">
@@ -33,12 +30,11 @@ const FrontInterface = () => {
                                    <Link to={`/template3/${userData?.id}`}>
                                           <img src={p15} className=" h-[200px] w-[270px] md:w-[230px] border-2 m-3 rounded-lg "></img>
                                    </Link>
-                                   <Link to={`/template4/${userData?.id}`}>
-                                          <img src={p15} className=" h-[200px] w-[270px] md:w-[230px] border-2 m-3 rounded-lg "></img>
-                                   </Link>
+                                   
                             </div>
                      </div>
               </div>
+              <Footer/>
            </div>
        );
 };

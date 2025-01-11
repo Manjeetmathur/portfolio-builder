@@ -2,9 +2,9 @@ import React from 'react'
 
 const Template3Blogs = ({ blog }) => {
        return (
-              <div className="flex justify-center items-center py-6">
+              <div className="flex justify-center items-center py-6" data-aos='fade-up'>
                      <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-800 flex items-start justify-center border-4 border-gray-700 m-5 rounded-lg shadow-xl w-[300px]  transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gray-500">
-                            <div className="text-white flex justify-center items-center flex-col w-full p-6">
+                            <div className="text-white flex justify-center items-center flex-col w-full p-6" data-aos='zoom-in'>
                                    <h1 className="text-2xl font-bold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">
                                           {blog?.title}
                                    </h1>

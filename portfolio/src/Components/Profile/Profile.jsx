@@ -15,6 +15,7 @@ import Header from "../Header/Header";
 import { context } from "../../Context/Context";
 import { TiTick } from "react-icons/ti";
 import Footer from "../Footer/Footer";
+import { LuLoaderPinwheel } from "react-icons/lu";
 
 const Profile = () => {
   const { userDetails } = useSelector((st) => st.auth);
@@ -38,15 +39,16 @@ const Profile = () => {
   const [postdesc, setpostDesc] = useState('');
   const [blogtitle, setBlogTitle] = useState("");
   const [blogdesc, setBlogDesc] = useState("");
+  const [loading, setloading] = useState(null)
 
   const {
     updateName, updateEmail, updatePhone, updateProfile,
-    updateTitle, updateDesc, updateResume, updateProfession,showPdf,
+    updateTitle, updateDesc, updateResume, updateProfession, showPdf,
     updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog
   } = useContext(context)
   // console.log(name);
 
-  
+
 
 
   return (
@@ -69,9 +71,10 @@ const Profile = () => {
           </div>
           <div
             className="absolute top-4 right-4 text-2xl text-gray-300 hover:text-blue-400 cursor-pointer"
-            onClick={() => setEditSec("sec1")}
+            onClick={async () => setEditSec("sec1")}
+
           >
-            <FaEdit className='p-1'/>
+            <FaEdit className='p-1' />
           </div>
         </div>
 
@@ -84,10 +87,12 @@ const Profile = () => {
             className="w-32 h-32 object-cover rounded-lg"
           />
            */}
-           
-           <button onClick={() => showPdf(userDetails?.resume)} 
-              className="px-2 py-1 border-2 rounded-lg bg-blue-800"
-            >Show Resume</button>
+
+          <button onClick={async () => showPdf(userDetails?.resume)}
+
+            className="px-2 py-1 border-2 rounded-lg bg-blue-800"
+          >
+            Show Resume</button>
           <div>
             <h3 className="text-lg font-semibold">{userDetails?.title} ({userDetails?.profession})</h3>
             <p className="text-gray-400 mb-2">{userDetails?.description}</p>
@@ -108,14 +113,15 @@ const Profile = () => {
           </div>
           <div
             className="absolute top-4 right-4 text-2xl text-gray-300 hover:text-blue-400 cursor-pointer"
-            onClick={() => setEditSec("sec2")}
+            onClick={async () => setEditSec("sec2")}
           >
-            <FaEdit className='p-1'/>
+
+            <FaEdit className='p-1' />
           </div>
-        </div>
+        </div >
 
         {/* Projects Section */}
-        <div>
+        <div div >
           <h3 className="text-2xl font-semibold mb-4">My Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {userDetails?.posts?.map((post) => (
@@ -129,10 +135,10 @@ const Profile = () => {
 
             ))}
           </div>
-        </div>
+        </div >
 
         {/* Add New Post Section */}
-        <div className="p-6 bg-gray-800 shadow-lg rounded-lg">
+        <div div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
           <h3 className="text-2xl font-semibold mb-4">Add a New Post</h3>
           <input
             type="text"
@@ -160,19 +166,23 @@ const Profile = () => {
             value={postlink}
           />
           <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={() => {
-              uploadPost(posttitle, postImage, postlink, postdesc)
+            onClick={async () => {
+              setloading('post')
+              await uploadPost(posttitle, postImage, postlink, postdesc)
+              setloading(null)
               setpostDesc('')
               setPostImage('')
               setpostTitle('')
               setPostLink('')
             }}>
-            Upload Post
+            {loading === 'post' ? 'Uploading...' : 'Upload Post'}
+
+            
           </button>
-        </div>
+        </div >
 
         {/* Blogs Section */}
-        <div>
+        <div div >
           <h3 className="text-xl font-semibold mb-4">My Blogs</h3>
           <div className="space-y-4">
             {userDetails?.blogs?.map((blog) => (
@@ -182,10 +192,10 @@ const Profile = () => {
               />
             ))}
           </div>
-        </div>
+        </div >
 
         {/* Add New blog Section */}
-        <div className="p-6 bg-gray-800 shadow-lg rounded-lg">
+        <div div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
           <h3 className="text-2xl font-semibold mb-4">Add a New Blog</h3>
           <input
             type="text"
@@ -201,93 +211,116 @@ const Profile = () => {
             value={blogdesc}
             onChange={(e) => setBlogDesc(e.target.value)}
           ></textarea>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" 
-             onClick={() => {
-              uploadBlog(blogtitle, blogdesc)
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={async () => {
+              setloading('blog')
+              await uploadBlog(blogtitle, blogdesc)
+              setloading(null)
               setBlogDesc('')
               setBlogTitle('')
-       }}
-            >
-            Create Blog
+            }}
+          >
+            {loading === 'blog' ? 'Uploading...' : 'Upload Blog'}
+
           </button>
-        </div>
+        </div >
         {/* Edit Section */}
-        {editSec === "sec1" && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg md:w-1/2">
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-bold">Edit Profile</h2>
-                <GiCancel
-                  className="text-2xl text-gray-300 cursor-pointer"
-                  onClick={() => setEditSec("")}
-                />
-              </div>
-              <div>
-                <div className="mb-4 flex gap-3">
-                  {/* <label className="block text-gray-400">Name</label> */}
-                  <input
-                    type="text"
-                    className="block w-[58vw] border rounded-lg px-1 bg-gray-700 text-gray-100"
-                    placeholder="Name . . ."
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+        {
+          editSec === "sec1" && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div className="bg-gray-800 p-6 rounded-lg shadow-lg md:w-1/2">
+                <div className="flex justify-between items-center mb-4">
+                  <h2 className="text-xl font-bold">Edit Profile</h2>
+                  <GiCancel
+                    className="text-2xl text-gray-300 cursor-pointer"
+                    onClick={async () => setEditSec("")}
+
                   />
-                  <button onClick={() => {
-                    updateName(name)
-                    setName("")
-                  }}><TiTick className="text-2xl hover:text-gray-400" />  </button>
+
                 </div>
-                <div className="mb-4 flex gap-3">
-                  {/* <label className="block text-gray-400">Email</label> */}
-                  <input
-                    type="email"
-                    className="block w-[58vw] px-1 border rounded-lg  bg-gray-700 text-gray-100"
-                    placeholder="Email . . ."
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <button onClick={() => {
-                    updateEmail(email)
-                    setEmail('')
-                  }}><TiTick className="text-2xl hover:text-gray-400" /></button>
-                </div>
-                <div className="mb-4 flex gap-3">
-                  {/* <label className="block text-gray-400">Email</label> */}
-                  <input
-                    type="email"
-                    className="block w-[58vw] px-1 border rounded-lg  bg-gray-700 text-gray-100"
-                    placeholder="Phone . . ."
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                  <button onClick={() => {
-                    updatePhone(phoneNumber)
-                    setPhoneNumber('')
-                  }}><TiTick className="text-2xl hover:text-gray-400" /></button>
-                </div>
-                <div className="mb-4 flex gap-3" >
-                  {/* <label className="block text-gray-400">Profile Picture</label> */}
-                  <input
-                    type="file"
-                    ref={ref}
-                    className="hidden"
-                    onChange={(e) => setProfile(e.target.files?.[0])}
-                  />
-                  <button
-                    onClick={() => ref.current.click()}
-                    className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 w-[58vw]"
-                  >
-                    Profile Image
-                  </button>
-                  <button onClick={() => {
-                    updateProfile(profile)
-                    setProfile('')
-                  }}><TiTick className="text-2xl hover:text-gray-400" /></button>
+                <div>
+                  <div className="mb-4 flex gap-3">
+                    {/* <label className="block text-gray-400">Name</label> */}
+                    <input
+                      type="text"
+                      className="block w-[58vw] border rounded-lg px-1 bg-gray-700 text-gray-100"
+                      placeholder="Name . . ."
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <button onClick={async () => {
+                      setloading('name')
+                      await updateName(name)
+                      setName("")
+                      setloading(null)
+                    }}>
+                      {loading === 'name' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
+                  </div>
+                  <div className="mb-4 flex gap-3">
+                    {/* <label className="block text-gray-400">Email</label> */}
+                    <input
+                      type="email"
+                      className="block w-[58vw] px-1 border rounded-lg  bg-gray-700 text-gray-100"
+                      placeholder="Email . . ."
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <button onClick={async () => {
+                      setloading('email')
+                      await updateEmail(email)
+                      setloading(null)
+                      setEmail('')
+                    }}>
+
+                      {loading === 'email' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    </button>
+                  </div>
+                  <div className="mb-4 flex gap-3">
+                    {/* <label className="block text-gray-400">Email</label> */}
+                    <input
+                      type="email"
+                      className="block w-[58vw] px-1 border rounded-lg  bg-gray-700 text-gray-100"
+                      placeholder="Phone . . ."
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                    <button onClick={async () => {
+                      setloading('phone')
+                      await updatePhone(phoneNumber)
+                      setloading(null)
+                      setPhoneNumber('')
+                    }}>
+                      {loading === 'phone' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    </button>
+                  </div>
+                  <div className="mb-4 flex gap-3" >
+                    {/* <label className="block text-gray-400">Profile Picture</label> */}
+                    <input
+                      type="file"
+                      ref={ref}
+                      className="hidden"
+                      onChange={(e) => setProfile(e.target.files?.[0])}
+                    />
+                    <button
+                      onClick={async () => ref.current.click()}
+                      className="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600 w-[58vw]"
+                    >
+                      Profile Image
+                    </button>
+                    <button onClick={async () => {
+                      setloading('image')
+                      await updateProfile(profile)
+                      setloading(null)
+                      setProfile('')
+                    }}>
+                      {loading === 'image' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )
+        }
         <div className={`${editSec == 'sec2' ? 'block' : 'hidden'} `}>
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg md:w-1/2">
@@ -295,8 +328,10 @@ const Profile = () => {
                 <h2 className="text-xl font-bold">Edit Details</h2>
                 <GiCancel
                   className="text-2xl text-gray-300 cursor-pointer"
-                  onClick={() => setEditSec("")}
+                  onClick={async () => setEditSec("")}
+
                 />
+
               </div>
               <div>
                 <div className="mb-4 flex gap-3">
@@ -308,10 +343,14 @@ const Profile = () => {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateTitle(title)
+                  <button onClick={async () => {
+                    setloading('title')
+                    await updateTitle(title)
+                    setloading(null)
                     setTitle('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'title' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Title</label> */}
@@ -322,11 +361,15 @@ const Profile = () => {
                     value={profession}
                     onChange={(e) => setProfession(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateProfession(profession)
+                  <button onClick={async () => {
+                    setloading('profession')
+                    await updateProfession(profession)
+                    setloading(null)
                     setProfession('')
                     // window.location.reload()
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'profession' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Project Description</label> */}
@@ -337,31 +380,35 @@ const Profile = () => {
                     value={desc}
                     onChange={(e) => setDesc(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateDesc(desc)
+                  <button onClick={async () => {
+                    setloading('desc')
+                    await updateDesc(desc)
+                    setloading(null)
                     setDesc('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'desc' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
 
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Resume</label> */}
                   <input
-                    type="file"
+                    // type="file"
                     ref={ref}
-                    className="hidden"
-                    accept = 'application/pdf'
-                    onChange={(e) => setResume(e.target.files?.[0])}
+                    className="block w-[50vw] border rounded-lg p- bg-gray-700 text-gray-100 px-1"
+                    // accept = 'application/pdf'
+                    value={resume}
+                    placeholder="put your resume link"
+                    onChange={(e) => setResume(e.target.value)}
                   />
-                  <button
-                    onClick={() => ref.current.click()}
-                    className="bg-blue-500 text-white px-2= rounded hover:bg-blue-600 w-[50vw] px-1"
-                  >
-                    Resume
-                  </button>
-                  <button onClick={() => {
-                    updateResume(resume)
+
+                  <button onClick={async () => {
+                    setloading('resume')
+                    await updateResume(resume)
+                    setloading(null)
                     setResume('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /> </button>
+                  }} >
+                    {loading === 'resume' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">LinkedIn </label> */}
@@ -372,10 +419,14 @@ const Profile = () => {
                     value={linked}
                     onChange={(e) => setLinked(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateLinked(linked)
+                  <button onClick={async () => {
+                    setloading('linkedin')
+                    await updateLinked(linked)
+                    setloading(null)
                     setLinked('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'linkedin' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Project Description</label> */}
@@ -386,10 +437,13 @@ const Profile = () => {
                     value={git}
                     onChange={(e) => setGit(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateGit(git)
+                  <button onClick={async () => {
+                    setloading('Github')
+                    await updateGit(git)
+                    setloading(null)
                     setGit('')
-                  }} > <TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'Github' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />} </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Project Description</label> */}
@@ -401,10 +455,14 @@ const Profile = () => {
                     onChange={(e) => setInsta(e.target.value)}
 
                   />
-                  <button onClick={() => {
-                    updateInsta(insta)
+                  <button onClick={async () => {
+                    setloading('Instagram')
+                    await updateInsta(insta)
+                    setloading(null)
                     setInsta('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'Instagram' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
                 </div>
                 <div className="mb-4 flex gap-3">
                   {/* <label className="block text-gray-400">Project Description</label> */}
@@ -415,10 +473,14 @@ const Profile = () => {
                     value={face}
                     onChange={(e) => setFace(e.target.value)}
                   />
-                  <button onClick={() => {
-                    updateFace(face)
+                  <button onClick={async () => {
+                    setloading('Facebook')
+                    await updateFace(face)
+                    setloading('')
                     setFace('')
-                  }} ><TiTick className="text-2xl hover:text-gray-400" /></button>
+                  }} >
+                    {loading === 'Facebook' ? <LuLoaderPinwheel className="text-lg ml-1 hover:text-gray-400" /> : <TiTick className="text-2xl hover:text-gray-400" />}
+                  </button>
                 </div>
 
               </div>
@@ -426,9 +488,9 @@ const Profile = () => {
           </div>
 
         </div>
-      </div>
-      <Footer/>
-    </div>
+      </div >
+      <Footer />
+    </div >
   );
 };
 

@@ -5,7 +5,6 @@ import Login from "../Components/Auth/Login/Login";
 import Register from "../Components/Auth/Register/Register";
 import FrontInterface from "../Components/send/FrontInterface";
 import Template1 from "../Components/send/templates/Template1/Templateq";
-import Resume from "../Components/Resume/Resume";
 import Template2 from "../Components/send/templates/Template2/Template2";
 import Template3 from "../Components/send/templates/Template3/Template3";
 import Profile from "../Components/Profile/Profile";
@@ -43,11 +42,6 @@ const router = createBrowserRouter([
                      {
                             path : "/template3/:id",
                             element : <Template3/>
-                     },
-                     
-                     {
-                            path : "/resume",
-                            element : <Resume/>
                      },
                      {
                             path : "/profile",
