@@ -22,7 +22,7 @@ const Login = () => {
         `${url}/user/login`,
         { email, password },
         {
-          headers: { "Content-Type": "application/json" }, withCredentials: true
+          headers: { "Content-Type": "application/json" }, withCredentials : true
         }
       );
       const res = data.data;
