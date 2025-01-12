@@ -29,17 +29,9 @@ const Template1 = () => {
   const id = useParams();
 
   useEffect(() => {
-    AOS.init({
-      duration: 2000,
-      easing: "ease-in-out",
-      once: false,
-    });
+    const getUserDetails = async () => {
 
-    try {
-
-      const getUserDetails = async () => {
-
-        // console.log(loading)
+      try {
 
         const endpoint = `${url}/user/all-info/id?id=${id.id}`;
 
@@ -48,23 +40,29 @@ const Template1 = () => {
         if (res.success) {
           setUser(res.user);
         }
-      };
-      getUserDetails();
-    } catch (error) {
-      toast.error(error.message)
-    } finally {
-      setloading(false)
-    }
+      } catch (error) {
 
+      }finally{
+        setloading(false)
+      }
+    };
+    getUserDetails()
+
+    AOS.init({
+      duration: 2000,
+      easing: "ease-in-out",
+      once: false,
+    });
   }, []);
-  console.log(loading)
+  // console.log(loading)
 
 
 
   return (
     <div className="bg-gradient-to-r from-gray-100 to-blue-400">
       <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300" />
-      {loading ? <LuLoaderPinwheel className="absolute top-0 text-2xl" /> :
+      
+      {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <>
           <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36">
             {/* Profile Image Section */}
@@ -81,9 +79,11 @@ const Template1 = () => {
               <h2 className="text-[29px] font-bold font-serif mt-4 lg:text-4xl md:text-3xl" data-aos="fade-up">
                 Hi, I'm {userDetails?.name}
               </h2>
+
               <h2 className="text-2xl font-bold font-serif mt-4 lg:text-3xl md:text-2xl" data-aos="fade-up">
                 {userDetails?.title}
               </h2>
+
               <h2 className="text-md font-semibold mt-4 md:text-xl" data-aos="fade-up">
                 {userDetails?.description}
               </h2>
