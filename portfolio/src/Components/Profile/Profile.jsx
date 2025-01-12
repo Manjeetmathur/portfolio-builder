@@ -88,11 +88,10 @@ const Profile = () => {
           />
            */}
 
-          <button onClick={async () => showPdf(userDetails?.resume)}
-
-            className="px-2 py-1 border-2 rounded-lg bg-blue-800"
+          <Link to={userDetails?.resume} 
+            className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer"
           >
-            Show Resume</button>
+            Show Resume</Link>
           <div>
             <h3 className="text-lg font-semibold">{userDetails?.title} ({userDetails?.profession})</h3>
             <p className="text-gray-400 mb-2">{userDetails?.description}</p>

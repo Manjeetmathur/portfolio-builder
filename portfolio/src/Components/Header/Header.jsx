@@ -69,7 +69,7 @@ const Header = () => {
             `group hover:text-blue-400 transition-colors duration-300 ${isActive ? "text-blue-400" : ""}`
           }
         >
-          Send
+          Share
           <span className="block h-[2px] bg-blue-400 scale-0 group-hover:scale-100 transition-transform duration-300"></span>
         </NavLink>
         {status ? (
