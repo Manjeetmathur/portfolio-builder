@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   FaEnvelope,
@@ -18,6 +18,7 @@ import Temp1Header from "../Temp1Header";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { LuLoaderPinwheel } from "react-icons/lu";
+import { context } from "../../../../Context/Context";
 
 
 const Template1 = () => {
@@ -27,34 +28,19 @@ const Template1 = () => {
   const blogRef = useRef();
   const contactRef = useRef();
   const id = useParams();
+  const {getUserDetails} = useContext(context)
 
-  useEffect(() => {
-    const getUserDetails = async () => {
-
-      try {
-
-        const endpoint = `${url}/user/all-info/id?id=${id.id}`;
-
-        const data = await axios.get(endpoint);
-        const res = data.data;
-        if (res.success) {
-          setUser(res.user);
-        }
-      } catch (error) {
-
-      }finally{
-        setloading(false)
-      }
-    };
-    getUserDetails()
-
+  useEffect(async() => {
+    const res =await getUserDetails(id)
+    setloading(false)
+    setUser(res)
     AOS.init({
       duration: 2000,
       easing: "ease-in-out",
       once: false,
     });
-  }, []);
-  // console.log(loading)
+  }, [id]);
+  console.log(userDetails)
 
 
 

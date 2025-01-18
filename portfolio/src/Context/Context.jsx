@@ -9,6 +9,21 @@ import { useNavigate } from "react-router-dom";
 export const context = createContext()
 
 const ContextProvider = ({ children }) => {
+
+       const getUserDetails = async (id) => {
+
+              const endpoint = `${url}/user/all-info/id?id=${id?.id}`;
+
+              const data = await axios.get(endpoint);
+              const res = data.data;
+             
+              if (res.success) {
+                     console.log(res.user)
+                     return res.user
+              }
+
+       };
+
        const { userData } = useSelector(st => st.auth)
        const dispatch = useDispatch()
 
@@ -101,11 +116,11 @@ const ContextProvider = ({ children }) => {
        };
        const updateResume = async (resume) => {
 
-              
+
               try {
                      console.log(resume)
-                     const data = await axios.patch(`${url}/user/update-resume`, {resume}, {
-                            
+                     const data = await axios.patch(`${url}/user/update-resume`, { resume }, {
+
                             headers: { "Content-Type": "application/json" },
                             withCredentials: true,
                             withXSRFToken: true,
@@ -149,7 +164,7 @@ const ContextProvider = ({ children }) => {
               }
        };
 
-       
+
 
        const updateProfession = async (profession) => {
               try {
@@ -171,7 +186,7 @@ const ContextProvider = ({ children }) => {
                      }
               } catch (error) {
                      toast.error(error.message);
-              } 
+              }
        };
        const updateDesc = async (desc) => {
               try {
@@ -544,13 +559,13 @@ const ContextProvider = ({ children }) => {
                      toast.error(error.message);
               }
        };
-       const deleteBlog = async ( blogId) => {
+       const deleteBlog = async (blogId) => {
               // console.log(name);
 
               try {
                      const data = await axios.post(
                             `${url}/blog/delete-blog`,
-                            {  blogId },
+                            { blogId },
                             {
                                    headers: { "Content-Type": "application/json" },
                                    withCredentials: true,
@@ -580,13 +595,14 @@ const ContextProvider = ({ children }) => {
        return (
               <context.Provider
                      value={{
-                            uploadPost,uploadBlog,showPdf,
+                            uploadPost, uploadBlog, showPdf,
                             updateTitle, updateProfile,
                             updateDesc, updatePhone, updateResume,
                             updateName, updateEmail, updateProfession,
                             updateFace, updateGit, updateInsta, updateLinked,
                             updatePostDesc, updatePostImage, updatePostLink, deletePost, updatePostTitle,
-                            updateBlogTitle,updateBlogContent,deleteBlog
+                            updateBlogTitle, updateBlogContent, deleteBlog,
+                            getUserDetails
                      }}>
                      {children}
               </context.Provider>
