@@ -185,10 +185,7 @@ const SecondCont = () => {
             </div>
           ))}
 
-          {/* Footer Section */}
-          <div className="text-center mt-10">
-            <p className="text-sm text-gray-500">&copy; 2025 Your Company Name. All rights reserved.</p>
-          </div>
+          
         </div>
       </div>
     </div>
