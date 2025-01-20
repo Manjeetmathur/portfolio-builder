@@ -28,12 +28,27 @@ const Template1 = () => {
   const blogRef = useRef();
   const contactRef = useRef();
   const id = useParams();
-  const {getUserDetails} = useContext(context)
+  // const { getUserDetails } = useContext(context)
 
-  useEffect(async() => {
-    const res =await getUserDetails(id)
-    setloading(false)
-    setUser(res)
+  useEffect(() => {
+    const getUserDetails = async () => {
+
+      try {
+
+        const endpoint = `${url}/user/all-info/id?id=${id.id}`;
+
+        const data = await axios.get(endpoint);
+        const res = data.data;
+        if (res.success) {
+          setUser(res.user);
+        }
+      } catch (error) {
+
+      } finally {
+        setloading(false)
+      }
+    };
+    getUserDetails()
     AOS.init({
       duration: 2000,
       easing: "ease-in-out",
@@ -47,7 +62,7 @@ const Template1 = () => {
   return (
     <div className="bg-gradient-to-r from-gray-100 to-blue-400">
       <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300" />
-      
+
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <>
           <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36">

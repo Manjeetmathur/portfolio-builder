@@ -9,6 +9,7 @@ import Template2 from "../Components/send/templates/Template2/Template2";
 import Template3 from "../Components/send/templates/Template3/Template3";
 import Profile from "../Components/Profile/Profile";
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
+import Intro from "../Components/Intro/Intro";
 
 const router = createBrowserRouter([
        {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
                      {
                             path : "/",
                             element :<ProtectedRoutes><Home/>  </ProtectedRoutes> 
+                     },
+                     {
+                            path : "/intro",
+                            element :<Intro/>
                      },
                      {
                             path : "/login",

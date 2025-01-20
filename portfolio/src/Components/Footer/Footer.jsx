@@ -6,7 +6,7 @@ const Footer = () => {
       bg-gradient-to-bl py-12 text-white flex justify-center items-center">
       <div className="container mx-auto px-6">
         {/* Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
           <div>
             <h2 className="text-2xl font-bold mb-4">Your Port</h2>

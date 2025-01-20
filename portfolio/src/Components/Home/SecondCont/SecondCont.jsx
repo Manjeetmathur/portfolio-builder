@@ -2,186 +2,197 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { context } from "../../../Context/Context";
+
 const SecondCont = () => {
-       const ref = useRef();
-       const ref1 = useRef();
-       const { updateTitle, updateProfile, updateDesc, updatePhone, updateResume } = useContext(context)
+  const ref = useRef(); // Reference to the hidden file input
+  const { updateTitle, updateProfile, updateDesc, updatePhone, updateResume } = useContext(context)
 
-       const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(null);
 
-       const [profile, setProfile] = useState("");
-       const [resume, setResume] = useState("");
-       const [title, setTitle] = useState("");
-       const [phoneNumber, setPhoneNumber] = useState("");
-       const [desc, setDesc] = useState("");
+  const [profile, setProfile] = useState(null); // To store the selected image
+  const [resume, setResume] = useState("");
+  const [title, setTitle] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [desc, setDesc] = useState("");
 
-       const titleUpdate = async () => {
-              try {
-                     setLoading('title')
-                     await updateTitle(title)
-                     setTitle("")
-                     setLoading(null)
-              } finally {
+  const titleUpdate = async () => {
+    try {
+      setLoading('title');
+      await updateTitle(title);
+      setTitle("");
+      setLoading(null);
+    } catch (error) {
+      setLoading(null);
+      console.error("Error updating title", error);
+    }
+  }
 
-              }
-       }
-       console.log(profile);
+  const handleProfileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setProfile(file); // Set the selected file in state
+    }
+  }
 
-       useEffect(() => {
-              // Initialize AOS animation
-              AOS.init({
-                     duration: 1000, // Animation duration
-                     easing: 'ease-in-out', // Easi1ng function for the animation
-                     once: false, // Run animation only once
-              });
-       }, []);
+  const handleProfileUpdate = async () => {
+    try {
+      setLoading("image");
+      await updateProfile(profile); // Update the profile image
+      setProfile(null); // Reset the profile state
+      setLoading(null);
+    } catch (error) {
+      setLoading(null);
+      console.error("Error updating profile image", error);
+    }
+  }
 
-       console.log(resume);
+  useEffect(() => {
+    // Initialize AOS animation
+    AOS.init({
+      duration: 1000, // Animation duration
+      easing: 'ease-in-out', // Easing function for the animation
+      once: false, // Run animation only once
+    });
+  }, []);
 
+  return (
+    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-black min-h-screen py-16 px-6">
+      <div className="container mx-auto max-w-3xl">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-extrabold text-white tracking-wide">Edit Your Profile</h1>
+          <p className="text-gray-400 mt-4 text-lg">Customize your profile to make it stand out.</p>
+        </div>
 
-
-
-       return (
-              <div className="bg-gradient-to-r from-black via-gray-800 to-black py-10 md:py-20 lg:py-28">
-
-                     <div className="flex justify-center items-center flex-col text-white mx-auto w-full max-w-4xl px-4 md:px-8 lg:px-16">
-                            {/* Profile Image Section */}
-                            <div className="flex flex-col gap-6 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl">Profile Image</h1>
-                                   <input
-                                          type="file"
-                                          ref={ref}
-                                          className="hidden"
-                                          onChange={(e) => setProfile(e.target.files?.[0])}
-                                   />
-                                   <div className="flex gap-5">
-                                          <button
-                                                 className="text-[3vw] md:text-[20px] cursor-pointer font-medium py-2 px-4 
-                      w-[60vw] md:w-[350px] rounded-xl items-center justify-center shadow-md shadow-white flex"
-                                                 onClick={() => ref.current.click()}
-                                          >
-                                                 Choose Image
-                                          </button>
-                                          <button className="text-[10px] md:text-[15px]"
-                                                 onClick={async () => {
-                                                        setLoading('image')
-                                                        await updateProfile(profile)
-                                                        setLoading(null)
-                                                 }
-
-                                                 }>
-                                                 {loading == 'image' ? 'updating . . .' : "Update Image"}
-                                          </button>
-                                   </div>
-                            </div>
-                            {/* Work Title Section */}
-                            <div className="flex flex-col gap-6 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl">Work Title</h1>
-                                   <div className="flex gap-5">
-                                          <input
-                                                 type="text"
-                                                 onChange={(e) => setTitle(e.target.value)}
-                                                 value={title}
-                                                 className="md:h-[8vh] lg:h-[6vh] outline-none border-2 
-                        border-white bg-transparent text-[4vw] md:text-[20px]
-                        lg:text-[18px] shadow-md shadow-white
-                        w-[60vw] md:w-[350px] rounded-lg py-1 px-2 mb-4"
-                                                 placeholder='Place your work title '
-
-                                          />
-                                          <button className="text-[10px] md:text-[15px]" onClick={titleUpdate}>
-
-                                                 {loading == 'title' ? 'Updating...' : 'Update Title'}
-                                          </button>
-                                   </div>
-                            </div>
-
-                            {/* Resume Section */}
-                            <div className="flex flex-col gap-6 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl">Resume</h1>
-
-                                   <div className="flex gap-5">
-                                          <input
-                                                 type="text"
-                                                 ref={ref1}
-                                                 accept="application/pdf"
-                                                 className="md:h-[8vh] lg:h-[6vh] outline-none border-2 
-                        border-white bg-transparent text-[4vw] md:text-[20px]
-                        lg:text-[18px] shadow-md shadow-white
-                        w-[60vw] md:w-[350px] rounded-lg py-1 px-2 mb-4"
-                                                 value={resume}
-                                                 onChange={(e) => setResume(e.target.value)}
-                                                 placeholder='Place your resume link'
-
-                                          />
-                                          <button className="text-[10px] md:text-[15px]" onClick={async () => {
-                                                 setLoading('resume')
-                                                 await updateResume(resume)
-                                                 setLoading(null)
-                                                 setResume('')
-                                          }}>
-                                                 {loading == 'resume' ? 'Updating...' : 'Update Resume'}
-                                          </button>
-                                   </div>
-                            </div>
-
-                            {/* Phone Number Section */}
-                            <div className="flex flex-col gap-6 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl">Phone Number</h1>
-                                   <div className="flex gap-5">
-                                          <input
-                                                 type="text"
-                                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                                 value={phoneNumber}
-                                                 className="md:h-[8vh] lg:h-[6vh] outline-none border-2 
-                        border-white bg-transparent text-[4vw] md:text-[20px]
-                        lg:text-[18px] shadow-md shadow-white
-                        w-[60vw] md:w-[350px] rounded-lg py-1 px-2 mb-4"
-                                                 placeholder='Place your phone number'
-
-                                          />
-                                          <button className="text-[10px] md:text-[15px]" onClick={async () => {
-                                                 setLoading('phonenumber')
-                                                 await updatePhone(phoneNumber)
-                                                 setPhoneNumber('')
-                                                 setLoading(null)
-
-                                          }}>
-                                                 {loading == 'phonenumber' ? 'updating . . .' : "Update Number"}
-
-                                          </button>
-                                   </div>
-                            </div>
-
-                            {/* Description Section */}
-                            <div className="flex flex-col gap-6 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl">Description</h1>
-                                   <div className="flex gap-5">
-                                          <textarea
-                                                 onChange={(e) => setDesc(e.target.value)}
-                                                 value={desc}
-                                                 className="md:h-[8vh] lg:h-[6vh] outline-none border-2 
-                        border-white bg-transparent text-[4vw] md:text-[20px]
-                        lg:text-[18px] shadow-md shadow-white
-                        w-[60vw] md:w-[350px] rounded-lg py-1 px-2 mb-4"
-                                                 rows={3}
-                                                 placeholder='About yourself... '
-
-                                          />
-                                          <button className="text-[10px] md:text-[15px]" onClick={async () => {
-                                                 setLoading('desc')
-                                                 await updateDesc(desc)
-                                                 setDesc('')
-                                                 setLoading(null)
-                                          }}>
-                                                 {loading == 'desc' ? 'updating . . .' : "Update Desc..."}
-
-                                          </button>
-                                   </div>
-                            </div>
-                     </div>
+        {/* Card Container */}
+        <div className="bg-gray-800 p-10 rounded-2xl shadow-2xl">
+          {/* Profile Image Section */}
+          <div className="mb-10">
+            <h2 className="text-2xl font-semibold text-white mb-4">Profile Image</h2>
+            <div className="flex items-center gap-6">
+              <div className="w-32 h-32 rounded-full bg-gray-700 overflow-hidden">
+                {profile ? (
+                  <img
+                    src={URL.createObjectURL(profile)}
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full text-gray-500 text-sm">
+                    No Image
+                  </div>
+                )}
               </div>
+              <div className="flex flex-col gap-3">
+                <button
+                  className="bg-blue-600 text-white text-sm px-6 py-2 rounded-lg hover:bg-blue-500 transition"
+                  onClick={() => ref.current.click()} // Trigger file input
+                >
+                  Choose Image
+                </button>
+                <input
+                  type="file"
+                  ref={ref}
+                  className="hidden"
+                  onChange={handleProfileChange} // Handle the file change
+                />
+                <button
+                  className={`bg-green-600 text-white text-sm px-6 py-2 rounded-lg hover:bg-green-500 transition ${loading === "image" ? "opacity-50 pointer-events-none" : ""}`}
+                  onClick={handleProfileUpdate} // Trigger image update
+                >
+                  {loading === "image" ? "Updating..." : "Update Image"}
+                </button>
+              </div>
+            </div>
+          </div>
 
-       );
+          {/* Reusable Input Section */}
+          {[{
+            label: "Work Title",
+            placeholder: "Enter your work title",
+            value: title,
+            onChange: setTitle,
+            onUpdate: titleUpdate,
+            loadingKey: "title",
+          },
+          {
+            label: "Resume Link",
+            placeholder: "Enter your resume link",
+            value: resume,
+            onChange: setResume,
+            onUpdate: async () => {
+              setLoading("resume");
+              await updateResume(resume);
+              setResume("");
+              setLoading(null);
+            },
+            loadingKey: "resume",
+          },
+          {
+            label: "Phone Number",
+            placeholder: "Enter your phone number",
+            value: phoneNumber,
+            onChange: setPhoneNumber,
+            onUpdate: async () => {
+              setLoading("phonenumber");
+              await updatePhone(phoneNumber);
+              setPhoneNumber("");
+              setLoading(null);
+            },
+            loadingKey: "phonenumber",
+          },
+          {
+            label: "Description",
+            placeholder: "Write a short bio about yourself",
+            value: desc,
+            onChange: setDesc,
+            onUpdate: async () => {
+              setLoading("desc");
+              await updateDesc(desc);
+              setDesc("");
+              setLoading(null);
+            },
+            loadingKey: "desc",
+            isTextArea: true,
+          }].map(({ label, placeholder, value, onChange, onUpdate, loadingKey, isTextArea }, idx) => (
+            <div className="mb-10" key={idx}>
+              <h2 className="text-2xl font-semibold text-white mb-4">{label}</h2>
+              <div className="flex items-start gap-4">
+                {isTextArea ? (
+                  <textarea
+                    rows={3}
+                    className="w-full bg-gray-700 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    className="w-full bg-gray-700 text-gray-300 border border-gray-600 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                    placeholder={placeholder}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)}
+                  />
+                )}
+                <button
+                  className={`bg-blue-600 text-white text-sm px-6 py-2 rounded-lg hover:bg-blue-500 transition ${loading === loadingKey ? "opacity-50 pointer-events-none" : ""}`}
+                  onClick={onUpdate}
+                >
+                  {loading === loadingKey ? "Updating..." : "Update"}
+                </button>
+              </div>
+            </div>
+          ))}
+
+          {/* Footer Section */}
+          <div className="text-center mt-10">
+            <p className="text-sm text-gray-500">&copy; 2025 Your Company Name. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
+
 export default SecondCont;

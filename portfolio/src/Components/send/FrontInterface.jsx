@@ -8,7 +8,7 @@ import p15 from "../../image/p15.png";
 import Footer from "../Footer/Footer";
 
 const FrontInterface = () => {
-       const {userData} = useSelector(st => st.auth)
+       const {userData} = useSelector(st => st?.auth)
 
        return (
            <div className="">

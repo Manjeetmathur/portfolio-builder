@@ -16,57 +16,55 @@ const FourthCont = () => {
               });
        }, [])
        return (
-              <div className="bg-gradient-to-r from-black via-gray-800 to-black flex justify-center items-center py-10 md:py-20 lg:py-28">
-                     <div className="relative text-white mx-auto w-full max-w-4xl px-6 md:px-12 lg:px-20">
+              <div className="bg-gradient-to-r from-black via-gray-900 to-black min-h-screen flex justify-center items-center px-6 py-12">
+                     <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-3xl p-8 md:p-12 space-y-10 relative text-white">
 
                             {/* Article Title Section */}
-                            <div className="flex flex-col items-center gap-3 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold text-center">Article Title</h1>
+                            <div className="space-y-4" data-aos="fade-up">
+                                   <h1 className="text-2xl md:text-3xl font-semibold text-center tracking-wide">
+                                          Article Title
+                                   </h1>
                                    <input
                                           type="text"
-                                          className="h-[6vw] md:h-[8vh] lg:h-[6vh] outline-none border-2 border-white bg-transparent 
-                    text-[4vw] md:text-[20px] lg:text-[18px] shadow-md shadow-white w-[72vw] md:w-[450px]  rounded-lg py-4 px-4 mb-4 focus:ring-2 focus:ring-blue-500"
+                                          className="w-full bg-gray-700 text-white rounded-md py-3 px-4 outline-none focus:ring-2 focus:ring-blue-500 text-base md:text-lg placeholder-gray-400"
                                           onChange={(e) => setpostTitle(e.target.value)}
                                           value={title}
-                                          placeholder='Place your blog title'
-                                          
+                                          placeholder="Enter your article title"
                                    />
                             </div>
 
                             {/* Article Description Section */}
-                            <div className="flex flex-col items-center gap-3 mb-8" data-aos="fade-up">
-                                   <h1 className="text-[3vw] md:text-xl lg:text-2xl font-semibold text-center">Article Description</h1>
+                            <div className="space-y-4" data-aos="fade-up">
+                                   <h1 className="text-2xl md:text-3xl font-semibold text-center tracking-wide">
+                                          Article Description
+                                   </h1>
                                    <textarea
-                                          rows={4}
-                                          className="h-[6vw] md:h-[10vh] lg:h-[8vh] outline-none border-2 border-white bg-transparent 
-                    text-[4vw] md:text-[20px] lg:text-[18px] shadow-md shadow-white w-[72vw] md:w-[450px] 
-                    rounded-lg py-4 px-4 mb-4 focus:ring-2 focus:ring-blue-500"
+                                          rows={6}
+                                          className="w-full bg-gray-700 text-white rounded-md py-3 px-4 outline-none focus:ring-2 focus:ring-blue-500 text-base md:text-lg placeholder-gray-400 resize-none"
                                           onChange={(e) => setpostDesc(e.target.value)}
                                           value={desc}
-                                          placeholder='Place your blog description'
-
+                                          placeholder="Enter your article description"
                                    />
                             </div>
 
                             {/* Upload Button Section */}
                             <div className="flex justify-center" data-aos="fade-up">
                                    <button
-                                          className="bg-gradient-to-r from-green-400 to-blue-500 hover:scale-105 transition-all 
-                     text-[3vw] md:text-[20px] lg:text-[18px] font-medium py-2 px-16 rounded-xl shadow-md shadow-white"
-                                          onClick={async() => {
-                                                 setLoading(true)
-                                                 await uploadBlog(title, desc)
-                                                 setpostTitle('')
-                                                 setpostDesc('')
-                                                 setLoading(false)
+                                          className="bg-gradient-to-r from-blue-500 to-green-500 text-white py-3 px-12 rounded-md hover:shadow-lg hover:scale-105 transition-all text-lg font-medium"
+                                          onClick={async () => {
+                                                 setLoading(true);
+                                                 await uploadBlog(title, desc);
+                                                 setpostTitle('');
+                                                 setpostDesc('');
+                                                 setLoading(false);
                                           }}
                                    >
-                                          {loading ? "Uploading..." : "Upload"}
+                                          {loading ? 'Uploading...' : 'Upload'}
                                    </button>
                             </div>
-
                      </div>
               </div>
+
 
        );
 };
