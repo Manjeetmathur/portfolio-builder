@@ -21,7 +21,9 @@ const ThirdCont = () => {
 
        return (
 
-              <div className="bg-gray-900 text-white min-h-screen flex justify-center items-center px-6 py-12">
+              <div className="bg-gray-900 text-white min-h-screen flex flex-col justify-center items-center px-6 py-6">
+                     <h1 className="text-4xl font-extrabold mb-8 text-white tracking-wide">Upload Your Project</h1>
+
                      <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-3xl p-8 md:p-12 space-y-8">
                             {/* Project Image Section */}
                             <div className="space-y-4" data-aos="fade-up">

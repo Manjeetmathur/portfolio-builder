@@ -10,6 +10,7 @@ import Template3 from "../Components/send/templates/Template3/Template3";
 import Profile from "../Components/Profile/Profile";
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 import Intro from "../Components/Intro/Intro";
+import Create from "../Components/Create/Create";
 
 const router = createBrowserRouter([
        {
@@ -18,12 +19,13 @@ const router = createBrowserRouter([
               children:[
                      {
                             path : "/",
-                            element :<ProtectedRoutes><Home/>  </ProtectedRoutes> 
+                            element :<Home/>   
                      },
                      {
-                            path : "/intro",
-                            element :<Intro/>
+                            path : "/create",
+                            element :<ProtectedRoutes>  <Create/> </ProtectedRoutes>
                      },
+                    
                      {
                             path : "/login",
                             element :<Login/>

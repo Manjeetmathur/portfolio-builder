@@ -16,7 +16,9 @@ const FourthCont = () => {
               });
        }, [])
        return (
-              <div className="bg-gradient-to-r from-black via-gray-900 to-black min-h-screen flex justify-center items-center px-6 py-12">
+              <div className="bg-gray-900 min-h-screen flex flex-col justify-center items-center px-6 py-6">
+                     <h1 className="text-4xl font-extrabold mb-8 text-white tracking-wide">Write Blogs</h1>
+
                      <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-3xl p-8 md:p-12 space-y-10 relative text-white">
 
                             {/* Article Title Section */}

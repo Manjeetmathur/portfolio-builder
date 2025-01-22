@@ -2,22 +2,25 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useSelector } from 'react-redux';
+import FirstCont from '../Home/FirstCont/FirstCont';
 
 const Intro = () => {
        useEffect(() => {
               AOS.init({
                      duration: 1000, // Animation duration
                      easing: 'ease-in-out', // Easing function
-                     once: true, // Only trigger the animation once
+                     once: false, // Only trigger the animation once
               });
        }, []);
+       const { status } = useSelector(st => st.auth)
 
        return (
-              <div className="bg-gradient-to-r from-blue-900 via-black to-gray-900 text-white min-h-screen flex flex-col">
+              <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white min-h-screen flex flex-col">
                      {/* Hero Section */}
-                     <section className="flex-1 flex flex-col items-center justify-center text-center px-8 md:px-20 py-20 md:py-28 space-y-8">
+                     <section className="flex-1 flex flex-col items-center justify-center text-center px-8 md:px-20 py-20 md:py-28 space-y-8" data-aos='zoom-in'>
                             <h1
-                                   className="text-4xl md:text-6xl font-extrabold leading-tight"
+                                   className="text-3xl md:text-6xl font-extrabold leading-tight"
                                    data-aos="fade-up"
                             >
                                    Create Stunning <span className="text-blue-500">Portfolios</span> Effortlessly
@@ -30,39 +33,39 @@ const Intro = () => {
                                    Our platform helps you showcase your skills, achievements, and projects with ease.
                                    Perfect for professionals, students, and creators looking to stand out.
                             </p>
-                            <div className="mt-8 space-y-4" data-aos="fade-up" data-aos-delay="400">
+                            <div className="mt-8 space-y-8" data-aos="fade-up" data-aos-delay="400">
                                    <Link
                                           to="/create"
-                                          className="bg-green-500 hover:bg-green-600 text-white py-4 px-10 rounded-lg font-bold text-base md:text-lg shadow-md transition-all"
+                                          className="my-4 bg-green-500 hover:bg-green-600 text-white py-3 px-5 rounded-lg font-bold text-base md:text-lg shadow-md transition-all"
                                    >
-                                          Create Now
+                                          Get Started
                                    </Link>
-                                   <div className="flex justify-center gap-6">
+                                   <div className="flex justify-center  gap-6">
+                                          {status ?
+                                                 <Link
+                                                        to="/profile"
+                                                        className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-8 rounded-lg font-medium text-sm md:text-base transition-all"
+                                                 >
+                                                        Go to Profile
+                                                 </Link> : <Link
+                                                        to="/login"
+                                                        className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-8 rounded-lg font-medium text-sm md:text-base transition-all"
+                                                 >
+                                                        Sign In/Up
+                                                 </Link>}
                                           <Link
-                                                 to="/get-started"
-                                                 className="bg-blue-500 hover:bg-blue-600 text-white py-3 px-8 rounded-lg font-medium text-sm md:text-base transition-all"
-                                          >
-                                                 Get Started
-                                          </Link>
-                                          <Link
-                                                 to="/features"
+                                                 to="/#"
                                                  className="border border-blue-500 hover:bg-blue-500 hover:text-white py-3 px-8 rounded-lg font-medium text-sm md:text-base transition-all"
                                           >
-                                                 Learn More
+                                                 About-us
                                           </Link>
                                    </div>
                             </div>
-                            <div className="mt-12" data-aos="fade-up" data-aos-delay="600">
-                                   <img
-                                          src="https://via.placeholder.com/500x400"
-                                          alt="Portfolio Showcase"
-                                          className="rounded-lg shadow-lg transform hover:scale-105 transition-all"
-                                   />
-                            </div>
+
                      </section>
 
                      {/* Features Section */}
-                     <section id="features" className="py-20 bg-gray-800">
+                     <section id="features" className="py-20 bg-gray-950">
                             <div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
                                    <h2
                                           className="text-3xl md:text-4xl font-semibold mb-12"
@@ -104,9 +107,10 @@ const Intro = () => {
                                    </div>
                             </div>
                      </section>
+                     <FirstCont />
 
                      {/* Call-to-Action Section */}
-                     <section className="py-16 bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800 text-center">
+                     <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950 text-center">
                             <h2
                                    className="text-3xl md:text-4xl font-bold mb-6 text-white"
                                    data-aos="fade-up"
@@ -122,8 +126,8 @@ const Intro = () => {
                             </p>
                             <Link
                                    to="/create"
-                                   className="bg-green-500 hover:bg-green-600 text-white py-4 px-12 rounded-lg font-bold text-base md:text-lg shadow-lg transition-all"
-                                   data-aos="fade-up"
+                                   className="my-4 bg-green-500 hover:bg-green-600 text-white py-3 px-5 rounded-lg font-bold text-base md:text-lg shadow-md transition-all"
+                                   data-aos="zoom-in"
                                    data-aos-delay="400"
                             >
                                    Create Now

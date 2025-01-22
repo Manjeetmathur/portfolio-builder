@@ -56,20 +56,20 @@ const SecondCont = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-black min-h-screen py-16 px-6">
+    <div className="bg-gradient-to-b from-gray-950 to-gray-900 min-h-screen py-16 px-6">
       <div className="container mx-auto max-w-3xl">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-white tracking-wide">Edit Your Profile</h1>
+          <h1 className="text-4xl font-extrabold text-white tracking-wide">Create Your Profile</h1>
           <p className="text-gray-400 mt-4 text-lg">Customize your profile to make it stand out.</p>
         </div>
 
         {/* Card Container */}
         <div className="bg-gray-800 p-10 rounded-2xl shadow-2xl">
           {/* Profile Image Section */}
-          <div className="mb-10">
+          <div className="mb-10" data-aos='fade-up'>
             <h2 className="text-2xl font-semibold text-white mb-4">Profile Image</h2>
-            <div className="flex items-center gap-6">
+            <div className="flex justify-center items-center gap-6">
               <div className="w-32 h-32 rounded-full bg-gray-700 overflow-hidden">
                 {profile ? (
                   <img
@@ -155,7 +155,7 @@ const SecondCont = () => {
             loadingKey: "desc",
             isTextArea: true,
           }].map(({ label, placeholder, value, onChange, onUpdate, loadingKey, isTextArea }, idx) => (
-            <div className="mb-10" key={idx}>
+            <div className="mb-10" key={idx} data-aos='fade-up'>
               <h2 className="text-2xl font-semibold text-white mb-4">{label}</h2>
               <div className="flex items-start gap-4">
                 {isTextArea ? (

@@ -67,11 +67,11 @@ const Template1 = () => {
         <>
           <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36">
             {/* Profile Image Section */}
-            <div className="relative z-10 flex justify-center items-center animate-bounce">
+            <div className="relative z-10 flex justify-center items-center ">
               <img
                 src={userDetails?.profile?.imageUrl}
                 alt="Profile"
-                className="h-[55vw] w-[50vw] border-4 border-gray-300 rounded-full object-cover md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] hover:scale-110 transition-all duration-500"
+                className="h-[55vw] w-[50vw] border-4 border-gray-300 rounded-full object-cover md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] hover:scale-103 transition-all duration-500"
               />
             </div>
 

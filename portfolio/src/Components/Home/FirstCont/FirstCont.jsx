@@ -1,34 +1,42 @@
 import React, { useEffect, useRef } from 'react'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import p13 from '../../../image/p13.png'
+import p14 from '../../../image/p14.png'
+import p15 from '../../../image/p15.png'
 const FirstCont = () => {
-  const targetRef = useRef(null);
 
-  const handleScrollToTarget = () => {
-    targetRef.current.scrollIntoView({ behavior: 'smooth' });
-  };
   return (
-    <div className="bg-gray-950 py-24 md:py-28 lg:py-36 flex flex-col items-center justify-center animate-fade-in">
+    <div className="bg-gradient-to-b from-gray-950 to-gray-900  flex flex-col justify-center items-center py-6">
+      <h1 className='text-3xl lg:text-4xl font-bold my-4 text-wrap px-4 text-center' data-aos='fade-up' >Explore Our <span className='text-blue-600'>Portfolio</span> Samples</h1>
+      <div className="flex flex-col justify-center items-center lg:flex-row gap-10">
 
-      <div className="absolute w-[2px] h-1 bg-blue-500 rounded-full point"></div>
-      <div className="absolute w-[2px] h-1  bg-blue-500 rounded-full point1"></div>
+        <div className="grid md:grid-cols-2 md:gap-10 ">
 
-      <div className="text-center w-full">
-        <h1 className="text-xl md:text-4xl lg:text-6xl font-semibold text-white animate-slide-up ">
-          Make Your Own Portfolio
-        </h1>
-        <button
-          className="bg-green-400 text-sm md:text-2xl font-medium py-1 px-2 rounded-xl my-4 transform hover:scale-105 transition-all animate-fade-in-up"
-          onClick={handleScrollToTarget}
-        >
-          <Link className="flex items-center gap-1">
-            Create Now <FaLongArrowAltRight className="mt-[3px]" />
+          <div className='border-2 border-gray-500 flex justify-center p-6 rounded-lg my-6 w-[280px]' data-aos='fade-up'>
+            <Link to={'https://portfolio-builder-manjeetmathurs-projects.vercel.app/template1/678411a40eca6b4d831c15f5'} data-aos='zoom-in'>
+              <img src={p13} alt="" className="w-[250px] h-[180px] rounded-lg hover:scale-110 transition duration-[0.3s]"  />
+            </Link>
+          </div>
+
+          <div className='border-2 border-gray-500 flex justify-center p-6 rounded-lg my-6 w-[280px]' data-aos='fade-up' >
+            <Link to={'https://portfolio-builder-manjeetmathurs-projects.vercel.app/template2/678411a40eca6b4d831c15f5'} data-aos='zoom-in'>
+
+              <img src={p14} alt="" className="w-[250px] h-[180px] rounded-lg hover:scale-110 transition duration-[0.3s]"   />
+            </Link>
+
+          </div>
+        </div>
+        <div className='border-2 border-gray-500 flex justify-center p-6 rounded-lg my-6 w-[280px]' data-aos='fade-up'>
+          <Link to={'https://portfolio-builder-manjeetmathurs-projects.vercel.app/template3/678411a40eca6b4d831c15f5'} data-aos='zoom-in'  >
+
+            <img src={p15} alt="" className="w-[250px] h-[180px] rounded-lg hover:scale-110 transition duration-[0.3s]"   />
           </Link>
-        </button>
+        </div>
+
       </div>
 
-      {/* Optional Space or Scroll Target */}
-      <div ref={targetRef} className="w-full"></div>
+
     </div>
 
   )

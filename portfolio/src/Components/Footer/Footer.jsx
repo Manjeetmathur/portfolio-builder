@@ -38,7 +38,7 @@ const Footer = () => {
           {/* Social Media Links */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
+            <div className="flex space-x-2">
               <Link to={"https://www.linkedin.com/in/manjeet-kumar4/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"} className="hover:text-gray-400">
                 <i className="fab fa-facebook-f"></i> LinkedIn
               </Link>
