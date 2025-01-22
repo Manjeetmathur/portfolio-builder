@@ -118,7 +118,7 @@ const Intro = () => {
                                    Start Building Your <span className="text-white">Portfolio</span> Today
                             </h2>
                             <p
-                                   className="text-gray-300 text-sm md:text-lg mb-8 max-w-2xl mx-auto"
+                                   className="text-gray-300 text-sm md:text-lg mb-8 px-4 mx-auto"
                                    data-aos="fade-up"
                                    data-aos-delay="200"
                             >
