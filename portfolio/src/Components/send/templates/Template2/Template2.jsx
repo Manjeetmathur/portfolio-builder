@@ -189,7 +189,7 @@ const Template2 = () => {
                                           </p>
                                    </div>
 
-                                   <div className="bg-gray-800 flex flex-col justify-center items-center" ref={postRef}>
+                                   <div className="bg-gray-800 flex flex-col justify-center items-center     dark:bg-grid-white/[0.04] bg-grid-black/[0.05]" ref={postRef}>
                                           <h2 className="text-2xl font-semibold text-white pt-8">My Projects</h2>
                                           <div className="">
                                                  {userDetails?.posts?.map((item) => {

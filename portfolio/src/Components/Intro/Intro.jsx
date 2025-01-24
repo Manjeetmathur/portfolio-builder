@@ -16,7 +16,7 @@ const Intro = () => {
        const { status } = useSelector(st => st.auth)
 
        return (
-              <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white min-h-screen flex flex-col">
+              <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 dark:bg-black bg-white  dark:bg-grid-small-white/[0.3] bg-grid-small-black/[0.3] text-white min-h-screen flex flex-col ">
                      {/* Hero Section */}
                      <section className="flex-1 flex flex-col items-center justify-center text-center px-8 md:px-20 py-20 md:py-28 space-y-8" data-aos='zoom-in'>
                             <h1

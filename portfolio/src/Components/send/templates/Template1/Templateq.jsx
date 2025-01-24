@@ -60,12 +60,12 @@ const Template1 = () => {
 
 
   return (
-    <div className="bg-gradient-to-r from-gray-100 to-blue-400">
+    <div className="bg-gradient-to-r from-gray-100 to-blue-400 ">
       <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300" />
 
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <>
-          <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36">
+          <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36 ">
             {/* Profile Image Section */}
             <div className="relative z-10 flex justify-center items-center ">
               <img
