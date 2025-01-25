@@ -1,6 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.f1 {
+  font-family: "Ubuntu", serif;
+  font-weight: 600;
+  font-style:initial;
+  /* font-size:30px; */
+}
+
 @keyframes movePoint {
   0% {
     transform: translate(0, 0);

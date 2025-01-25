@@ -71,6 +71,10 @@ const userSchema = mongoose.Schema({
               type : mongoose.Schema.Types.ObjectId,
               ref : 'Blog'
        }],
+       skills : [{
+              type : String,
+              default : ''
+       }],
 },
 {
        timestamps : true

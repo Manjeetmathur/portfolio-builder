@@ -19,6 +19,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { context } from "../../../../Context/Context";
+import { BackgroundBeamsWithCollision } from "../../../../ui/background-beams-with-collision";
 
 
 const Template1 = () => {
@@ -60,14 +61,15 @@ const Template1 = () => {
 
 
   return (
-    <div className="bg-gradient-to-r from-gray-100 to-blue-400 ">
+    <div className="bg-gradient-to-r from-gray-100 to-blue-400 f1">
       <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300" />
 
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <>
+        <BackgroundBeamsWithCollision>
           <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36 ">
             {/* Profile Image Section */}
-            <div className="relative z-10 flex justify-center items-center ">
+            <div className="relative z-10 flex justify-center items-center " data-aos='zoom-in'>
               <img
                 src={userDetails?.profile?.imageUrl}
                 alt="Profile"
@@ -77,15 +79,15 @@ const Template1 = () => {
 
             {/* Profile Info Section */}
             <div className="relative z-10 flex justify-center items-center md:items-start flex-col md:w-[60%] text-center md:text-left">
-              <h2 className="text-[29px] font-bold font-serif mt-4 lg:text-4xl md:text-3xl" data-aos="fade-up">
+              <h2 className="text-[29px] font-bold font-serif mt-4 lg:text-4xl md:text-3xl f1" data-aos="fade-up">
                 Hi, I'm {userDetails?.name}
               </h2>
 
-              <h2 className="text-2xl font-bold font-serif mt-4 lg:text-3xl md:text-2xl" data-aos="fade-up">
+              <h2 className="text-2xl font-bold  mt-4 lg:text-3xl md:text-2xl" data-aos="fade-up">
                 {userDetails?.title}
               </h2>
 
-              <h2 className="text-md font-semibold mt-4 md:text-xl" data-aos="fade-up">
+              <h2 className="text-md font-normal mt-4 md:text-xl" data-aos="fade-up">
                 {userDetails?.description}
               </h2>
 
@@ -99,7 +101,7 @@ const Template1 = () => {
                     className="hover:text-blue-500"
                     data-aos="fade-up"
                   >
-                    <FaLinkedinIn className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:shadow-md" />
+                    <FaLinkedinIn className="text-3xl lg:text-4xl border-2 border-white hover:bg-blue-500 hover:text-white p-1 rounded-xl hover:shadow-md" />
                   </a>
                   <a
                     href={userDetails?.githublink}
@@ -108,7 +110,7 @@ const Template1 = () => {
                     className="hover:text-gray-700"
                     data-aos="fade-up"
                   >
-                    <FaGithub className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:shadow-md" />
+                    <FaGithub className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:bg-blue-500 hover:text-white  border-white hover:shadow-md" />
                   </a>
                   <a
                     href={userDetails?.instagramlink}
@@ -117,7 +119,7 @@ const Template1 = () => {
                     className="hover:text-pink-500"
                     data-aos="fade-up"
                   >
-                    <FaInstagram className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:shadow-md" />
+                    <FaInstagram className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:bg-blue-500  border-white hover:shadow-md" />
                   </a>
                   <a
                     href={userDetails?.facebooklink}
@@ -126,14 +128,14 @@ const Template1 = () => {
                     className="hover:text-blue-600"
                     data-aos="fade-up"
                   >
-                    <FaFacebook className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:shadow-md" />
+                    <FaFacebook className="text-3xl lg:text-4xl border-2 p-1 rounded-xl hover:bg-blue-500 hover:text-white border-white hover:shadow-md" />
                   </a>
                 </div>
 
                 {/* Resume Button */}
                 <div className="mt-6" data-aos="fade-up">
                   <Link to={`${userDetails?.resume}`}
-                    className="text-sm lg:text-xl border-2 px-4 py-2 rounded-xl text-gray-700 font-semibold hover:bg-gray-100 hover:shadow-md"
+                    className="text-sm lg:text-xl border-2 px-4 py-2 rounded-xl text-gray-700 border-white font-semibold hover:bg-blue-500 hover:text-white hover:shadow-md"
                   >
                     See My Resume
                   </Link>
@@ -141,9 +143,11 @@ const Template1 = () => {
               </div>
             </div>
           </div>
+        </BackgroundBeamsWithCollision>
+          
 
 
-          <div className="py-9 border-t-4 border-blue-500 bg-gradient-to-t bg-gray-100 rounded-2xl">
+          <div className="py-9  bg-gradient-to-t bg-gray-100 ">
             {/* Projects Section */}
             {userDetails?.posts?.length && <section className="mb-12">
               <h1
@@ -157,8 +161,8 @@ const Template1 = () => {
                 {userDetails?.posts?.map((item) => (
                   <div
                     key={item._id}
-                    className="border border-gray-300 rounded-lg shadow-md bg-gradient-to-b  from-green-100 to-blue-200 py-6 mx-4 hover:shadow-lg transition-shadow"
-                    data-aos="fade-up"
+                    className=" py-6 mx-4 "
+                    data-aos="zoom-in"
                   >
                     <Temp1Posts post={item} />
                   </div>
@@ -180,7 +184,7 @@ const Template1 = () => {
                   {userDetails?.blogs?.map((item) => (
                     <div
                       key={item._id}
-                      className="border border-gray-300 rounded-lg shadow-md bg-white p-6 mx-4 hover:shadow-lg transition-shadow"
+                      className=" rounded-lg shadow-md bg-white p-6 mx-4 hover:shadow-lg transition-shadow"
                       data-aos="fade-up"
                     >
                       <Temp1Blogs blog={item} />
@@ -192,13 +196,13 @@ const Template1 = () => {
           </div>
 
 
-          <div className="border-t-4" ref={contactRef}>
-            <div className="my-3 py-12">
+          <div className="" ref={contactRef}>
+            <div className="my-3 py-12 " data-aos="zoom-in">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center mb-8" data-aos="fade-up">
+                <h2 className="text-4xl font-bold text-center mb-8" >
                   Contact Me
                 </h2>
-                <div className="grid md:grid-cols-2 gap-10" data-aos="fade-up">
+                <div className="grid md:grid-cols-2 gap-10" >
                   {/* Contact Info */}
                   <div className="space-y-6">
                     <h3 className="text-2xl font-semibold">Get in Touch</h3>
