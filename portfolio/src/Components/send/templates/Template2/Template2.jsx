@@ -20,6 +20,9 @@ import Temp1Header from "../Temp1Header";
 import aos from 'aos'
 import 'aos/dist/aos.css'
 import { LuLoaderPinwheel } from "react-icons/lu";
+import { Typewriter } from "react-simple-typewriter";
+import { BackgroundBeams } from "../../../../ui/background-beams";
+
 const Template2 = () => {
        const [userDetails, setUser] = useState();
 
@@ -68,20 +71,24 @@ const Template2 = () => {
                      {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" />
                             :
                             <div className="">
+
                                    <div className="bg-gradient-to-r from-gray-900 to-blue-950 
                      p-1 pt-28 md:pb-20 md:flex justify-center items-center flex-row-reverse lg:p-36 relative">
+            <BackgroundBeams />
+
 
                                           {/* Profile Image */}
                                           <div className="flex justify-center items-center mb-6 md:mb-0" data-aos='fade-up'>
                                                  <img
                                                         src={userDetails?.profile?.imageUrl}
                                                         alt="Profile"
-                                                        className="h-[50vw] w-[50vw] border-4 border-blue-900 
+                                                        className="h-[50vw] w-[50vw] border- border-blue-900 
                                           border-gradient-to-r from-teal-400 to-blue-500 
                                           rounded-tl-[80px] rounded-br-[80px] md:w-[300px] md:h-[300px] 
                                           lg:w-[350px] lg:h-[350px] 
-                                          object-contain shadow-lg transform hover:scale-105 
-                                          transition-all duration-300"
+                                          object-contain shadow-xl transform hover:scale-105 
+                                          transition-all duration-300 shadow-blue-900"
+                                                        data-aos='zoom-in'
                                                  />
                                           </div>
 
@@ -89,7 +96,15 @@ const Template2 = () => {
                                           <div className="flex flex-col justify-center items-center md:items-start
                              md:w-[40%] text-center md:text-left" data-aos='fade-up'>
                                                  <h2 className="text-2xl text-white font-bold mt-4 lg:text-4xl md:text-3xl">
-                                                        Hii I'm {userDetails?.name}
+                                                        Hii I'm <span className="text-blue-500">
+                                                               <Typewriter
+                                                                      words={[userDetails?.name || ""]}
+                                                                      loop={false}
+                                                                      cursor
+                                                                      cursorStyle="_"
+                                                                      typeSpeed={200}
+                                                               />
+                                                        </span>
 
                                                  </h2>
                                                  <h2 className="text-xl text-white font-semibold mt-2 lg:text-3xl
@@ -188,20 +203,29 @@ const Template2 = () => {
                                                  {userDetails?.email}
                                           </p>
                                    </div>
-
-                                   <div className="bg-gray-800 flex flex-col justify-center items-center     dark:bg-grid-white/[0.04] bg-grid-black/[0.05]" ref={postRef}>
-                                          <h2 className="text-2xl font-semibold text-white pt-8">My Projects</h2>
-                                          <div className="">
-                                                 {userDetails?.posts?.map((item) => {
-                                                        return <Temp2Posts post={item} key={item._id} ></Temp2Posts>;
-                                                 })}
+                                   {
+                                          userDetails?.posts?.length > 0 && <div className="bg-gray-900 flex flex-col justify-center items-center dark:bg-grid-white/[0.05] bg-grid-black/[0.05]" ref={postRef}>
+                                                 <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
+                             bg-gradient-to-r from-teal-400 to-blue-500 mt-6">My Projects</h2>
+                                                 <div className="">
+                                                        {userDetails?.posts?.map((item, idx) => {
+                                                               return <Temp2Posts post={item} idx={idx} key={item._id} ></Temp2Posts>;
+                                                        })}
+                                                 </div>
                                           </div>
-                                   </div>
-                                   <div className="bg-gray-800 md:grid md:grid-cols-2 lg:grid-cols-3 p-2" ref={blogRef}>
-                                          {userDetails?.blogs?.map((item) => {
-                                                 return <Temp2Blogs blog={item} key={item._id}></Temp2Blogs>;
-                                          })}
-                                   </div>
+                                   }
+                                   {userDetails?.blogs?.length > 0 &&
+                                          <div className="bg-gradient-to-l from-blue-950 via-gray-900 to-gray-900">
+                                                 <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
+                                    bg-gradient-to-r from-teal-400 to-blue-500 pt-6">My Blogs</h2>
+                                                 <div className=" md:grid md:grid-cols-2 lg:grid-cols-3 " ref={blogRef}>
+
+                                                        {userDetails?.blogs?.map((item) => {
+                                                               return <Temp2Blogs blog={item} key={item._id}></Temp2Blogs>;
+                                                        })}
+                                                 </div>
+                                          </div>
+                                   }
                                    <div className="" >
                                           <div className=" from-gray-800 via-gray-900
                       to-black bg-gradient-to-bl py-6 text-white" ref={contactRef}>
@@ -209,9 +233,10 @@ const Template2 = () => {
                                                         <h2 className="text-3xl font-extrabold text-center text-transparent 
                             bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 mb-6" data-aos='fade-up'>
                                                                Connect With Me
-                                                        </h2> <div className="grid md:grid-cols-2 gap-10 " data-aos='fade-up'>
+                                                        </h2>
+                                                        <div className="grid md:grid-cols-2 gap-10 " >
                                                                {/* Contact Info */}
-                                                               <div className="space-y-6">
+                                                               <div className="space-y-6" data-aos='fade-up'>
                                                                       <h3 className="text-2xl font-semibold">Get in Touch</h3>
                                                                       <p className="">
                                                                              Feel free to reach out via email or phone, or connect with me on
@@ -261,7 +286,7 @@ const Template2 = () => {
                                                                </div>
 
                                                                {/* Contact Form */}
-                                                               <div className="border-4 p-6 rounded-lg shadow-xl text-black ">
+                                                               <div className="border-4 p-6 rounded-lg shadow-xl  " data-aos='zoom-in'>
                                                                       <form className="space-y-6">
                                                                              <div>
                                                                                     <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -276,7 +301,7 @@ const Template2 = () => {
                                                                                            Value={MessageName}
                                                                                            onChange={(e => setMessageName(e.target.value))}
                                                                                            placeholder="Your Name"
-                                                                                           className="w-full p-3 border  border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                                           className="w-full p-3 border  border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 text-black focus:ring-blue-500"
                                                                                     />
                                                                              </div>
                                                                              <div>
@@ -290,7 +315,7 @@ const Template2 = () => {
                                                                                            default
                                                                                            Value={MessageEmail}
                                                                                            onChange={(e => setMessageEmail(e.target.value))}
-                                                                                           className="w-full p-3 border border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                                                     />
                                                                              </div>
                                                                              <div>
@@ -304,7 +329,7 @@ const Template2 = () => {
                                                                                            default
                                                                                            Value={MessageSubject}
                                                                                            onChange={(e => setMessageSubject(e.target.value))}
-                                                                                           className="w-full p-3 border border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                                                     />
                                                                              </div>
                                                                              <div>
@@ -318,7 +343,7 @@ const Template2 = () => {
                                                                                            default
                                                                                            Value={MessageDesc}
                                                                                            onChange={(e => setMessageDesc(e.target.value))}
-                                                                                           className="w-full p-3 border border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                                                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                                                     ></textarea>
                                                                              </div>
                                                                              <a

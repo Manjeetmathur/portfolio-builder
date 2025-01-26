@@ -15,35 +15,35 @@ export const BackgroundBeamsWithCollision = ({
                      initialX: 10,
                      translateX: 10,
                      duration: 7,
-                     repeatDelay: 3,
-                     delay: 2,
+                     repeatDelay: 1,
+                     delay: 1,
               },
               {
                      initialX: 600,
                      translateX: 600,
                      duration: 3,
-                     repeatDelay: 3,
-                     delay: 4,
+                     repeatDelay: 1,
+                     delay: 1,
               },
               {
                      initialX: 100,
                      translateX: 100,
                      duration: 7,
-                     repeatDelay: 7,
+                     repeatDelay: 1,
                      className: "h-6",
               },
               {
                      initialX: 400,
                      translateX: 400,
                      duration: 5,
-                     repeatDelay: 14,
-                     delay: 4,
+                     repeatDelay:1,
+                     delay: 1,
               },
               {
                      initialX: 800,
                      translateX: 800,
                      duration: 11,
-                     repeatDelay: 2,
+                     repeatDelay: 1,
                      className: "h-20",
               },
               {
@@ -57,8 +57,8 @@ export const BackgroundBeamsWithCollision = ({
                      initialX: 1200,
                      translateX: 1200,
                      duration: 6,
-                     repeatDelay: 4,
-                     delay: 2,
+                     repeatDelay: 1,
+                     delay: 1,
                      className: "h-6",
               },
        ];
@@ -210,7 +210,7 @@ const Explosion = ({
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
-                            className="absolute -inset-x-10 top-0 m-auto h-2 w-10 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"></motion.div>
+                            className="absolute -inset-x-10 top-0 m-auto h-16 w-36 rounded-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-sm"></motion.div>
                      {spans.map((span) => (
                             <motion.span
                                    key={span.id}
@@ -221,7 +221,7 @@ const Explosion = ({
                                           opacity: 0,
                                    }}
                                    transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-                                   className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500" />
+                                   className="absolute h-16 w-16 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500" />
                      ))}
               </div>)
        );

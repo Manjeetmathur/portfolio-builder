@@ -17,6 +17,7 @@ import Temp1Header from "../Temp1Header";
 import aos from 'aos'
 import 'aos/dist/aos.css'
 import { LuLoaderPinwheel } from "react-icons/lu";
+import { BackgroundBeams } from "../../../../ui/background-beams";
 
 const Template3 = () => {
        const [userDetails, setUser] = useState();
@@ -26,6 +27,7 @@ const Template3 = () => {
        const contactRef = useRef()
        const id = useParams();
        const [loading, setloading] = useState(true);
+
 
        useEffect(() => {
               const getUserDetails = async () => {
@@ -70,6 +72,7 @@ const Template3 = () => {
                      {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
 
                             <div className="">
+
                                    <div
                                           className="bg-gray-950   md:pb-20 md:flex
        justify-center items-center flex-row-reverse lg:p-36"
@@ -156,7 +159,7 @@ const Template3 = () => {
                                    </div>
                                    <div className="bg-gray-800 md:grid md:grid-cols-2 lg:grid-cols-3 p-2" ref={blogRef}>
                                           {userDetails?.blogs?.map((item) => {
-                                                 return <Template3Blogs blog={item} key={item._id}></Template3Blogs>;
+                                                 return <Template3Blogs blog={item} key={item._id} cl={"bg-gradient-to-r from-gray-950 via-gray-900 to-gray-800 flex items-start justify-center border-4 border-gray-700 m-5 rounded-lg shadow-xl w-[300px]  transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-gray-500"}></Template3Blogs>;
                                           })}
                                    </div>
                                    <div className="text-white w-full bg-gradient-to-b from-gray-700 

@@ -8,6 +8,11 @@
   font-style:initial;
   /* font-size:30px; */
 }
+.f2 {
+  font-family: "Playwrite VN", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
 
 @keyframes movePoint {
   0% {

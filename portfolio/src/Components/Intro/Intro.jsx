@@ -4,6 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useSelector } from 'react-redux';
 import FirstCont from '../Home/FirstCont/FirstCont';
+import { BackgroundLines } from '../../ui/background-lines';
 
 const Intro = () => {
        useEffect(() => {
@@ -16,9 +17,9 @@ const Intro = () => {
        const { status } = useSelector(st => st.auth)
 
        return (
-              <div className="bg-gradient-to-r from-gray-900 via-black to-gray-900 dark:bg-black bg-white  dark:bg-grid-small-white/[0.3] bg-grid-small-black/[0.3] text-white min-h-screen flex flex-col ">
+              <div className=" from-gray-900 via-black to-gray-900 dark:bg-black bg-white  dark:bg-grid-small-white/[0.3] bg-grid-small-black/[0.3] text-white min-h-screen flex flex-col ">
                      {/* Hero Section */}
-                     <section className="flex-1 flex flex-col items-center justify-center text-center px-8 md:px-20 py-20 md:py-28 space-y-8" data-aos='zoom-in'>
+                     <section className="flex-1 flex flex-col items-center justify-center text-center px-8 md:px-20 py-20 md:pt-40 " data-aos='zoom-in'>
                             <h1
                                    className="text-3xl md:text-6xl font-extrabold leading-tight"
                                    data-aos="fade-up"
