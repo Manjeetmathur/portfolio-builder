@@ -6,6 +6,7 @@ import { url } from '../../../backendUrl/Backendurl';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../store/authSlice';
 import Header from '../../Header/Header';
+import p16 from '../../../image/p16.png'
 const Login = () => {
 
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ const Login = () => {
         `${url}/user/login`,
         { email, password },
         {
-          headers: { "Content-Type": "application/json" }, withCredentials : true
+          headers: { "Content-Type": "application/json" }, withCredentials: true
         }
       );
       const res = data.data;
@@ -45,32 +46,35 @@ const Login = () => {
     <div className="">
 
       <Header />
-      <div className='from-[#0d113e] via-[#1b215f] to-black bg-gradient-to-bl h-[92vh] flex justify-center items-center m-auto'>
+      <div className='from-[#0d113e] via-[#1b215f] to-black 
+      bg-gradient-to-bl h-[92vh] flex justify-center items-center m-auto'>
 
-        <form className=" text-white  p-2  "
+        <form className=" text-white  py-10 px-5 rounded-xl border-2 border-white "
           onSubmit={(e) => userlogin(e)}
         >
+          {/* <h1 className='text-3xl flex justify-center mb-7 font-bold '>Yp</h1> */}
+          {/* <img src={p16}/> */}
           <h1 className='text-[3vw] my-1 md:text-xl lg:text-2xl'>Email</h1>
           <input type="email" name="email"
             className='h-[6vw] md:h-full outline-none border-2 border-white 
-          bg-transparent shadow-md shadow-white
+          bg-transparent shadow-sm shadow-white
                 text-[4vw] md:text-[25px] w-[60vw] lg:w-[40vw] rounded-lg py-1 px-1 mb-4'
             value={email} onChange={(e) => setEmail(e.target.value)} required />
           <h1 className='text-[3vw] my-1 md:text-xl lg:text-2xl'>Password</h1>
           <input type="password" name="password"
             className=' h-[6vw] md:h-full outline-none border-2 border-white bg-transparent 
-          shadow-md shadow-white
+          shadow-sm shadow-white
                 text-[4vw] md:text-[25px] w-[60vw] lg:w-[40vw] rounded-lg py-1 px-1 mb-4'
             value={password} onChange={(e) => setPassword(e.target.value)} required />
 
           <button className='bg-green-400 h-[6vw] md:h-full text-[3vw] md:text-[25px]  cursor-pointer
                 my-4 font-medium py-1 px-2 w-[60vw] lg:w-[40vw] rounded-xl items-center
-                 justify-center shadow-md shadow-white  flex'>
+                 justify-center shadow-sm shadow-white  flex'>
             {loading ? 'Please wait...' : 'Login'}
           </button>
           <Link to={"/register"} className='h-[6vw] md:h-full text-[3vw] md:text-[25px]  cursor-pointer
                font-medium py-1 px-2 w-[60vw] lg:w-[40vw] rounded-xl items-center
-               justify-center shadow-md shadow-white  flex my-8'>Don't have an Account, Register </Link>
+               justify-center shadow-sm shadow-white  flex my-8'>Don't have an Account, Register </Link>
         </form>
 
       </div>
