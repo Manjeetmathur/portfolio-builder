@@ -112,7 +112,7 @@ const Register = () => {
               font-medium py-1 px-2 w-[60vw] lg:w-[40vw] rounded-xl items-center
                justify-center shadow-sm shadow-white my-8 flex"
         >
-          Don't have an Account, Login{" "}
+          Already have an Account, Login{" "}
         </Link>
       </form>
 
