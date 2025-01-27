@@ -68,7 +68,7 @@ const Template1 = () => {
 
   return (
     <div className="  f1">
-      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300 text-blue-900 shadow-lg shadow-blue-600" />
+      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300 text-blue-900 " />
 
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <div className="bg-gradient-to-r from-gray-200 to-blue-400">
