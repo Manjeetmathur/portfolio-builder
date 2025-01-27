@@ -27,10 +27,6 @@ const FrontInterface = () => {
                                    <Link to={`/template2/${userData?.id}`}>
                                           <img  src={p14} className="  h-[200px] w-[270px] md:w-[230px] border-2 m-3 rounded-lg "></img>
                                    </Link>
-                                   <Link to={`/template3/${userData?.id}`}>
-                                          <img src={p15} className=" h-[200px] w-[270px] md:w-[230px] border-2 m-3 rounded-lg "></img>
-                                   </Link>
-                                   
                             </div>
                      </div>
               </div>

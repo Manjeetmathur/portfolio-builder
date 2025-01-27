@@ -6,7 +6,6 @@ import Register from "../Components/Auth/Register/Register";
 import FrontInterface from "../Components/send/FrontInterface";
 import Template1 from "../Components/send/templates/Template1/Templateq";
 import Template2 from "../Components/send/templates/Template2/Template2";
-import Template3 from "../Components/send/templates/Template3/Template3";
 import Profile from "../Components/Profile/Profile";
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 import Intro from "../Components/Intro/Intro";
@@ -45,10 +44,6 @@ const router = createBrowserRouter([
                      {
                             path : "/template2/:id",
                             element : <Template2/>
-                     },
-                     {
-                            path : "/template3/:id",
-                            element : <Template3/>
                      },
                      {
                             path : "/profile",
