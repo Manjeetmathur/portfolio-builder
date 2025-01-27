@@ -18,7 +18,7 @@ const FrontInterface = () => {
                             <h1 className="mt-10 font-bold text-[20px] text-white ">
                                    Choose Your Favourite Template
                             </h1>
-                            <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
+                            <div className="md:grid md:grid-cols-2 ">
 
                                    {/* //tempplate 1 */}
                                    <Link to={`/template1/${userData?.id}`}>
