@@ -134,7 +134,7 @@ const Profile = () => {
         </div >
 
         {/* Projects Section */}
-        <div div >
+        <div>
           <h3 className="text-2xl font-semibold mb-4">My Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {userDetails?.posts?.map((post) => (
@@ -148,10 +148,10 @@ const Profile = () => {
 
             ))}
           </div>
-        </div >
+        </div>
 
         {/* Add New Post Section */}
-        <div div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
+        <div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
           <h3 className="text-2xl font-semibold mb-4">Add a New Post</h3>
           <input
             type="text"
@@ -195,7 +195,7 @@ const Profile = () => {
         </div >
 
         {/* Blogs Section */}
-        <div div >
+        <div>
           <h3 className="text-xl font-semibold mb-4">My Blogs</h3>
           <div className="space-y-4">
             {userDetails?.blogs?.map((blog) => (
@@ -208,7 +208,7 @@ const Profile = () => {
         </div >
 
         {/* Add New blog Section */}
-        <div div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
+        <div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
           <h3 className="text-2xl font-semibold mb-4">Add a New Blog</h3>
           <input
             type="text"
@@ -238,7 +238,7 @@ const Profile = () => {
           </button>
         </div >
         {/* Skills Section */}
-        <div div >
+        <div>
           <h3 className="text-xl font-semibold mb-4">My skills</h3>
           <div className="flex flex-wrap space-x-4 items-center justify-center">
             {userDetails?.skills?.map((skill, index) => (
