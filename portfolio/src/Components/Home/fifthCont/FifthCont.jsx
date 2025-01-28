@@ -34,7 +34,7 @@ const FifthCont = () => {
        }
        return (
               <div className="bg-gray-900  flex flex-col justify-center items-center px-6 py-6">
-                     <h1 className="text-4xl font-extrabold mb-8 text-white tracking-wide">Write Skills</h1>
+                     <h1 className="text-4xl font-extrabold mb-8 text-white tracking-wide">Add Skills</h1>
 
                      <div className="bg-gray-800 rounded-lg shadow-lg w-full max-w-3xl p-8 md:p-12 space-y-10 relative text-white">
 
@@ -54,7 +54,7 @@ const FifthCont = () => {
                                                         placeholder="Enter your skills title"
                                                  />
                                                  <button type="submit" className="flex justify-center items-center bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-500 transition-all text-sm"  >
-                                                        +Add 
+                                                        Add+ 
                                                  </button>
                                           </form>
 
