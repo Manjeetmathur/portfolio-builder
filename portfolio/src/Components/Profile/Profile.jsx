@@ -281,36 +281,7 @@ const Profile = () => {
           </form>
 
         </div>
-        <div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
-          <h3 className="text-2xl font-semibold mb-4">Add a New skills</h3>
-          <input
-            type="text"
-            placeholder="Blog Title"
-            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
-            value={blogtitle}
-            onChange={(e) => setBlogTitle(e.target.value)}
-          />
-
-          <textarea
-            placeholder="Blog Content"
-            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
-            value={blogdesc}
-            onChange={(e) => setBlogDesc(e.target.value)}
-          ></textarea>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={async () => {
-              setloading('blog')
-              await uploadBlog(blogtitle, blogdesc)
-              setloading(null)
-              setBlogDesc('')
-              setBlogTitle('')
-            }}
-          >
-            {loading === 'blog' ? 'Uploading...' : 'Upload Blog'}
-
-          </button>
-        </div >
-        {/* Edit Section */}
+        
         {
           editSec === "sec1" && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
