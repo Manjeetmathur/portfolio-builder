@@ -74,7 +74,7 @@ const Template2 = () => {
 
                                    <div className="bg-gradient-to-r from-gray-900 to-blue-950 
                      p-1 pt-28 md:pb-20 md:flex justify-center items-center flex-row-reverse lg:p-36 relative">
-            <BackgroundBeams />
+                                          <BackgroundBeams />
 
 
                                           {/* Profile Image */}
@@ -226,6 +226,23 @@ const Template2 = () => {
                                                  </div>
                                           </div>
                                    }
+
+                                   <div className="bg-gradient-to-r from-blue-950 to-gray-900  ">
+                                          <h1 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
+                                    bg-gradient-to-r from-teal-400 to-blue-500 pt-6">Skills</h1>
+                                          <div className="-blue-400 flex flex-wrap justify-center items-center p-6">
+                                                 {userDetails?.skills?.map((item) => (
+                                                        <div
+                                                               key={item._id}
+                                                               className="px-4 border-2 m-3 rounded-xl border-gray-2 text-white"
+                                                               data-aos="zoom-in"
+                                                        >
+                                                               {item}
+                                                        </div>
+                                                 ))}
+                                          </div>
+
+                                   </div>
                                    <div className="" >
                                           <div className=" from-gray-800 via-gray-900
                       to-black bg-gradient-to-bl py-6 text-white" ref={contactRef}>

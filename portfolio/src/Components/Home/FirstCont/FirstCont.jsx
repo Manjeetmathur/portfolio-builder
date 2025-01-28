@@ -27,13 +27,7 @@ const FirstCont = () => {
 
           </div>
         </div>
-        <div className='border-2 border-gray-500 flex justify-center p-6 rounded-lg my-6 w-[280px]' data-aos='fade-up'>
-          <Link to={'https://portfolio-builder-manjeetmathurs-projects.vercel.app/template3/678411a40eca6b4d831c15f5'} data-aos='zoom-in'  >
-
-            <img src={p15} alt="" className="w-[250px] h-[180px] rounded-lg hover:scale-110 transition duration-[0.3s]"   />
-          </Link>
-        </div>
-
+       
       </div>
 
 

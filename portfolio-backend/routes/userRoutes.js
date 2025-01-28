@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middlewares/multer.js";
-import { allInfo, getUserinfo, login, logout,register,updateEmail,updateface,updategit,updateImage, updateinsta, updatelinked, updateName, updatePhoneNumber, updateProfession, updateResume, updateUserDesc, updateUserName, updateUserTitle, uploadDetails } from "../controllers/userController.js";
+import { addSkills, allInfo, deleteSkill, getUserinfo, login, logout,register,updateEmail,updateface,updategit,updateImage, updateinsta, updatelinked, updateName, updatePhoneNumber, updateProfession, updateResume, updateUserDesc, updateUserName, updateUserTitle, uploadDetails } from "../controllers/userController.js";
 import { verifyJwt } from "../middlewares/auth.js";
 const router = Router();
 
@@ -31,6 +31,8 @@ router.route("/update-linkedin").patch(verifyJwt,updatelinked)
 router.route("/update-git").patch(verifyJwt,updategit)
 router.route("/update-face").patch(verifyJwt,updateface)
 router.route("/update-insta").patch(verifyJwt,updateinsta)
+router.route("/update-skills").patch(verifyJwt,addSkills)
+router.route("/delete-skills").patch(verifyJwt,deleteSkill)
 
 
 export default router

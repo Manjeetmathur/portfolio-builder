@@ -87,7 +87,7 @@ const Template1 = () => {
 
               {/* Profile Info Section */}
               <div className="relative z-10 flex justify-center items-center md:items-start flex-col md:w-[60%] text-center md:text-left">
-                <h2 className="text-[29px] font-bold font-serif mt-4 lg:text-4xl md:text-3xl f1" data-aos="fade-up">
+                <h2 className="text-xl font-bold font-serif mt-4 lg:text-4xl md:text-3xl sm:text-2xl f1" data-aos="fade-up">
                   Hi, I'm{" "}
                   <span className="text-blue-500">
                     <Typewriter
@@ -214,7 +214,23 @@ const Template1 = () => {
               </section>
             }
           </div>
+          {userDetails?.skills?.length > 0 &&
+            <div className="bg-gradient-to-r from-blue-400 to-gray-300  ">
+              <h1 className="bg-gradient-to-r from-blue-400 to-gray-300 px-6 text-2xl font-semibold text-blue-600 pt-4 flex justify-center">Skills</h1>
+              <div className="-blue-400 flex flex-wrap justify-center items-center p-6">
+                {userDetails?.skills?.map((item) => (
+                  <div
+                    key={item._id}
+                    className="px-4 border-2 m-3 rounded-xl border-gray-2 "
+                    data-aos="zoom-in"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
 
+            </div>
+          }
 
           <div className="" ref={contactRef}>
             <div className="my-3 py-12 " data-aos="zoom-in">

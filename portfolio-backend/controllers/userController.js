@@ -657,6 +657,71 @@ const allInfo = async (req, res) => {
 }
 
 
+const addSkills = async (req, res) => {
+    const { newskills } = req.body
+    const userId = req._id
+
+    try {
+        if(newskills.length === 0){
+            throw new Error("skills are required")
+        }
+        const user = await User.findById(userId)
+        const skills = user.skills
+        skills.push(newskills)
+        await User.findByIdAndUpdate(
+          userId,
+          {
+            $set: {
+              skills 
+            }
+          },{new:true}
+        )
+        res.status(200).json({
+          message: "Updated Skills successfully",
+          success: true,
+
+        })
+    } catch (error) {
+      res.json({
+        message: error.message,
+      })
+    }
+}
+const deleteSkill = async (req, res) => {
+  const {index} = req.body
+    const userId = req._id
+
+    try {
+        if(index < 0){
+            throw new Error("index are required")
+        }
+        let id = (index)
+        const user = await User.findById(userId)
+        let skills = user.skills
+        skills=skills.filter(index => (
+          skills.indexOf(index) !== id
+        ) )
+        console.log(skills)
+        await User.findByIdAndUpdate(
+          userId,
+          {
+            $set: {
+              skills 
+            }
+          },{new:true}
+        )
+        res.status(200).json({
+          message: "Updated Skills successfully",
+          success: true,
+
+        })
+    } catch (error) {
+      res.json({
+        message: error.message,
+      })
+    }
+}
+
 
 
 export {
@@ -678,6 +743,8 @@ export {
   updatelinked,
   updateResume,
   register,
-  allInfo
+  allInfo,
+  addSkills,
+  deleteSkill
 };
 

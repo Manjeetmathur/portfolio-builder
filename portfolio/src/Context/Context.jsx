@@ -25,6 +25,7 @@ const ContextProvider = ({ children }) => {
        };
 
        const { userData } = useSelector(st => st.auth)
+       
        const dispatch = useDispatch()
 
        const uploadPost = async (title, postImage, link, desc) => {
@@ -81,7 +82,7 @@ const ContextProvider = ({ children }) => {
 
                             const data = await axios.get(endpoint);
                             const res = data.data;
-                            // console.log("res", res);
+                            console.log("res", res);
 
                             if (res.success) {
                                    dispatch(userDetails(res.user));
@@ -379,6 +380,52 @@ const ContextProvider = ({ children }) => {
                      toast.error(error.message);
               }
        };
+       const updateSkills = async (newskills) => {
+
+              try {
+                     const data = await axios.patch(
+                            `${url}/user/update-skills`,
+                            { newskills },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     if (res.success) {
+                            toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
+       const deleteSkills = async (index) => {
+
+              try {
+                     const data = await axios.patch(
+                            `${url}/user/delete-skills`,
+                            { index },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     if (res.success) {
+                            // await toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
 
 
        const updatePostTitle = async (postTitle, postId) => {
@@ -596,7 +643,7 @@ const ContextProvider = ({ children }) => {
               <context.Provider
                      value={{
                             uploadPost, uploadBlog, showPdf,
-                            updateTitle, updateProfile,
+                            updateTitle, updateProfile,updateSkills,deleteSkills,
                             updateDesc, updatePhone, updateResume,
                             updateName, updateEmail, updateProfession,
                             updateFace, updateGit, updateInsta, updateLinked,

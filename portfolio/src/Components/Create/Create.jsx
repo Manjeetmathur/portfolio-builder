@@ -4,6 +4,7 @@ import ThirdCont from '../Home/ThirdCont/ThirdCont'
 import FourthCont from '../Home/FourthCont/FourthCont'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import FifthCont from '../Home/fifthCont/FifthCont'
 
 const Create = () => {
        return (
@@ -12,6 +13,7 @@ const Create = () => {
                      <SecondCont />
                      <ThirdCont />
                      <FourthCont />
+                     <FifthCont />
                      <Footer/>
               </div>
        )

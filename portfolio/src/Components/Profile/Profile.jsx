@@ -40,16 +40,30 @@ const Profile = () => {
   const [blogtitle, setBlogTitle] = useState("");
   const [blogdesc, setBlogDesc] = useState("");
   const [loading, setloading] = useState(null)
+  const [newskills, setnewskills] = useState("");
+
 
   const {
     updateName, updateEmail, updatePhone, updateProfile,
-    updateTitle, updateDesc, updateResume, updateProfession, showPdf,
-    updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog
+    updateTitle, updateDesc, updateResume, updateProfession, updateSkills,
+    updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog, deleteSkills
   } = useContext(context)
   // console.log(name);
 
 
+  const addskills = async (e) => {
+    e.preventDefault()
+    console.log(newskills)
 
+    if (newskills) {
+
+      await updateSkills(newskills);
+      setnewskills('');
+
+    } else {
+      toast.error("Please enter your skills")
+    }
+  }
 
   return (
     <div className="">
@@ -88,7 +102,7 @@ const Profile = () => {
           />
            */}
 
-          <Link to={userDetails?.resume} 
+          <Link to={userDetails?.resume}
             className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer"
           >
             Show Resume</Link>
@@ -176,7 +190,7 @@ const Profile = () => {
             }}>
             {loading === 'post' ? 'Uploading...' : 'Upload Post'}
 
-            
+
           </button>
         </div >
 
@@ -196,6 +210,79 @@ const Profile = () => {
         {/* Add New blog Section */}
         <div div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
           <h3 className="text-2xl font-semibold mb-4">Add a New Blog</h3>
+          <input
+            type="text"
+            placeholder="Blog Title"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            value={blogtitle}
+            onChange={(e) => setBlogTitle(e.target.value)}
+          />
+
+          <textarea
+            placeholder="Blog Content"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            value={blogdesc}
+            onChange={(e) => setBlogDesc(e.target.value)}
+          ></textarea>
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={async () => {
+              setloading('blog')
+              await uploadBlog(blogtitle, blogdesc)
+              setloading(null)
+              setBlogDesc('')
+              setBlogTitle('')
+            }}
+          >
+            {loading === 'blog' ? 'Uploading...' : 'Upload Blog'}
+
+          </button>
+        </div >
+        {/* Skills Section */}
+        <div div >
+          <h3 className="text-xl font-semibold mb-4">My skills</h3>
+          <div className="flex flex-wrap space-x-4 items-center justify-center">
+            {userDetails?.skills?.map((skill, index) => (
+              <div key={index} className="bg-blue-600 flex items-center justify-center gap-2 text-white py-1 px-3 text-sm rounded-md hover:bg-blue-500 transition-all m-2">
+                <p>{skill}</p>
+                <GiCancel
+                  className="text-lg mt-[1px] text-gray-300 cursor-pointer"
+                  onClick={async () => {
+                    console.log(index)
+                    await deleteSkills(index)
+                    window.location.reload()
+
+                  }}
+
+                />
+
+              </div>
+            ))}
+          </div>
+        </div >
+
+        {/* Add New blog Section */}
+        <div className="p-6 bg-gray-800 shadow-lg rounded-lg space-y-4 mb-4" >
+
+          <h1 className="text-2xl md:text-3xl font-semibold text-center tracking-wide">
+            Skills Title
+          </h1>
+          <form onSubmit={(e) => addskills(e)} className="flex justify-center items-center space-x-4  pb-4">
+            <input
+              type="text"
+              className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100"
+
+              onChange={(e) => setnewskills(e.target.value)}
+              value={newskills}
+              placeholder="Enter your skills title"
+            />
+            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"  >
+              +Add
+            </button>
+          </form>
+
+        </div>
+        <div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
+          <h3 className="text-2xl font-semibold mb-4">Add a New skills</h3>
           <input
             type="text"
             placeholder="Blog Title"
