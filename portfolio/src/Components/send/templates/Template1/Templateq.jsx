@@ -67,17 +67,20 @@ const Template1 = () => {
 
 
   return (
-    <div className="  f1">
+    <div className="f1 ">
+
       <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300 text-blue-900 " />
 
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
-        <div className="bg-gradient-to-r from-gray-200 to-blue-400">
+        <div className="bg-gradient-to-r from-gray-200 to-blue-400 relative">
+
+
           <BackgroundBeamsWithCollision>
 
-            <div className="relative p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36 ">
+            <div className=" p-10 pt-28 md:pt-40 md:flex justify-center items-center flex-row-reverse lg:p-36  ">
 
               {/* Profile Image Section */}
-              <div className="relative z-10 flex justify-center items-center " data-aos='zoom-in'>
+              <div className=" z-10 flex justify-center items-center " data-aos='zoom-in'>
                 <img
                   src={userDetails?.profile?.imageUrl}
                   alt="Profile"
@@ -85,8 +88,10 @@ const Template1 = () => {
                 />
               </div>
 
+
+
               {/* Profile Info Section */}
-              <div className="relative z-10 flex justify-center items-center md:items-start flex-col md:w-[60%] text-center md:text-left">
+              <div className=" z-10 flex justify-center items-center md:items-start flex-col md:w-[60%] text-center md:text-left">
                 <h2 className="text-xl font-bold font-serif mt-4 lg:text-4xl md:text-3xl sm:text-2xl f1" data-aos="fade-up">
                   Hi, I'm{" "}
                   <span className="text-blue-500">
@@ -161,9 +166,9 @@ const Template1 = () => {
               </div>
 
             </div>
+
+
           </BackgroundBeamsWithCollision>
-
-
 
           <div className="py-9  bg-gradient-to-t bg-gray-100 ">
             {/* Projects Section */}
@@ -218,9 +223,9 @@ const Template1 = () => {
             <div className="bg-gradient-to-r from-blue-400 to-gray-300  ">
               <h1 className="bg-gradient-to-r from-blue-400 to-gray-300 px-6 text-2xl font-semibold text-blue-600 pt-4 flex justify-center">Skills</h1>
               <div className="-blue-400 flex flex-wrap justify-center items-center p-6">
-                {userDetails?.skills?.map((item) => (
+                {userDetails?.skills?.map((item, ind) => (
                   <div
-                    key={item._id}
+                    key={ind}
                     className="px-4 border-2 m-3 rounded-xl border-gray-2 "
                     data-aos="zoom-in"
                   >
@@ -298,9 +303,6 @@ const Template1 = () => {
                           type="text"
                           id="name"
                           value={MessageName}
-
-                          default
-                          Value={MessageName}
                           onChange={(e => setMessageName(e.target.value))}
                           placeholder="Your Name"
                           className="w-full p-3 border  border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 text-black focus:ring-blue-500"
@@ -315,7 +317,7 @@ const Template1 = () => {
                           id="email"
                           placeholder="Your Email"
                           default
-                          Value={MessageEmail}
+                          value={MessageEmail}
                           onChange={(e => setMessageEmail(e.target.value))}
                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
@@ -329,7 +331,7 @@ const Template1 = () => {
                           id="subject"
                           placeholder="Subject"
                           default
-                          Value={MessageSubject}
+                          value={MessageSubject}
                           onChange={(e => setMessageSubject(e.target.value))}
                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00  focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
@@ -343,7 +345,7 @@ const Template1 = () => {
                           rows="4"
                           placeholder="Your Message"
                           default
-                          Value={MessageDesc}
+                          value={MessageDesc}
                           onChange={(e => setMessageDesc(e.target.value))}
                           className="w-full p-3 border text-black border-gray-700 rounded bg-gray-00 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         ></textarea>

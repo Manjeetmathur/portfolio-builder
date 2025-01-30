@@ -72,11 +72,14 @@ const Profile = () => {
         {/* Profile Section */}
         <div className="relative flex items-center space-x-6 p-6 bg-gray-800 
         shadow-lg rounded-lg transition-transform transform ">
-          <img
-            src={userDetails?.profile?.imageUrl}
-            alt="Profile"
-            className="w-16 h-16 rounded-full object-cover border-2"
-          />
+          <Link to={userDetails?.profile?.imageUrl}>
+            <img
+              src={userDetails?.profile?.imageUrl}
+              alt="Profile"
+              className="w-16 h-16 rounded-full object-cover border-2"
+            />
+          </Link>
+          
           <div>
             <h2 className="text-sm font-bold">{userDetails?.name}</h2>
             <p className="text-[10px] text-gray-400">{userDetails?.email}</p>
@@ -103,9 +106,10 @@ const Profile = () => {
            */}
 
           <Link to={userDetails?.resume}
-            className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer"
+            className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer md:mr-[50px]"
           >
-            Show Resume</Link>
+           <p> Show Resume</p>
+           </Link>
           <div>
             <h3 className="text-lg font-semibold">{userDetails?.title} ({userDetails?.profession})</h3>
             <p className="text-gray-400 mb-2">{userDetails?.description}</p>
