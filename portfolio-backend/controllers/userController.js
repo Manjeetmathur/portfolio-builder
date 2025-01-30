@@ -95,7 +95,7 @@ const login = async (req, res) => {
 
 //logout
 const logout = async (req, res) => {
-  res.cookie("token",'').json({
+  res.cookie("token", '').json({
     message: "logged out",
     success: true,
   });
@@ -266,7 +266,7 @@ const updateName = async (req, res) => {
   try {
     const user = await User.findById(userId)
     // console.log(user)
-    
+
     if (!name) {
       throw new Error("name required . . .",)
     }
@@ -295,9 +295,9 @@ const updateEmail = async (req, res) => {
   const userId = req._id
   try {
     const user = await User.findById(userId)
-if(!email){
-  throw new Error("email is required")
-}
+    if (!email) {
+      throw new Error("email is required")
+    }
     await User.findByIdAndUpdate(
       userId,
       {
@@ -325,7 +325,7 @@ const updatePhoneNumber = async (req, res) => {
   const userId = req._id
   try {
     const user = await User.findById(userId)
-    if(!phonenumber){
+    if (!phonenumber) {
       throw new Error("Phone number is required")
     }
     await User.findByIdAndUpdate(
@@ -356,7 +356,7 @@ const updateProfession = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if(!profession){
+    if (!profession) {
       throw new Error("profession is required")
     }
     await User.findByIdAndUpdate(
@@ -385,7 +385,7 @@ const updateUserName = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if(!userName){
+    if (!userName) {
       throw new Error("username is required")
     }
     await User.findByIdAndUpdate(
@@ -416,7 +416,7 @@ const updateUserTitle = async (req, res) => {
 
   try {
 
-    if(!userTitle){
+    if (!userTitle) {
       throw new Error("Title is required")
     }
 
@@ -448,7 +448,7 @@ const updateUserDesc = async (req, res) => {
   try {
     const user = await User.findById(userId)
 
-    if(!desc){
+    if (!desc) {
       throw new Error("description is required")
     }
     await User.findByIdAndUpdate(
@@ -477,8 +477,8 @@ const updatelinked = async (req, res) => {
 
   const userId = req._id
   try {
-    
-    if(!linkedinlink){
+
+    if (!linkedinlink) {
       throw new Error("link is required")
     }
 
@@ -506,7 +506,7 @@ const updategit = async (req, res) => {
   const { githublink } = req.body
   const userId = req._id
   try {
-    if(!githublink){
+    if (!githublink) {
       throw new Error("github is required")
     }
 
@@ -534,7 +534,7 @@ const updateinsta = async (req, res) => {
   const { instagramlink } = req.body
   const userId = req._id
   try {
-    if(!instagramlink){
+    if (!instagramlink) {
       throw new Error("link is required")
     }
     await User.findByIdAndUpdate(
@@ -561,7 +561,7 @@ const updateface = async (req, res) => {
   const { facebooklink } = req.body
   const userId = req._id
   try {
-    if(!facebooklink){
+    if (!facebooklink) {
       throw new Error("link is required")
     }
     await User.findByIdAndUpdate(
@@ -658,68 +658,68 @@ const allInfo = async (req, res) => {
 
 
 const addSkills = async (req, res) => {
-    const { newskills } = req.body
-    const userId = req._id
+  const { newskills } = req.body
+  const userId = req._id
 
-    try {
-        if(newskills.length === 0){
-            throw new Error("skills are required")
-        }
-        const user = await User.findById(userId)
-        const skills = user.skills
-        skills.push(newskills)
-        await User.findByIdAndUpdate(
-          userId,
-          {
-            $set: {
-              skills 
-            }
-          },{new:true}
-        )
-        res.status(200).json({
-          message: "Updated Skills successfully",
-          success: true,
-
-        })
-    } catch (error) {
-      res.json({
-        message: error.message,
-      })
+  try {
+    if (newskills.length === 0) {
+      throw new Error("skills are required")
     }
+    const user = await User.findById(userId)
+    const skills = user.skills
+    skills.push(newskills)
+    await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          skills
+        }
+      }, { new: true }
+    )
+    res.status(200).json({
+      message: "Updated Skills successfully",
+      success: true,
+
+    })
+  } catch (error) {
+    res.json({
+      message: error.message,
+    })
+  }
 }
 const deleteSkill = async (req, res) => {
-  const {index} = req.body
-    const userId = req._id
+  const { index } = req.body
+  const userId = req._id
 
-    try {
-        if(index < 0){
-            throw new Error("index are required")
-        }
-        let id = (index)
-        const user = await User.findById(userId)
-        let skills = user.skills
-        skills=skills.filter(index => (
-          skills.indexOf(index) !== id
-        ) )
-        console.log(skills)
-        await User.findByIdAndUpdate(
-          userId,
-          {
-            $set: {
-              skills 
-            }
-          },{new:true}
-        )
-        res.status(200).json({
-          message: "Updated Skills successfully",
-          success: true,
-
-        })
-    } catch (error) {
-      res.json({
-        message: error.message,
-      })
+  try {
+    if (index < 0) {
+      throw new Error("index are required")
     }
+    let id = (index)
+    const user = await User.findById(userId)
+    let skills = user.skills
+    skills = skills.filter(index => (
+      skills.indexOf(index) !== id
+    ))
+    console.log(skills)
+    await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
+          skills
+        }
+      }, { new: true }
+    )
+    res.status(200).json({
+      message: "Updated Skills successfully",
+      success: true,
+
+    })
+  } catch (error) {
+    res.json({
+      message: error.message,
+    })
+  }
 }
 
 

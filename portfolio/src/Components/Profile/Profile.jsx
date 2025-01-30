@@ -79,7 +79,7 @@ const Profile = () => {
               className="w-16 h-16 rounded-full object-cover border-2"
             />
           </Link>
-          
+
           <div>
             <h2 className="text-sm font-bold">{userDetails?.name}</h2>
             <p className="text-[10px] text-gray-400">{userDetails?.email}</p>
@@ -108,8 +108,8 @@ const Profile = () => {
           <Link to={userDetails?.resume}
             className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer md:mr-[50px]"
           >
-           <p> Show Resume</p>
-           </Link>
+            <p> Show Resume</p>
+          </Link>
           <div>
             <h3 className="text-lg font-semibold">{userDetails?.title} ({userDetails?.profession})</h3>
             <p className="text-gray-400 mb-2">{userDetails?.description}</p>
@@ -285,7 +285,7 @@ const Profile = () => {
           </form>
 
         </div>
-        
+
         {
           editSec === "sec1" && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">

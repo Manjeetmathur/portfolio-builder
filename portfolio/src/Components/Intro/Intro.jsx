@@ -8,15 +8,15 @@ import { CheckCircle, UserPlus, LogIn, Rocket, Edit, Share2, LayoutDashboard } f
 import { motion } from "framer-motion";
 
 const steps = [
-       { icon: <LogIn size={24} />, title: "Login", description: "Click on login. If it's your first time, register first." ,link:"/login" },
-       { icon: <UserPlus size={24} />, title: "Register", description: "Complete the registration process.",link:"/register" },
-       { icon: <Rocket size={24} />, title: "Get Started", description: "Click on 'Get Started' to begin.",link:"/create" },
-       { icon: <Edit size={24} />, title: "Fill Details", description: "Complete your profile with your information." ,link:"/create" },
-       { icon: <LayoutDashboard size={24} />, title: "Create Projects", description: "Start adding your projects.",link:"/create" },
-       { icon: <Edit size={24} />, title: "Write Blogs", description: "Share your thoughts by writing blogs." ,link:"/create"},
-       { icon: <CheckCircle size={24} />, title: "Add Skills", description: "Highlight your key skills." ,link:"/create"},
-       { icon: <Share2 size={24} />, title: "Share", description: "Go to the share button and choose a template." ,link:"/send"},
-      
+       { icon: <LogIn size={24} />, title: "Login", description: "Click on login. If it's your first time, register first.", link: "/login" },
+       { icon: <UserPlus size={24} />, title: "Register", description: "Complete the registration process.", link: "/register" },
+       { icon: <Rocket size={24} />, title: "Get Started", description: "Click on 'Get Started' to begin.", link: "/create" },
+       { icon: <Edit size={24} />, title: "Fill Details", description: "Complete your profile with your information.", link: "/create" },
+       { icon: <LayoutDashboard size={24} />, title: "Create Projects", description: "Start adding your projects.", link: "/create" },
+       { icon: <Edit size={24} />, title: "Write Blogs", description: "Share your thoughts by writing blogs.", link: "/create" },
+       { icon: <CheckCircle size={24} />, title: "Add Skills", description: "Highlight your key skills.", link: "/create" },
+       { icon: <Share2 size={24} />, title: "Share", description: "Go to the share button and choose a template.", link: "/send" },
+
 ];
 
 const Intro = () => {
@@ -68,7 +68,7 @@ const Intro = () => {
                                                         Sign In/Up
                                                  </Link>}
                                           <Link
-                                                 to="/#"
+                                                 to="/about"
                                                  className="border border-blue-500 hover:bg-blue-500 hover:text-white py-3 px-8 rounded-lg font-medium text-sm md:text-base transition-all"
                                           >
                                                  About-us
@@ -124,7 +124,7 @@ const Intro = () => {
                      <FirstCont />
 
                      {/* Call-to-Action Section */}
-                    
+
                      <div className="max-w-3xl mx-auto p-6">
                             <h2 className="text-3xl font-bold text-center mb-6">How to Use</h2>
                             <div className="grid md:grid-cols-2 space-y-4">
@@ -138,17 +138,17 @@ const Intro = () => {
                                                  <div className="flex items-center p-4 space-x-4">
                                                         <div className="p-2 bg-gray-20 rounded-full">{step.icon}</div>
                                                         <div className="flex-1">
-                                                               <Link to={step?.link} className={`font-semibold text-lg  ${step?.link ? 'hover:text-blue-500 cursor-pointer' :'cursor-text' } `}>{step.title}</Link>
+                                                               <Link to={step?.link} className={`font-semibold text-lg  ${step?.link ? 'hover:text-blue-500 cursor-pointer' : 'cursor-text'} `}>{step.title}</Link>
                                                                <p className="text-sm text-gray-400">{step.description}</p>
                                                         </div>
-                                                        <button className=''>{}</button>
+                                                        <button className=''>{ }</button>
                                                  </div>
                                           </motion.div>
                                    ))}
                             </div>
-                            
+
                      </div>
-                      <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950 text-center">
+                     <section className="py-16 bg-gradient-to-r from-blue-950 via-blue-900 to-blue-950 text-center">
                             <h2
                                    className="text-3xl md:text-4xl font-bold mb-6 text-white"
                                    data-aos="fade-up"
