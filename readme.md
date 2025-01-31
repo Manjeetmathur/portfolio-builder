@@ -1,181 +1,139 @@
-Portfolio Builder
-A full-stack web application that allows users to create and customize their portfolios. Users can register, log in, upload their details (such as profile pictures, resumes, and social media links), and choose from various template designs to generate a ready-to-use portfolio.
+# Portfolio Builder
 
-Table of Contents
-Features
+A full-stack web application that empowers users to effortlessly create and customize stunning online portfolios.  Users can register, log in, manage their profiles (including profile pictures, resumes, and social media links), craft compelling blog posts, showcase projects, and choose from a variety of professionally designed templates to instantly generate a polished, ready-to-share online presence.
 
-Tech Stack
+## Table of Contents
 
-Installation
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [API Routes](#api-routes)
+  - [User Routes](#user-routes)
+  - [Blog Routes](#blog-routes)
+  - [Post Routes](#post-routes)
+- [Frontend Overview](#frontend-overview)
+- [Contributing](#contributing)  *(New Section)*
+- [License](#license)
 
-API Routes
+## Features
 
-User Routes
+- **User Authentication:** Secure registration, login, and logout functionality powered by JWT (JSON Web Token) for protected access.
+- **Profile Management:** Comprehensive profile management, allowing users to upload and update personal details, including:
+    - Profile picture
+    - Resume
+    - Social media links (LinkedIn, GitHub, Facebook, Instagram)
+    - Professional title and description
+    - Phone number
+    - Profession
+    - Skills (add and remove)
+- **Portfolio Templates:**  A selection of pre-designed, responsive portfolio templates to choose from, providing a quick and easy way to create a professional look.  *(Consider mentioning if templates are customizable)*
+- **Blog Management:**  Create, edit, and delete blog posts to share insights, experiences, and showcase thought leadership.
+- **Project/Post Management:**  Upload, edit, and delete project/post entries with images and descriptions to highlight accomplishments and work samples.  *(Clarified "Post" to "Project/Post")*
+- **File Uploads:** Seamless handling of file uploads for profile pictures, resumes, and project/post images.
+- **Responsive Design:**  Ensures optimal viewing experience across various devices (desktops, tablets, and mobile phones). *(Added this important feature)*
 
-Blog Routes
+## Tech Stack
 
-Post Routes
+- **Backend:**
+  - JavaScript (Node.js)
+  - Express.js (Web Framework)
+  - MongoDB (Database)
+  - JWT (JSON Web Token - Authentication)
+  - Multer (File Upload Handling)
+- **Frontend:**
+  - React (JavaScript Library)
+  - CSS/SCSS (Styling)
+  - Axios (HTTP Client)
 
-Frontend Overview
+### Frontend Overview
+The frontend, built with React, provides a user-friendly interface for:
 
-License
+User registration and login.
+Comprehensive profile management.
+Creating and managing blog posts.
+Uploading and managing projects/posts.
+Selecting and customizing portfolio templates.
+Contributing (New Section - Highly Recommended)
+Contributions are welcome!  Please see the readme.md file for guidelines.  (Create this file)
 
-Features
-User Authentication: Register, login, and logout functionality with JWT (JSON Web Token) verification.
+## API Routes
 
-Profile Management: Upload and update user details, including profile images, resumes, social media links, skills, and professional information.
+This section details the available API endpoints for the Portfolio Builder application.
 
-Portfolio Templates: Choose from various pre-designed templates to generate a personalized portfolio.
+### User Routes
 
-Blog Management: Create, edit, and delete blog posts to showcase your work or thoughts.
+- **Authentication:**
+    - `POST /user/register`: Register a new user.
+    - `POST /user/login`: Log in an existing user.
+    - `GET /user/logout`: Log out the current user.
 
-Post Management: Upload, edit, and delete posts with images to share updates or projects.
+- **Profile Management:**
+    - `GET /user/user-info`: Retrieve information for the logged-in user.
+    - `GET /user/all-info/:id`: Retrieve information for a specific user (by ID).  *(Consider security implications of exposing all user info)*
+    - `POST /user/profile`: Upload/update user profile details (profile picture, resume, etc.).  *(Renamed for clarity)*
+    - `PATCH /user/update-image`: Update the user's profile image.
+    - `PATCH /user/update-resume`: Update the user's resume.
+    - `PATCH /user/update-name`: Update the user's name.
+    - `PATCH /user/update-email`: Update the user's email.
+    - `PATCH /user/update-title`: Update the user's professional title.
+    - `PATCH /user/update-description`: Update the user's description/bio.
+    - `PATCH /user/update-phone`: Update the user's phone number.
+    - `PATCH /user/update-profession`: Update the user's profession.
+    - `PATCH /user/update-linkedin`: Update the user's LinkedIn profile URL.
+    - `PATCH /user/update-github`: Update the user's GitHub profile URL.
+    - `PATCH /user/update-facebook`: Update the user's Facebook profile URL.
+    - `PATCH /user/update-instagram`: Update the user's Instagram profile URL.
+    - `PATCH /user/update-skills`: Add or update user skills (consider how you handle adding/updating).
+    - `PATCH /user/delete-skill/:skill`: Delete a specific skill from the user's profile (by name/ID). *(More specific delete route)*
 
-File Uploads: Support for uploading profile pictures, resumes, and post images.
+### Blog Routes
 
-Tech Stack
-Backend
-JavaScript: Primary programming language.
+- `POST /blog/create`: Create a new blog post.
+- `GET /blog/get-all`: Retrieve all blog posts for the logged-in user.
+- `GET /blog/get/:id`: Retrieve a specific blog post by ID.
+- `PATCH /blog/update-title/:id`: Edit the title of a specific blog post (by ID).
+- `PATCH /blog/update-content/:id`: Edit the content of a specific blog post (by ID).
+- `DELETE /blog/delete/:id`: Delete a specific blog post (by ID).
 
-Node.js: Runtime environment.
+### Project/Post Routes
 
-Express.js: Web framework for building APIs.
+- `POST /project/create`: Upload a new project/post with an image.
+- `GET /project/get/:id`: Retrieve a specific project/post by ID.
+- `PATCH /project/update-image/:id`: Edit the image of a specific project/post (by ID).
+- `PATCH /project/update-title/:id`: Edit the title of a specific project/post (by ID).
+- `PATCH /project/update-description/:id`: Edit the description of a specific project/post (by ID).
+- `PATCH /project/update-link/:id`: Edit the link associated with a specific project/post (by ID).
+- `DELETE /project/delete/:id`: Delete a specific project/post (by ID).
 
-MongoDB: Database for storing user and portfolio data.
+## Installation
 
-JWT: For user authentication and authorization.
+### Backend Setup
 
-Multer: For handling file uploads.
+1. Clone the repository:
 
-Frontend
-React: JavaScript library for building the user interface.
+```bash
+git clone https://github.com/Manjeetmathur/portfolio-builder.git
 
-CSS/SCSS: For styling the application and portfolio templates.
+cd portfolio-backend
 
-Axios: For making API requests to the backend.
+//Set up environment variables:
+//Create a .env file in the backend directory and populate it with your configuration:
 
-Installation
-Backend Setup
-Clone the repository:
-
-bash
-Copy
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name/backend
-Install dependencies:
-
-bash
-Copy
-npm install
-Set up environment variables:
-Create a .env file in the backend directory and add the following:
-
-env
-Copy
-PORT=3000
+PORT=*000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
-Run the server:
+# Add any other necessary environment variables
 
-bash
-Copy
-npm start
-Frontend Setup
-Navigate to the frontend directory:
+nmp run dev
 
-bash
-Copy
-cd ../frontend
-Install dependencies:
+ ### frontend
 
-bash
-Copy
+cd portfolio
+
+//Install dependencies:
 npm install
-Run the frontend:
 
-bash
-Copy
-npm start
-API Routes
-User Routes
-POST /user/register: Register a new user.
-
-POST /user/login: Log in an existing user.
-
-GET /user/logout: Log out the user.
-
-POST /user/upload-details: Upload user details (profile picture, resume, etc.).
-
-GET /user/user-info: Get the logged-in user's information.
-
-GET /user/all-info/:id: Get information for a specific user by ID.
-
-PATCH /user/update-image: Update the user's profile image.
-
-PATCH /user/update-resume: Update the user's resume.
-
-PATCH /user/update-name: Update the user's name.
-
-PATCH /user/update-email: Update the user's email.
-
-PATCH /user/update-user-title: Update the user's title.
-
-PATCH /user/update-user-desc: Update the user's description.
-
-PATCH /user/update-user-phone: Update the user's phone number.
-
-PATCH /user/update-user-profession: Update the user's profession.
-
-PATCH /user/update-linkedin: Update the user's LinkedIn link.
-
-PATCH /user/update-git: Update the user's GitHub link.
-
-PATCH /user/update-face: Update the user's Facebook link.
-
-PATCH /user/update-insta: Update the user's Instagram link.
-
-PATCH /user/update-skills: Add or update user skills.
-
-PATCH /user/delete-skills: Delete a skill from the user's profile.
-
-Blog Routes
-POST /blog/create-blog: Create a new blog post.
-
-GET /blog/get-blogs: Get all blog posts by the logged-in user.
-
-PATCH /blog/edit-blog-title: Edit the title of a blog post.
-
-PATCH /blog/edit-blog-content: Edit the content of a blog post.
-
-POST /blog/delete-blog: Delete a blog post.
-
-Post Routes
-POST /post/upload-post: Upload a new post with an image.
-
-GET /post/get-post/:id: Get a specific post by ID.
-
-PATCH /post/edit-post-image: Edit the image of a post.
-
-PATCH /post/edit-post-title: Edit the title of a post.
-
-PATCH /post/edit-post-desc: Edit the description of a post.
-
-PATCH /post/edit-post-link: Edit the link of a post.
-
-POST /post/delete-post: Delete a post.
-
-Frontend Overview
-The frontend is built using React and provides a user-friendly interface for:
-
-Registering and logging in.
-
-Uploading and updating user details.
-
-Creating and managing blog posts.
-
-Uploading and managing general posts.
-
-Selecting and customizing portfolio templates.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+//start
+npm run dev
