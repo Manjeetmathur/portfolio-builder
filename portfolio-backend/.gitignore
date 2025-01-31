@@ -1,2 +1,2 @@
-/node_modules
-../portfolio/.env
+../portfolio-backend/node_modules
+../portfolio-backend/.env

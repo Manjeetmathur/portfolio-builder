@@ -121,7 +121,7 @@ cd portfolio-backend
 //Set up environment variables:
 //Create a .env file in the backend directory and populate it with your configuration:
 
-PORT=*000
+PORT=8000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 # Add any other necessary environment variables
