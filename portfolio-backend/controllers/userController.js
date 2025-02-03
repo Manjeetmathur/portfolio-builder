@@ -628,16 +628,12 @@ const allInfo = async (req, res) => {
   const { id } = req.query
   try {
     if (!id) {
-      res.status(404).json({
-        message: "User not found . . .",
-        success: false,
-      })
+      throw new Error("Invalid")
     }
     let user = await User.findById(id)
     if (!user) {
-      res.status(404).json({
-        message: "user not found"
-      })
+      throw new Error("user not found")
+      
     }
     user = await User.findById(id).select('-password').populate('posts').populate({ path: 'blogs' })
 
