@@ -54,6 +54,32 @@ const ContextProvider = ({ children }) => {
               }
 
        }
+       const uploadCertificate = async (title, certificateImage, link, desc) => {
+              const formData = new FormData()
+              formData.append('title', title)
+              formData.append('certificateImage', certificateImage)
+              formData.append('link', link)
+              formData.append('desc', desc)
+              try {
+                     const data = await axios.post(`${url}/certificate/upload-certificate`,
+                            formData,
+                            {
+                                   headers: { 'content-type': 'multipart/formdata' },
+                                   withCredentials: true,
+                                   withXSRFToken: true
+                            }
+                     )
+                     const res = data.data
+                     if (res.success) {
+                            toast.success(res.message)
+                     } else {
+                            toast.error(res.message)
+                     }
+              } catch (error) {
+                     toast.error(error.message)
+              }
+
+       }
        const uploadBlog = async (title, desc) => {
               try {
                      const data = await axios.post(`${url}/blog/create-blog`,
@@ -554,6 +580,132 @@ const ContextProvider = ({ children }) => {
                      toast.error(error.message);
               }
        };
+       const updateCerTitle = async (certificateTitle, certificateId) => {
+              // console.log(name);
+
+              try {
+                     const data = await axios.patch(
+                            `${url}/certificate/edit-certificate-title`,
+                            { Title, certificateId },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     console.log(res);
+
+                     if (res.success) {
+                            toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
+       const updateCerDesc = async (desc, certificateId) => {
+              // console.log(name);
+
+              try {
+                     const data = await axios.patch(
+                            `${url}/certificate/edit-certificate-desc`,
+                            { desc, certificateId },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     console.log(res);
+
+                     if (res.success) {
+                            toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
+       const updateCerLink = async (link, certificateId) => {
+              // console.log(name);
+
+              try {
+                     const data = await axios.patch(
+                            `${url}/certificate/edit-certificate-link`,
+                            { link,certificateId },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     console.log(res);
+
+                     if (res.success) {
+                            toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
+       const updateCerImage = async (certificateImage, certificateId) => {
+              const formData = new FormData();
+              formData.append("certificateImage", certificateImage);
+              formData.append("certificateId", certificateId);
+              try {
+                     const data = await axios.patch(`${url}/certificate/edit-certificate-image`, formData,
+                            {
+                                   headers: { "Content-Type": "multipart/form-data" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            });
+                     const res = data.data;
+                     console.log(res);
+                     if (res.success) {
+                            toast.success(res.message);
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
+       const deleteCer = async (certificateId) => {
+              // console.log(name);
+
+              try {
+                     const data = await axios.post(
+                            `${url}/post/delete-post`,
+                            { certificateId },
+                            {
+                                   headers: { "Content-Type": "application/json" },
+                                   withCredentials: true,
+                                   withXSRFToken: true,
+                            }
+                     );
+                     const res = data.data;
+                     console.log(res);
+
+                     if (res.success) {
+                            toast.success(res.message);
+                            // navigate('/profile')
+                     } else {
+                            toast.error(res.message);
+                     }
+              } catch (error) {
+                     toast.error(error.message);
+              }
+       };
        const updateBlogTitle = async (blogTitle, blogId) => {
               // console.log(name);
 
@@ -649,7 +801,7 @@ const ContextProvider = ({ children }) => {
                             updateFace, updateGit, updateInsta, updateLinked,
                             updatePostDesc, updatePostImage, updatePostLink, deletePost, updatePostTitle,
                             updateBlogTitle, updateBlogContent, deleteBlog,
-                            getUserDetails
+                            getUserDetails,uploadCertificate,updateCerDesc,updateCerImage,updateCerLink,updateCerTitle,deleteCer
                      }}>
                      {children}
               </context.Provider>

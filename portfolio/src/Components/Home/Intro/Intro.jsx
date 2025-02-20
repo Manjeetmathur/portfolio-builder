@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useSelector } from 'react-redux';
-import FirstCont from '../Home/FirstCont/FirstCont';
+import FirstCont from '../FirstCont/FirstCont';
 import { CheckCircle, UserPlus, LogIn, Rocket, Edit, Share2, LayoutDashboard } from "lucide-react";
 import { motion } from "framer-motion";
 

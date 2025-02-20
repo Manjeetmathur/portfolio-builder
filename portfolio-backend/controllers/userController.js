@@ -635,7 +635,7 @@ const allInfo = async (req, res) => {
       throw new Error("user not found")
       
     }
-    user = await User.findById(id).select('-password').populate('posts').populate({ path: 'blogs' })
+    user = await User.findById(id).select('-password').populate('posts').populate('certificates').populate({ path: 'blogs' })
 
     return res.status(200).json({
       message: "hurreh",

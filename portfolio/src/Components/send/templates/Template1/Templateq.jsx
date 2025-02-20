@@ -93,7 +93,7 @@ const Template1 = () => {
               {/* Profile Info Section */}
               <div className=" z-10 flex justify-center items-center md:items-start flex-col md:w-[60%] text-center md:text-left">
                 <h2 className="text-xl font-bold font-serif mt-4 lg:text-4xl md:text-3xl sm:text-2xl f1" data-aos="fade-up">
-                  Hi, I'm{" "}
+                  Hi, it's {" "}
                   <span className="text-blue-500">
                     <Typewriter
                       words={[userDetails?.name || ""]}

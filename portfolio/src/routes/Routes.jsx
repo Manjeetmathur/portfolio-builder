@@ -8,7 +8,6 @@ import Template1 from "../Components/send/templates/Template1/Templateq";
 import Template2 from "../Components/send/templates/Template2/Template2";
 import Profile from "../Components/Profile/Profile";
 import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
-import Intro from "../Components/Intro/Intro";
 import Create from "../Components/Create/Create";
 import AboutUs from "../Components/About/About";
 

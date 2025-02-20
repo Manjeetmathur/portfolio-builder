@@ -1,10 +1,11 @@
 import React from 'react'
-import SecondCont from '../Home/SecondCont/SecondCont'
-import ThirdCont from '../Home/ThirdCont/ThirdCont'
-import FourthCont from '../Home/FourthCont/FourthCont'
+import SecondCont from './SecondCont/SecondCont'
+import ThirdCont from './ThirdCont/ThirdCont'
+import FourthCont from './FourthCont/FourthCont'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import FifthCont from '../Home/fifthCont/FifthCont'
+import FifthCont from './fifthCont/FifthCont'
+import SixthCont from './sixthCont/SixthCont'
 
 const Create = () => {
        return (
@@ -12,6 +13,7 @@ const Create = () => {
                      <Header/>
                      <SecondCont />
                      <ThirdCont />
+                     <SixthCont/>
                      <FourthCont />
                      <FifthCont />
                      <Footer/>

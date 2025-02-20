@@ -96,7 +96,7 @@ const Template2 = () => {
                                           <div className="flex flex-col justify-center items-center md:items-start
                              md:w-[40%] text-center md:text-left" data-aos='fade-up'>
                                                  <h2 className="text-2xl text-white font-bold mt-4 lg:text-4xl md:text-3xl">
-                                                        Hii I'm <span className="text-blue-500">
+                                                        Hii it's <span className="text-blue-500">
                                                                <Typewriter
                                                                       words={[userDetails?.name || ""]}
                                                                       loop={false}

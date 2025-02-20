@@ -67,6 +67,10 @@ const userSchema = mongoose.Schema({
               type : mongoose.Schema.Types.ObjectId,
               ref : 'Posts'
        }],
+       certificates :[ {
+              type : mongoose.Schema.Types.ObjectId,
+              ref : 'Certificate'
+       }],
        blogs :[ {
               type : mongoose.Schema.Types.ObjectId,
               ref : 'Blog'
