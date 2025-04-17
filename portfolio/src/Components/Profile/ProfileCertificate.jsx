@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { RiExternalLinkFill } from 'react-icons/ri';
 const ProfileCerticate = ({ certificate }) => {
+  console.log(certificate)
   const [editSec, setEditSec] = useState(false)
   const ref = useRef()
   const { updateCerDesc, updateCerImage, updateCerLink, deleteCer, updateCerTitle } = useContext(context)

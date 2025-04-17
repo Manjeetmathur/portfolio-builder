@@ -10,22 +10,30 @@ export const context = createContext()
 
 const ContextProvider = ({ children }) => {
 
-       const getUserDetails = async (id) => {
 
-              const endpoint = `${url}/user/all-info/id?id=${id?.id}`;
+       const getUserDetails = async () => {
+
+              const endpoint = `${url}/user/all-info/id?id=${userData?.id}`;
+              // console.log(endpoint);
 
               const data = await axios.get(endpoint);
               const res = data.data;
-             
+
               if (res.success) {
-                     console.log(res.user)
-                     return res.user
+                     dispatch(userDetails(res.user));
               }
-
        };
+       //get details
+       useEffect(() => {
+              try {
 
+                     getUserDetails();
+              } catch (error) {
+                     console.log(error);
+              }
+       }, []);
        const { userData } = useSelector(st => st.auth)
-       
+
        const dispatch = useDispatch()
 
        const uploadPost = async (title, postImage, link, desc) => {
@@ -46,6 +54,8 @@ const ContextProvider = ({ children }) => {
                      const res = data.data
                      if (res.success) {
                             toast.success(res.message)
+                            getUserDetails()
+
                      } else {
                             toast.error(res.message)
                      }
@@ -72,6 +82,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data
                      if (res.success) {
                             toast.success(res.message)
+                            getUserDetails()
                      } else {
                             toast.error(res.message)
                      }
@@ -91,6 +102,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -98,28 +110,7 @@ const ContextProvider = ({ children }) => {
               }
        }
 
-       //get details
-       useEffect(() => {
-              try {
-                     const getUserDetails = async () => {
 
-                            const endpoint = `${url}/user/all-info/id?id=${userData?.id}`;
-                            // console.log(endpoint);
-
-                            const data = await axios.get(endpoint);
-                            const res = data.data;
-                            console.log("res", res);
-
-                            if (res.success) {
-                                   dispatch(userDetails(res.user));
-                            }
-                     };
-                     getUserDetails();
-              } catch (error) {
-                     console.log(error);
-              }
-       }, []);
-       // const [loading3,setLoading3]= useState(false);
 
        //update profile
        const updateProfile = async (profile) => {
@@ -134,6 +125,8 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
+                            getUserDetails();
                      } else {
                             toast.error(res.message);
                      }
@@ -156,6 +149,9 @@ const ContextProvider = ({ children }) => {
                      console.log(res);
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
+                            getUserDetails();
+
                      } else {
                             toast.error(res.message);
                      }
@@ -181,6 +177,7 @@ const ContextProvider = ({ children }) => {
                      console.log(res);
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -208,6 +205,7 @@ const ContextProvider = ({ children }) => {
                      console.log(res);
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -233,6 +231,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -255,6 +254,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -278,6 +278,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -302,6 +303,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -326,6 +328,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -350,6 +353,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -374,6 +378,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -398,6 +403,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -421,6 +427,7 @@ const ContextProvider = ({ children }) => {
                      const res = data.data;
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -443,6 +450,7 @@ const ContextProvider = ({ children }) => {
                      );
                      const res = data.data;
                      if (res.success) {
+                            getUserDetails()
                             // await toast.success(res.message);
                             // navigate('/profile')
                      } else {
@@ -472,6 +480,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -498,6 +507,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -524,6 +534,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -547,6 +558,7 @@ const ContextProvider = ({ children }) => {
                      console.log(res);
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -572,6 +584,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -598,6 +611,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -620,10 +634,10 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -638,7 +652,7 @@ const ContextProvider = ({ children }) => {
               try {
                      const data = await axios.patch(
                             `${url}/certificate/edit-certificate-link`,
-                            { link,certificateId },
+                            { link, certificateId },
                             {
                                    headers: { "Content-Type": "application/json" },
                                    withCredentials: true,
@@ -650,6 +664,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -673,6 +688,7 @@ const ContextProvider = ({ children }) => {
                      console.log(res);
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                      } else {
                             toast.error(res.message);
                      }
@@ -698,6 +714,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -724,6 +741,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -750,6 +768,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -776,6 +795,7 @@ const ContextProvider = ({ children }) => {
 
                      if (res.success) {
                             toast.success(res.message);
+                            getUserDetails()
                             // navigate('/profile')
                      } else {
                             toast.error(res.message);
@@ -795,13 +815,13 @@ const ContextProvider = ({ children }) => {
               <context.Provider
                      value={{
                             uploadPost, uploadBlog, showPdf,
-                            updateTitle, updateProfile,updateSkills,deleteSkills,
+                            updateTitle, updateProfile, updateSkills, deleteSkills,
                             updateDesc, updatePhone, updateResume,
                             updateName, updateEmail, updateProfession,
                             updateFace, updateGit, updateInsta, updateLinked,
                             updatePostDesc, updatePostImage, updatePostLink, deletePost, updatePostTitle,
                             updateBlogTitle, updateBlogContent, deleteBlog,
-                            getUserDetails,uploadCertificate,updateCerDesc,updateCerImage,updateCerLink,updateCerTitle,deleteCer
+                            getUserDetails, uploadCertificate, updateCerDesc, updateCerImage, updateCerLink, updateCerTitle, deleteCer
                      }}>
                      {children}
               </context.Provider>

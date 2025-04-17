@@ -151,7 +151,6 @@ const editBlogContent = async (req, res) => {
 }
 const deleteBlog = async (req, res) => {
        const { blogId } = req.body
-       console.log(blogId);
 
        const userId = req._id
        try {

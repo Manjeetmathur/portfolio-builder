@@ -1,87 +1,87 @@
 import mongoose from "mongoose"
 
 const userSchema = mongoose.Schema({
-       name : {
-              type : String,
+       name: {
+              type: String,
               // required:true,
        },
-       email : {
-              type : String,
-              unique : true,
+       email: {
+              type: String,
+              unique: true,
               // required:true
        },
-       password : {
-              type : String,
+       password: {
+              type: String,
               // required:true
        },
-       phonenumber : {
-              type : String,
+       phonenumber: {
+              type: String,
               // required:true
-              default : ''
+              default: ''
        },
-       profession:{
-              type:String,
+       profession: {
+              type: String,
               // required:true,
-              default : ''
+              default: ''
        },
-       title : {
-              type:String,
+       title: {
+              type: String,
               // required:true
-              default : ''
+              default: ''
        },
-       description : {
-              type : String,
-              default : ''
+       description: {
+              type: String,
+              default: ''
               // required:true
        },
        profile: {
-              imageUrl:{
-                     type:String,
-                     default : ''
+              imageUrl: {
+                     type: String,
+                     default: ''
               },
-              publicId : {
-                     type:String,
-                     default : ''
+              publicId: {
+                     type: String,
+                     default: ''
               },
        },
        resume: {
-             type : String,
+              type: String,
        },
-       linkedinlink:{
-              type:String,
-              default : ''
+       linkedinlink: {
+              type: String,
+              default: ''
        },
-       githublink:{
-              type:String,
-              default : ''
+       githublink: {
+              type: String,
+              default: ''
        },
-       instagramlink:{
-              type:String,
-              default : ''
+       instagramlink: {
+              type: String,
+              default: ''
        },
-       facebooklink:{
-              type:String,
-              default : ''
+       facebooklink: {
+              type: String,
+              default: ''
        },
-       posts :[ {
-              type : mongoose.Schema.Types.ObjectId,
-              ref : 'Posts'
+       posts: [{
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Posts'
        }],
-       certificates :[ {
-              type : mongoose.Schema.Types.ObjectId,
-              ref : 'Certificate'
+       certificates: [{
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Certificate'
        }],
-       blogs :[ {
-              type : mongoose.Schema.Types.ObjectId,
-              ref : 'Blog'
+       blogs: [{
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Blog'
        }],
-       skills : [{
-              type : String,
-              default : ''
+       skills: [{
+              type: String,
+              default: ''
        }],
 },
-{
-       timestamps : true
-})
+       {
+              timestamps: true
+       })
 
-export const User = mongoose.model("User",userSchema)
+export const User = mongoose.model("User", userSchema)

@@ -51,7 +51,6 @@ const ProfilePost = ({ post }) => {
                     onClick={async () => {
                       setloading('delete')
                       await deletePost(id)
-                      window.location.reload()
                       setloading()
                     }} />}
                 <GiCancel
