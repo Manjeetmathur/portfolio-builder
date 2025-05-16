@@ -75,7 +75,7 @@ const Template3 = () => {
                             color="bg-gradient-to-r to-blue-500 from-teal-500 from-green-500 text-white text-white" 
                      />
                      {loading ? (
-                            <LuLoaderPinwheel className="absolute top-1/2 left-1/2 text-6xl text-blue-600 animate-spin " />
+                            <LuLoaderPinwheel className="absolute top-[40%] left-[45%] text-6xl text-blue-600 animate-spin " />
                      ) : (
                             <div className="relative z-10 bg-gradient-to-r ">
                                    {/* Profile Section */}
