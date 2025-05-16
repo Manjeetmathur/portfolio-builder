@@ -225,7 +225,7 @@ const Template3 = () => {
                                                  >
                                                         My Certificates
                                                  </h2>
-                                                 <div className="max-w-6xl grid md:grid-cols-2 ">
+                                                 <div className="max-w-6xl grid md:grid-cols-2 lg:grid-cols-3 ">
                                                         {userDetails?.certificates?.map((item, idx) => (
                                                                <Temp3Certificate certificate={item} idx={idx} key={idx} />
                                                         ))}

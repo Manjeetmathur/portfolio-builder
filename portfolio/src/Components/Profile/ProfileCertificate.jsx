@@ -21,7 +21,7 @@ const ProfileCerticate = ({ certificate }) => {
   // console.log(certificate);
 
   return (
-    <div className='border-y-2 my-3 py-2'>
+    <div className='border-y-2 my-3 py-2 p-4 max-w-xs w-full mx-auto  shadow-2xl rounded-xl   '>
       <div className="flex relative  items-center  gap-4">
         <h4 className="text-lg font-bold mb-6 mr-4">{certificate?.certificateTitle}  {<Link className={`${certificate?.link?.length > 5 ? 'block' : "hidden"}`} to={`${certificate?.link}`}>
           <RiExternalLinkFill />
@@ -40,7 +40,7 @@ const ProfileCerticate = ({ certificate }) => {
           className="w-full h-32 object-cover rounded-lg mt-2"
         />
       </Link>
-      <p className="text-gray-400 m-2 my-3">{certificate?.certificateDescription}</p>
+      <p className="text-gray-400 m-2 my-3 text-wrap">{certificate?.certificateDescription}</p>
       {editSec && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-gray-800 p-6 rounded-lg shadow-lg md:w-1/2">

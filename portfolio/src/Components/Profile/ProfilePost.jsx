@@ -20,7 +20,7 @@ const ProfilePost = ({ post }) => {
   // console.log(post);
 
   return (
-    <div className='border-y-2 my-3 py-2'>
+    <div className='border-y-2 my-3 py-2  max-w-xs w-full mx-auto  shadow-2xl rounded-xl'>
       <div className="flex relative  items-center  gap-4">
         <h4 className="text-lg font-bold mb-6 mr-4">{post.postTitle}  {<Link className={`${post?.link?.length > 5 ? 'block' : "hidden"}`} to={`${post?.link}`}>
           <RiExternalLinkFill />

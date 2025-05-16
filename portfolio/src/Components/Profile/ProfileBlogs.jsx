@@ -15,7 +15,7 @@ const ProfileBlogs = ({ blog }) => {
        const { updateBlogTitle, updateBlogContent, deleteBlog } = useContext(context)
        const id = blog._id
        return (
-              <div className='border-y-2 my-3'>
+              <div className='border-y-2 my-3  max-w-xs w-full mx-auto  shadow-2xl rounded-xl'>
                      <div className="relative flex justify-between">
                             <h4 className="text-lg font-bold">{blog.title}</h4>
                             <div
