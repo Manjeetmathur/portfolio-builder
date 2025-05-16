@@ -17,7 +17,7 @@ const ProfileCerticate = ({ certificate }) => {
   const [link, setcertificateLink] = useState('');
   const [desc, setcertificateDesc] = useState('');
   const [loading, setloading] = useState(null);
-  const id = certificate._id
+  const id = certificate?._id
   // console.log(certificate);
 
   return (
@@ -51,8 +51,8 @@ const ProfileCerticate = ({ certificate }) => {
                   <MdOutlineDeleteOutline className='text-2xl cursor-pointer'
                     onClick={async () => {
                       setloading('delete')
-                      await deleteCer(id)
-                      window.location.reload()
+                      await deleteCer(certificate?._id)
+                      // window.location.reload()
                       setloading()
                     }} />}
                 <GiCancel
