@@ -22,6 +22,7 @@ import 'aos/dist/aos.css'
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { Typewriter } from "react-simple-typewriter";
 import { BackgroundBeams } from "../../../../ui/background-beams";
+import Temp2Certificate from "./Temp2Certificate";
 
 const Template2 = () => {
        const [userDetails, setUser] = useState();
@@ -29,6 +30,7 @@ const Template2 = () => {
        const postRef = useRef()
        const blogRef = useRef()
        const contactRef = useRef()
+       const certificateref = useRef()
        const id = useParams();
        const [MessageName, setMessageName] = useState("")
        const [MessageSubject, setMessageSubject] = useState("")
@@ -67,7 +69,7 @@ const Template2 = () => {
 
        return (
               <div className="">
-                     <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-gray-900 via-blue-900 to-blue-950 text-white" />
+                     <Temp1Header postRef={postRef} blogRef={blogRef} certificateref={certificateref} contactRef={contactRef} color="bg-gradient-to-r from-gray-900 via-blue-900 to-blue-950 text-white" />
                      {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" />
                             :
                             <div className="">
@@ -118,7 +120,7 @@ const Template2 = () => {
                                                                <a
                                                                       href={userDetails?.linkedinlink}
                                                                       target="_blank"
-                                                                      // rel="noopener noreferrer"
+                                                                      rel="noopener noreferrer"
                                                                       className="transform hover:scale-110 transition-all 
                                                         duration-300"
                                                                >
@@ -163,6 +165,7 @@ const Template2 = () => {
                                                         <div className="m-2 mb-10 " data-aos='zoom-in'>
                                                                <Link
                                                                       to={`${userDetails?.resume}`}
+                                                                      target="_blank" rel="noopener noreferrer"
                                                                       className="text-sm lg:text-xl border-2 bg-gradient-to-r 
                                                         from-teal-400 to-blue-500 text-white 
                                                         rounded-xl px-5 py-2 transform hover:scale-105
@@ -210,6 +213,17 @@ const Template2 = () => {
                                                  <div className="">
                                                         {userDetails?.posts?.map((item, idx) => {
                                                                return <Temp2Posts post={item} idx={idx} key={item._id} ></Temp2Posts>;
+                                                        })}
+                                                 </div>
+                                          </div>
+                                   }
+                                   {
+                                          userDetails?.certificates?.length > 0 && <div className="bg-gray-900 flex flex-col justify-center items-center dark:bg-grid-white/[0.05] bg-grid-black/[0.05]" ref={certificateref}>
+                                                 <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
+                             bg-gradient-to-r from-teal-400 to-blue-500 mt-6">My Certificates</h2>
+                                                 <div className="grid md:grid-cols-2 gap-5 m-40">
+                                                        {userDetails?.certificates?.map((item, idx) => {
+                                                               return <Temp2Certificate certificate={item} idx={idx} key={item._id} ></Temp2Certificate>;
                                                         })}
                                                  </div>
                                           </div>

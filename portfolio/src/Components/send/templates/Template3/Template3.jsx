@@ -22,12 +22,14 @@ import 'aos/dist/aos.css';
 import { LuLoaderPinwheel } from "react-icons/lu";
 import { Typewriter } from "react-simple-typewriter";
 import { BackgroundBeams } from "../../../../ui/background-beams";
+import Temp3Certificate from "./Temp3Certificate";
 
 const Template3 = () => {
        const [userDetails, setUser] = useState();
        const postRef = useRef();
        const blogRef = useRef();
        const contactRef = useRef();
+       const certificateref = useRef();
        const id = useParams();
        const [MessageName, setMessageName] = useState("");
        const [MessageSubject, setMessageSubject] = useState("");
@@ -69,6 +71,7 @@ const Template3 = () => {
                             postRef={postRef} 
                             blogRef={blogRef} 
                             contactRef={contactRef} 
+                            certificateref={certificateref}
                             color="bg-gradient-to-r to-blue-500 from-teal-500 from-green-500 text-white text-white" 
                      />
                      {loading ? (
@@ -140,6 +143,7 @@ const Template3 = () => {
                                                         {/* Resume Link */}
                                                         <Link
                                                                to={userDetails?.resume}
+                                                              target="_blank" rel="noopener noreferrer"
                                                                className="bg-gradient-to-r from-blue-500 to-teal-500 text-white font-semibold px-6 py-3 rounded-xl hover:from-blue-600 hover:to-teal-600 transform hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-200"
                                                                data-aos="zoom-in"
                                                         >
@@ -205,6 +209,25 @@ const Template3 = () => {
                                                  <div className="max-w-6xl mx-auto px-6">
                                                         {userDetails?.posts?.map((item, idx) => (
                                                                <Temp3Posts post={item} idx={idx} key={idx} />
+                                                        ))}
+                                                 </div>
+                                          </div>
+                                   )}
+                                   {userDetails?.certificates?.length > 0 && (
+                                          <div 
+                                                 className="bg-gray-50 py-16 bg-gradient-to-r from-blue-100 to-teal-100 " 
+                                                 ref={certificateref}
+
+                                          >
+                                                 <h2 
+                                                        className="text-4xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-teal-500 mb-12" 
+                                                        data-aos="fade-up"
+                                                 >
+                                                        My Certificates
+                                                 </h2>
+                                                 <div className="max-w-6xl grid md:grid-cols-2 ">
+                                                        {userDetails?.certificates?.map((item, idx) => (
+                                                               <Temp3Certificate certificate={item} idx={idx} key={idx} />
                                                         ))}
                                                  </div>
                                           </div>

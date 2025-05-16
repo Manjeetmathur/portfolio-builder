@@ -16,6 +16,7 @@ import { context } from "../../Context/Context";
 import { TiTick } from "react-icons/ti";
 import Footer from "../Footer/Footer";
 import { LuLoaderPinwheel } from "react-icons/lu";
+import ProfileCerticate from "./ProfileCertificate";
 
 const Profile = () => {
   const { userDetails } = useSelector((st) => st.auth);
@@ -37,6 +38,10 @@ const Profile = () => {
   const [posttitle, setpostTitle] = useState('');
   const [postlink, setPostLink] = useState('');
   const [postdesc, setpostDesc] = useState('');
+  const [certImage, setcertImage] = useState('');
+  const [certtitle, setcertTitle] = useState('');
+  const [certlink, setcertLink] = useState('');
+  const [certdesc, setcertDesc] = useState('');
   const [blogtitle, setBlogTitle] = useState("");
   const [blogdesc, setBlogDesc] = useState("");
   const [loading, setloading] = useState(null)
@@ -46,7 +51,7 @@ const Profile = () => {
   const {
     updateName, updateEmail, updatePhone, updateProfile,
     updateTitle, updateDesc, updateResume, updateProfession, updateSkills,
-    updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog, deleteSkills
+    updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog, deleteSkills,uploadCertificate
   } = useContext(context)
   // console.log(name);
 
@@ -105,7 +110,7 @@ const Profile = () => {
           />
            */}
 
-          <Link to={userDetails?.resume}
+          <Link to={userDetails?.resume} target="_blank" rel="noopener noreferrer"
             className="px-2 py-1 border-2 rounded-lg bg-blue-800 cursor-pointer md:mr-[50px]"
           >
             <p> Show Resume</p>
@@ -193,6 +198,66 @@ const Profile = () => {
               setPostLink('')
             }}>
             {loading === 'post' ? 'Uploading...' : 'Upload Post'}
+
+
+          </button>
+        </div >
+        {/* Projects Section */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-4">My Certificate</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {userDetails?.certificates?.map((certificate) => (
+              <ProfileCerticate
+                certificate={certificate}
+                // setEditSec
+                key={certificate._id}
+                className="bg-gray-800 p-4 border rounded-lg shadow-md 
+                  transition-transform transform hover:scale-105"
+              />
+
+            ))}
+          </div>
+        </div>
+
+        {/* Add New Certificate Section */}
+        <div className="p-6 bg-gray-800 shadow-lg rounded-lg" >
+          <h3 className="text-2xl font-semibold mb-4">Add a New Certificate</h3>
+          <input
+            type="text"
+            placeholder="Title"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            onChange={(e) => setcertTitle(e.target.value)}
+            value={certtitle}
+          />
+          <input
+            type="file"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            onChange={(e) => setcertImage(e.target.files?.[0])}
+          />
+          <textarea
+            placeholder="Content"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            onChange={(e) => setcertDesc(e.target.value)}
+            value={certdesc}
+          ></textarea>
+          <input
+            type="text"
+            placeholder="Link"
+            className="block w-full p-2 border border-gray-600 rounded bg-gray-700 text-gray-100 mb-4"
+            onChange={(e) => setcertLink(e.target.value)}
+            value={certlink}
+          />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={async () => {
+              setloading('certificate')
+              await uploadCertificate(certtitle, certImage, certdesc, certlink)
+              setloading(null)
+              setcertTitle('')
+              setcertDesc('')
+              setcertImage('')
+              setcertLink('')
+            }}>
+            {loading === 'certificate' ? 'Uploading...' : 'Upload Post'}
 
 
           </button>

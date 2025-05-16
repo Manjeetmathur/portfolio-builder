@@ -35,7 +35,7 @@ const ProfileCerticate = ({ certificate }) => {
       </div>
       <Link to={`${certificate?.certificateImage?.imageUrl}`}>
         <img
-          src={certificate?.certificateImage?.imageUrl}
+          src={certificate?.certificateImage}
           alt=""
           className="w-full h-32 object-cover rounded-lg mt-2"
         />

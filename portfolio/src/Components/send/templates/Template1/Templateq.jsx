@@ -22,12 +22,14 @@ import { context } from "../../../../Context/Context";
 import { BackgroundBeamsWithCollision } from "../../../../ui/background-beams-with-collision";
 import { Typewriter } from "react-simple-typewriter";
 import { BackgroundBeams } from "../../../../ui/background-beams";
+import Temp1Certificate from "./Temp1Certificate";
 
 
 const Template1 = () => {
   const [userDetails, setUser] = useState();
   const [loading, setloading] = useState(true);
   const postRef = useRef();
+  const certificateref = useRef();
   const blogRef = useRef();
   const contactRef = useRef();
   const id = useParams();
@@ -69,7 +71,7 @@ const Template1 = () => {
   return (
     <div className="f1 ">
 
-      <Temp1Header postRef={postRef} blogRef={blogRef} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300 text-blue-900 " />
+      <Temp1Header postRef={postRef} blogRef={blogRef} certificateref={certificateref} contactRef={contactRef} color="bg-gradient-to-r from-green-200 to-blue-300 text-blue-900 " />
 
       {loading ? <LuLoaderPinwheel className="absolute top-[45vh] left-[45vw] text-[50px] animate-spin" /> :
         <div className="bg-gradient-to-r from-gray-200 to-blue-400 relative">
@@ -157,6 +159,7 @@ const Template1 = () => {
                   {/* Resume Button */}
                   <div className="mt-6" data-aos="fade-up">
                     <Link to={`${userDetails?.resume}`}
+                    target="_blank" rel="noopener noreferrer"
                       className="text-sm lg:text-xl border-2 px-4 py-2 rounded-xl text-gray-700 border-white font-semibold hover:bg-blue-500 hover:text-white hover:shadow-md"
                     >
                       See My Resume
@@ -189,6 +192,28 @@ const Template1 = () => {
                     data-aos="zoom-in"
                   >
                     <Temp1Posts post={item} />
+                  </div>
+                ))}
+              </div>
+            </section>
+            }
+            {userDetails?.certificates?.length && <section className="mb-12">
+              <h1
+                className="text-3xl font-extrabold text-center bg-clip-text
+                bg-gradient-to-r from-teal-700 to-blue-500 mt-6"
+                ref={certificateref}
+                data-aos="fade-up"
+              >
+                Certificates
+              </h1>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {userDetails?.certificates?.map((item) => (
+                  <div
+                    key={item._id}
+                    className=" py-6 mx-4 "
+                    data-aos="zoom-in"
+                  >
+                    <Temp1Certificate certificate={item} />
                   </div>
                 ))}
               </div>

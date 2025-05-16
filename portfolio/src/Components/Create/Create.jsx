@@ -13,7 +13,7 @@ const Create = () => {
                      <Header/>
                      <SecondCont />
                      <ThirdCont />
-                     {/* <SixthCont/> */}
+                     <SixthCont/>
                      <FourthCont />
                      <FifthCont />
                      <Footer/>

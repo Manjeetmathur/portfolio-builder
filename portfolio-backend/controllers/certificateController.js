@@ -141,8 +141,7 @@ const editCertificateImage = async (req, res) => {
 }
 const editCertificateTitle = async (req, res) => {
        const { title, certificateId } = req.body
-       try {
-
+       try { 
               if (!certificateId) {
                      throw new Error("certificate not found");
 

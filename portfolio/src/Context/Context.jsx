@@ -64,7 +64,7 @@ const ContextProvider = ({ children }) => {
               }
 
        }
-       const uploadCertificate = async (title, certificateImage, link, desc) => {
+       const uploadCertificate = async (title, certificateImage,  desc,link) => {
               const formData = new FormData()
               formData.append('title', title)
               formData.append('certificateImage', certificateImage)
@@ -599,7 +599,7 @@ const ContextProvider = ({ children }) => {
               try {
                      const data = await axios.patch(
                             `${url}/certificate/edit-certificate-title`,
-                            { Title, certificateId },
+                            { title:certificateTitle, certificateId },
                             {
                                    headers: { "Content-Type": "application/json" },
                                    withCredentials: true,

@@ -2,9 +2,12 @@ import React from 'react'
 import toast from 'react-hot-toast'
 import { NavLink } from 'react-router-dom'
 
-const Temp1Header = ({ postRef, blogRef, contactRef, color='' }) => {
+const Temp1Header = ({ postRef, blogRef,certificateref ,contactRef, color='' }) => {
        const toPostRef = () => {
               postRef.current.scrollIntoView({ behavior: 'smooth' });
+       };
+       const tocertificateRef = () => {
+              certificateref.current.scrollIntoView({ behavior: 'smooth' });
        };
        const toBlogRef = () => {
               blogRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -29,7 +32,7 @@ const Temp1Header = ({ postRef, blogRef, contactRef, color='' }) => {
               <div className={`shadow-lg ${color} `}>
                      <nav className="flex justify-between items-center px-6 py-4 md:px-12">
                             {/* Navigation Links */}
-                            <div className="flex space-x-6 md:space-x-10 text-sm md:text-lg font-medium">
+                            <div className="flex space-x-2 md:space-x-10 text-sm md:text-lg font-medium">
                                    <NavLink
                                           onClick={toPostRef}
                                           className="hover:text-blue-500 transition duration-200"
@@ -37,17 +40,23 @@ const Temp1Header = ({ postRef, blogRef, contactRef, color='' }) => {
                                           Projects
                                    </NavLink>
                                    <NavLink
+                                          onClick={tocertificateRef}
+                                          className="hover:text-blue-500 transition duration-200"
+                                   >
+                                          Certificates
+                                   </NavLink>
+                                   <NavLink
                                           onClick={toBlogRef}
                                           className="hover:text-blue-500 transition duration-200"
                                    >
                                           Blogs
                                    </NavLink>
-                                   <NavLink
+                                   {/* <NavLink
                                           onClick={tocontactRef}
                                           className="hover:text-blue-500 transition duration-200"
                                    >
                                           Contact
-                                   </NavLink>
+                                   </NavLink> */}
                             </div>
 
                             {/* Share Button */}
