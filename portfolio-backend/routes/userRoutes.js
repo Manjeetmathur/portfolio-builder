@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middlewares/multer.js";
-import { addSkills, allInfo, deleteSkill, getUserinfo, login, logout,register,updateEmail,updateface,updategit,updateImage, updateinsta, updatelinked, updateName, updatePhoneNumber, updateProfession, updateResume, updateUserDesc, updateUserName, updateUserTitle, uploadDetails } from "../controllers/userController.js";
+import { addSkills, allInfo, deleteSkill, getstatusUserinfo, getUserinfo, login, logout,register,updateEmail,updateface,updategit,updateImage, updateinsta, updatelinked, updateName, updatePhoneNumber, updateProfession, updateResume, updateUserDesc, updateUserName, updateUserTitle, uploadDetails } from "../controllers/userController.js";
 import { verifyJwt } from "../middlewares/auth.js";
 const router = Router();
 
@@ -17,6 +17,7 @@ router.route("/upload-details").post(verifyJwt,
        uploadDetails
 );
 router.route("/user-info").get(verifyJwt,getUserinfo);
+router.route("/user-status-info").get(verifyJwt,getstatusUserinfo);
 router.route("/all-info/:id").get(allInfo);
 router.route("/update-image").patch(verifyJwt,upload.single("profile"),updateImage)
 router.route("/update-resume").patch(verifyJwt,updateResume)

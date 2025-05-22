@@ -2,8 +2,7 @@ import jwt from "jsonwebtoken";
 import { User } from "../model/user.js";
 export const verifyJwt = async (req, res, next) => {
   try {
-    const token = req?.cookies?.token
-    // console.log("token ",token);
+    const token = req?.cookies?.portToken
     
     if (!token) {
       throw new Error("unauthorized Access");
@@ -28,6 +27,7 @@ export const verifyJwt = async (req, res, next) => {
   } catch (error) {
     res.json({
       success: false,
+      status:false,
       error: true,
       message: error.message,
     });

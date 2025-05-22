@@ -76,7 +76,7 @@ const login = async (req, res) => {
       sameSite: 'none',
       maxAge: 30 * 24 * 60 * 60 * 1000
     };
-    return res.cookie("token", token, options).json({
+    return res.cookie("portToken", token, options).json({
       success: true,
       message: "user logged in successfully . . .",
       data: {
@@ -623,6 +623,29 @@ const getUserinfo = async (req, res) => {
 
   }
 };
+const getstatusUserinfo = async (req, res) => {
+  const userId = req._id
+  console.log(userId)
+  try {
+    let user = await User.findById(userId)
+    if (!user) {
+      res.status(404).json({
+        message: "User not found . . .",
+        success: false,
+      })
+    }
+
+    return res.status(200).json({
+      success: true,
+      status: true
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      status: false
+    });
+  }
+};
 
 const allInfo = async (req, res) => {
   const { id } = req.query
@@ -633,7 +656,7 @@ const allInfo = async (req, res) => {
     let user = await User.findById(id)
     if (!user) {
       throw new Error("user not found")
-      
+
     }
     user = await User.findById(id).select('-password').populate('posts').populate('certificates').populate({ path: 'blogs' })
 
@@ -741,6 +764,7 @@ export {
   register,
   allInfo,
   addSkills,
-  deleteSkill
+  deleteSkill,
+  getstatusUserinfo
 };
 
