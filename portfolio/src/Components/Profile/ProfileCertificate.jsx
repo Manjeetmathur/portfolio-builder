@@ -17,7 +17,6 @@ const ProfileCerticate = ({ certificate }) => {
   const [desc, setcertificateDesc] = useState('');
   const [loading, setloading] = useState(null);
   const id = certificate?._id
-  // console.log(certificate);
 
   return (
     <div className='border-y-2 my-3 py-2 p-4 max-w-xs w-full mx-auto  shadow-2xl rounded-xl   '>

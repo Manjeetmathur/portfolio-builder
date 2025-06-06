@@ -17,7 +17,6 @@ const ProfilePost = ({ post }) => {
   const [desc, setpostDesc] = useState('');
   const [loading, setloading] = useState(null);
   const id = post._id
-  // console.log(post);
 
   return (
     <div className='border-y-2 my-3 py-2  max-w-xs w-full mx-auto  shadow-2xl rounded-xl'>

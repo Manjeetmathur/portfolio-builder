@@ -28,7 +28,6 @@ const Login = () => {
         }
       );
       const res = data.data;
-      console.log(res);
       if (res.success) {
         toast.success(res.message);
         dispatch(login(res.data))

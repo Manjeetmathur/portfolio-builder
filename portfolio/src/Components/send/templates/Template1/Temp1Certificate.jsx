@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { RiExternalLinkFill } from "react-icons/ri";
 
 const Temp1Certificate = ({ certificate }) => {
-  console.log(certificate)
+  (certificate)
   return (
     <div className="p-4 max-w-xs w-full mx-auto  shadow-2xl rounded-xl     ">
       <div className="  rounded-lg overflow-hidden group transform transition-all hover:scale-105 hover:shadow-gray-700 hover:shadow-2xl hover:bg-gradient-to-b hover:from-green-300 hover:to-blue-300 hover:text-white">

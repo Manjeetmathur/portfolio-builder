@@ -320,7 +320,6 @@ const updateEmail = async (req, res) => {
 }
 const updatePhoneNumber = async (req, res) => {
   const { phonenumber } = req.body
-  console.log(phonenumber);
 
   const userId = req._id
   try {
@@ -625,7 +624,6 @@ const getUserinfo = async (req, res) => {
 };
 const getstatusUserinfo = async (req, res) => {
   const userId = req._id
-  console.log(userId)
   try {
     let user = await User.findById(userId)
     if (!user) {
@@ -720,7 +718,6 @@ const deleteSkill = async (req, res) => {
     skills = skills.filter(index => (
       skills.indexOf(index) !== id
     ))
-    console.log(skills)
     await User.findByIdAndUpdate(
       userId,
       {

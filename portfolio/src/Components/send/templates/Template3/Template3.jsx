@@ -62,7 +62,7 @@ const Template3 = () => {
                      easing: "ease-in",
               });
        }, []);
-
+console.log(userDetails)
        return (
               <div className="min-h-screen  relative overflow-hidden">
                      {/* Subtle Gradient Background */}
@@ -215,7 +215,7 @@ const Template3 = () => {
                                    )}
                                    {userDetails?.certificates?.length > 0 && (
                                           <div 
-                                                 className="bg-gray-50 py-16 bg-gradient-to-r from-blue-100 to-teal-100 " 
+                                                 className="bg-gray-50 py-16 bg-gradient-to-r from-blue-100 to-teal-100  px-20" 
                                                  ref={certificateref}
 
                                           >
@@ -225,7 +225,7 @@ const Template3 = () => {
                                                  >
                                                         My Certificates
                                                  </h2>
-                                                 <div className="max-w-6xl grid md:grid-cols-2 lg:grid-cols-3 ">
+                                                 <div className="grid md:grid-cols-2 lg:grid-cols-3">
                                                         {userDetails?.certificates?.map((item, idx) => (
                                                                <Temp3Certificate certificate={item} idx={idx} key={idx} />
                                                         ))}

@@ -19,7 +19,6 @@ const FifthCont = () => {
 
        const addskills = async(e) => {
               e.preventDefault()
-              console.log(newskills)
 
               if(newskills){
                             setLoading(true);

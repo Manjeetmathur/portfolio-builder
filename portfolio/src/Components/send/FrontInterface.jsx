@@ -22,6 +22,20 @@ const FrontInterface = () => {
                                    </h1>
                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl w-full">
                                           {/* Template 1 */}
+                                          <Link to={`/template4/${userData?.id}`} className="group">
+                                                 <div className="relative overflow-hidden rounded-xl border-2 border-gray-700 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                                                        <img 
+                                                               src={p13} 
+                                                               alt="Template 1 Preview"
+                                                               className="h-[200px] w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
+                                                        />
+                                                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300">
+                                                               <span className="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                                      View Template
+                                                               </span>
+                                                        </div>
+                                                 </div>
+                                          </Link>
                                           <Link to={`/template1/${userData?.id}`} className="group">
                                                  <div className="relative overflow-hidden rounded-xl border-2 border-gray-700 transition-transform duration-300 group-hover:scale-105 group-hover:shadow-lg">
                                                         <img 

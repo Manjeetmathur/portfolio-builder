@@ -11,6 +11,7 @@ import ProtectedRoutes from "../ProtectedRoutes/ProtectedRoutes";
 import Create from "../Components/Create/Create";
 import AboutUs from "../Components/About/About";
 import Template3 from "../Components/send/templates/Template3/Template3";
+import Template4 from "../Components/send/templates/Template4/Template4";
 
 const router = createBrowserRouter([
        {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
                      {
                             path : "/template3/:id",
                             element : <Template3/>
+                     },
+                     {
+                            path : "/template4/:id",
+                            element : <Template4/>
                      },
                      {
                             path : "/profile",

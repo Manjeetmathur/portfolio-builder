@@ -27,7 +27,6 @@ const Register = () => {
         }
       );
       const res = data.data;
-      console.log(res);
       if(res.success){
         toast.success(res.message);
         navigate("/login")

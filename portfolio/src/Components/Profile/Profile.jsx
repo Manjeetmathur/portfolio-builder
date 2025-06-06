@@ -53,12 +53,10 @@ const Profile = () => {
     updateTitle, updateDesc, updateResume, updateProfession, updateSkills,
     updateFace, updateGit, updateInsta, updateLinked, uploadPost, uploadBlog, deleteSkills,uploadCertificate
   } = useContext(context)
-  // console.log(name);
 
 
   const addskills = async (e) => {
     e.preventDefault()
-    console.log(newskills)
 
     if (newskills) {
 
@@ -316,7 +314,6 @@ const Profile = () => {
                 <GiCancel
                   className="text-lg mt-[1px] text-gray-300 cursor-pointer"
                   onClick={async () => {
-                    console.log(index)
                     await deleteSkills(index)
                     window.location.reload()
 

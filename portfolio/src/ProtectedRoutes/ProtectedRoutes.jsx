@@ -18,7 +18,6 @@ const ProtectedRoutes = ({ children }) => {
       withXSRFToken:true
 
     })
-    console.log("fetchStatus", fetchStatus)
     if (!fetchStatus.data.status) {
         toast.error("Session expired login again")
         dispatch(setStatus())

@@ -64,7 +64,6 @@ const Template1 = () => {
       once: false,
     });
   }, [id]);
-  console.log(userDetails)
 
 
 

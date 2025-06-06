@@ -5,7 +5,7 @@ import { RiExternalLinkFill } from "react-icons/ri";
 const Temp2Certificate = ({ certificate }) => {
   return (
     <div 
-      className="p-4 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+      className="p-4 w-full mx-auto"
       // data-aos="zoom-in"
     >
       <div 

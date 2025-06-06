@@ -14,7 +14,6 @@ const ContextProvider = ({ children }) => {
        const getUserDetails = async () => {
 
               const endpoint = `${url}/user/all-info/id?id=${userData?.id}`;
-              // console.log(endpoint);
 
               const data = await axios.get(endpoint);
               const res = data.data;
@@ -29,7 +28,7 @@ const ContextProvider = ({ children }) => {
 
                      getUserDetails();
               } catch (error) {
-                     console.log(error);
+                     (error);
               }
        }, []);
        const { userData } = useSelector(st => st.auth)
@@ -138,7 +137,7 @@ const ContextProvider = ({ children }) => {
 
 
               try {
-                     console.log(resume)
+                     (resume)
                      const data = await axios.patch(`${url}/user/update-resume`, { resume }, {
 
                             headers: { "Content-Type": "application/json" },
@@ -146,7 +145,6 @@ const ContextProvider = ({ children }) => {
                             withXSRFToken: true,
                      });
                      const res = data.data;
-                     console.log(res);
                      if (res.success) {
                             toast.success(res.message);
                             getUserDetails()
@@ -174,7 +172,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
                      if (res.success) {
                             toast.success(res.message);
                             getUserDetails()
@@ -202,7 +199,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
                      if (res.success) {
                             toast.success(res.message);
                             getUserDetails()
@@ -215,7 +211,6 @@ const ContextProvider = ({ children }) => {
        };
        const updateDesc = async (desc) => {
               try {
-                     console.log(desc);
 
                      const data = await axios.patch(
                             `${url}/user/update-user-desc`,
@@ -227,7 +222,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -263,7 +257,6 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateName = async (name) => {
-              console.log(name);
 
               try {
                      const data = await axios.patch(
@@ -288,7 +281,6 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateEmail = async (email) => {
-              // console.log(name);
 
               try {
                      const data = await axios.patch(
@@ -313,7 +305,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateLinked = async (linkedinlink) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -338,7 +330,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateGit = async (githublink) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -363,7 +355,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateInsta = async (instagramlink) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -388,7 +380,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateFace = async (facebooklink) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -463,7 +455,7 @@ const ContextProvider = ({ children }) => {
 
 
        const updatePostTitle = async (postTitle, postId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -476,7 +468,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -490,7 +481,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updatePostDesc = async (desc, postId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -503,7 +494,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -517,7 +507,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updatePostLink = async (link, postId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -530,7 +520,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -555,7 +544,6 @@ const ContextProvider = ({ children }) => {
                                    withXSRFToken: true,
                             });
                      const res = data.data;
-                     console.log(res);
                      if (res.success) {
                             toast.success(res.message);
                             getUserDetails()
@@ -567,7 +555,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const deletePost = async (postId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.post(
@@ -580,7 +568,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -594,7 +581,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateCerTitle = async (certificateTitle, certificateId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -607,7 +594,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -621,7 +607,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateCerDesc = async (desc, certificateId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -647,7 +633,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateCerLink = async (link, certificateId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -660,7 +646,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -685,7 +670,6 @@ const ContextProvider = ({ children }) => {
                                    withXSRFToken: true,
                             });
                      const res = data.data;
-                     console.log(res);
                      if (res.success) {
                             toast.success(res.message);
                             getUserDetails()
@@ -697,7 +681,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const deleteCer = async (certificateId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.post(
@@ -710,7 +694,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -724,7 +707,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateBlogTitle = async (blogTitle, blogId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -737,7 +720,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -751,7 +733,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const updateBlogContent = async (blogContent, blogId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.patch(
@@ -764,7 +746,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);
@@ -778,7 +759,7 @@ const ContextProvider = ({ children }) => {
               }
        };
        const deleteBlog = async (blogId) => {
-              // console.log(name);
+              // 
 
               try {
                      const data = await axios.post(
@@ -791,7 +772,6 @@ const ContextProvider = ({ children }) => {
                             }
                      );
                      const res = data.data;
-                     console.log(res);
 
                      if (res.success) {
                             toast.success(res.message);

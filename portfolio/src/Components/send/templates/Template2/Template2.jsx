@@ -209,7 +209,7 @@ const Template2 = () => {
                                    {
                                           userDetails?.posts?.length > 0 && <div className="bg-gray-900 flex flex-col justify-center items-center dark:bg-grid-white/[0.05] bg-grid-black/[0.05]" ref={postRef}>
                                                  <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
-                             bg-gradient-to-r from-teal-400 to-blue-500 mt-6">My Projects</h2>
+                             bg-gradient-to-r from-teal-400 to-blue-500 my-6 mt-10">My Projects</h2>
                                                  <div className="">
                                                         {userDetails?.posts?.map((item, idx) => {
                                                                return <Temp2Posts post={item} idx={idx} key={item._id} ></Temp2Posts>;
@@ -218,10 +218,10 @@ const Template2 = () => {
                                           </div>
                                    }
                                    {
-                                          userDetails?.certificates?.length > 0 && <div className="bg-gray-900 flex flex-col justify-center items-center dark:bg-grid-white/[0.05] bg-grid-black/[0.05]" ref={certificateref}>
+                                          userDetails?.certificates?.length > 0 && <div className="bg-gray-900 flex flex-col justify-center items-center dark:bg-grid-white/[0.05] bg-grid-black/[0.05] py-10" ref={certificateref}>
                                                  <h2 className="text-3xl font-extrabold text-center text-transparent bg-clip-text
-                             bg-gradient-to-r from-teal-400 to-blue-500 mt-6">My Certificates</h2>
-                                                 <div className="grid md:grid-cols-2 gap-5 m-40">
+                             bg-gradient-to-r from-teal-400 to-blue-500 my-6">My Certificates</h2>
+                                                 <div className="grid md:grid-cols-2 lg:grid-cols-3">
                                                         {userDetails?.certificates?.map((item, idx) => {
                                                                return <Temp2Certificate certificate={item} idx={idx} key={item._id} ></Temp2Certificate>;
                                                         })}

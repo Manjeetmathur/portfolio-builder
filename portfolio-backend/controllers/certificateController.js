@@ -56,7 +56,6 @@ const uploadCertificate = async (req, res) => {
 const getCertificate = async (req, res) => {
 
        const userId = req.query;
-       console.log("hii")
        try {
               if (userId === null) {
                      throw new Error("Invalid user access ")
