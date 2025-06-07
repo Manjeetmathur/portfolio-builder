@@ -215,7 +215,7 @@ console.log(userDetails)
                                    )}
                                    {userDetails?.certificates?.length > 0 && (
                                           <div 
-                                                 className="bg-gray-50 py-16 bg-gradient-to-r from-blue-100 to-teal-100  px-20" 
+                                                 className="bg-gray-50  bg-gradient-to-r from-blue-100 to-teal-100  px-5" 
                                                  ref={certificateref}
 
                                           >
@@ -225,7 +225,7 @@ console.log(userDetails)
                                                  >
                                                         My Certificates
                                                  </h2>
-                                                 <div className="grid md:grid-cols-2 lg:grid-cols-3">
+                                                 <div className="grid sm:grid-cols-2 lg:grid-cols-3">
                                                         {userDetails?.certificates?.map((item, idx) => (
                                                                <Temp3Certificate certificate={item} idx={idx} key={idx} />
                                                         ))}
